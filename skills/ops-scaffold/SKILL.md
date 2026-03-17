@@ -55,8 +55,6 @@ Read the existing structure (CLAUDE.md, MEMORY.md, folder listing). Then ask:
 │       └── INDEX.md
 ├── .update/
 │   └── .gitkeep
-├── .tmp/
-│   └── .gitkeep
 ├── .gitignore
 ├── CLAUDE.md
 └── MEMORY.md
@@ -148,10 +146,6 @@ NUL
 
 # IDE
 .vscode/
-
-# Temp files (keep the directory, ignore contents)
-.tmp/*
-!.tmp/.gitkeep
 
 # Update inbox (keep the directory, ignore contents)
 .update/*
