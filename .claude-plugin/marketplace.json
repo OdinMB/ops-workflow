@@ -1,0 +1,33 @@
+{
+  "name": "ops-workflow",
+  "owner": {
+    "name": "OdinMB",
+    "url": "https://github.com/OdinMB"
+  },
+  "metadata": {
+    "description": "Structured non-code project management for Claude Code"
+  },
+  "plugins": [
+    {
+      "name": "ops-workflow",
+      "source": "./",
+      "description": "Structured non-code project management: planning, execution, knowledge persistence, and autonomous work loops for research, strategy, and content projects. 9 skills, 5 agents, 7 commands.",
+      "author": {
+        "name": "OdinMB"
+      },
+      "homepage": "https://github.com/OdinMB/ops-workflow",
+      "repository": "https://github.com/OdinMB/ops-workflow",
+      "license": "MIT",
+      "keywords": [
+        "project-management",
+        "ops",
+        "research",
+        "strategy",
+        "content",
+        "autonomous",
+        "knowledge-management",
+        "workflow-automation"
+      ]
+    }
+  ]
+}
