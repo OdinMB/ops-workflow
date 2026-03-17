@@ -14,10 +14,21 @@ This plugin manages **ops repos** — project management repositories that produ
 ## Installation
 
 ```bash
-claude plugin add https://github.com/OdinMB/ops-workflow
+claude plugin marketplace add OdinMB/ops-workflow
+claude plugin install ops-workflow
 ```
 
 Then enable it in your Claude Code settings.
+
+### Contributing to the plugin
+
+Claude Code installs plugins as shallow clones (single commit, no full history). If you want to edit the plugin source and push changes back, fetch the full history after installation:
+
+```bash
+git -C ~/.claude/plugins/marketplaces/ops-workflow fetch --unshallow
+```
+
+Plugin updates via Claude Code (`/plugin update`) may re-shallow the clone — run `fetch --unshallow` again afterward if you need the full history.
 
 ## Repo Structure
 
