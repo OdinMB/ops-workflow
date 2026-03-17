@@ -2,11 +2,9 @@
 
 A [Claude Code](https://claude.com/claude-code) plugin for the stuff that isn't code.
 
-Research, strategy, content, compliance: ops-workflow gives Claude a structured repo to manage all of it. State files track what exists. Backlog tracks what's next. References hold research. Artifacts hold deliverables. Claude plans work, executes it, and keeps everything organized.
+Research, strategy, content, compliance: ops-workflow gives Claude a structured repo to manage all of it. State files track what exists. Backlog tracks what's next. References hold research. Artifacts hold deliverables. Claude plans work, executes it, and keeps everything organized. Best part: you can tell it /ops:get-to-work and walk away. It'll find tasks, prioritize, execute, commit, repeat. Come back to a summary of what got done.
 
-Best part: you can tell it /ops:get-to-work and walk away. It'll find tasks, prioritize, execute, commit, repeat. Come back to a summary of what got done.
-
-For solo founders, indie hackers, and small teams who use Claude Code for development and want the same workflow for everything else.
+For solo founders and indie hackers who use Claude for development and want the same workflow for everything else.
 
 ## Quick Example
 
