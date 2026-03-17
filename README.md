@@ -1,15 +1,105 @@
 # ops-workflow
 
-A [Claude Code](https://claude.com/claude-code) plugin for structured non-code project management — research, strategy, content, and specs. Provides planning, execution, knowledge persistence, and autonomous work loops.
+Non-code work — research, strategy, content, compliance — tends to scatter across Google Docs, emails, Notion pages, and your head. This [Claude Code](https://claude.com/claude-code) plugin gives you a structured system to manage all of it from the terminal, with the same AI-powered workflow you already use for code.
 
-## What It Does
+For solo founders, indie hackers, and small teams who use Claude Code for development and want the same workflow for everything else.
 
-This plugin manages **ops repos** — project management repositories that produce strategy, research, content, and specifications (never code). It provides:
+## Quick Example
 
-- A structured knowledge system with `state/`, `backlog/`, `references/`, `artifacts/`, and `plans/`
-- Skills for planning, executing, and reviewing non-code work
-- Autonomous agents that can work through a backlog without user input
-- A scaffolding tool to set up new ops repos from scratch
+You're launching an AI tutoring startup. The code is handled, but you also need to research competitors, write grant applications, draft marketing copy, and track legal compliance.
+
+**Set up a project:**
+
+```
+> /ops-scaffold
+```
+
+Claude asks a few questions about your project, then creates a structured repo with folders for state, backlog, references, artifacts, and plans.
+
+**Do some work:**
+
+```
+> /ops:handle research competitor pricing for AI tutoring tools
+```
+
+Claude plans the research, you approve, and it executes — searching the web, writing up findings in `references/`, updating `state/` with the competitive landscape, and adding opportunities to the `backlog/`.
+
+**Step away and let Claude work through the backlog:**
+
+```
+> /ops:get-to-work
+```
+
+Claude autonomously finds work — scanning existing goals for gaps and looking outward for new opportunities — then prioritizes, executes, and commits after each task. When you return, it walks you through what it decided and what needs your input.
+
+**See where things stand:**
+
+```
+> /ops:overview
+```
+
+A synthesized executive summary — what's been done, what's in progress, and a prioritized list of what to do next.
+
+**Bring in outside information:**
+
+```
+> /ops:update we got accepted into the TechStars AI cohort, program starts April 15
+```
+
+Claude classifies the information, updates the relevant state and backlog files, and adjusts priorities accordingly. You can also drop files (PDFs, notes, screenshots) into the `.update/` folder and run `/ops:update` — Claude will process everything in the inbox.
+
+**Keep the knowledge base clean:**
+
+```
+> /ops:housekeeping
+```
+
+Runs 9 consistency checks — stale dates, orphaned files, INDEX.md accuracy, WAITING markers — auto-fixes what it can, flags the rest.
+
+## What the repo looks like after 1h of autonomous work
+
+```
+ai-tutoring-ops/
+├── CLAUDE.md
+├── MEMORY.md
+├── state/
+│   ├── INDEX.md
+│   ├── product.md                           # Current platform capabilities
+│   ├── competitive-landscape.md             # Who's out there, how they price
+│   └── accelerator.md                       # TechStars status and milestones
+├── backlog/
+│   ├── INDEX.md
+│   ├── marketing.md                         # Outreach tasks, prioritized
+│   ├── grants.md                            # Grant opportunities to pursue
+│   └── partnerships.md                      # Integration and partnership leads
+├── references/
+│   ├── INDEX.md
+│   ├── competitors/
+│   │   ├── INDEX.md
+│   │   └── pricing-analysis.md              # Detailed pricing comparison
+│   ├── grants/
+│   │   ├── INDEX.md
+│   │   └── nsf-sbir-requirements.md         # Eligibility and deadlines
+│   └── legal/
+│       ├── INDEX.md
+│       └── coppa-compliance.md              # Requirements for K-12 ed-tech
+├── artifacts/
+│   ├── INDEX.md
+│   ├── grants/
+│   │   └── 2026-03-01_nsf-sbir-application.md
+│   └── marketing/
+│       └── cold-outreach-template.md
+├── plans/
+│   ├── INDEX.md
+│   └── completed/
+│       ├── INDEX.md
+│       ├── 2026-02-20_competitor-research.md
+│       └── 2026-03-01_nsf-sbir-application.md
+├── .update/
+└── .tmp/
+```
+
+Every folder has an `INDEX.md` that provides a complete overview at its level of abstraction, with links to sub-files for deeper detail.
 
 ## Installation
 
@@ -18,76 +108,55 @@ claude plugin marketplace add OdinMB/ops-workflow
 claude plugin install ops-workflow
 ```
 
-Then enable it in your Claude Code settings.
-
-### Contributing to the plugin
-
-Claude Code installs plugins as shallow clones (single commit, no full history). If you want to edit the plugin source and push changes back, fetch the full history after installation:
-
-```bash
-git -C ~/.claude/plugins/marketplaces/ops-workflow fetch --unshallow
-```
-
-Plugin updates via Claude Code (`/plugin update`) may re-shallow the clone — run `fetch --unshallow` again afterward if you need the full history.
-
-## Repo Structure
-
-An ops repo (created by `/ops-scaffold`) looks like this:
-
-```
-my-project/
-├── CLAUDE.md              # Project-specific instructions
-├── MEMORY.md              # Stable context: description, goals, key learnings
-├── state/                 # What currently exists — facts, metrics, constraints
-│   └── INDEX.md
-├── backlog/               # What to do next — prioritized tasks and opportunities
-│   └── INDEX.md
-├── references/            # Inputs — research, analysis, context by topic
-│   └── INDEX.md
-├── artifacts/             # Outputs — deliverables, submitted work products
-│   └── INDEX.md
-├── plans/                 # Active work plans
-│   ├── INDEX.md
-│   └── completed/         # Archived plans with outcomes
-│       └── INDEX.md
-├── .update/               # Inbox — drop files here for /ops:update to process
-└── .tmp/                  # Temporary files
-```
-
-Every folder has an `INDEX.md` that provides a complete overview at its level of abstraction, with links to sub-files for deeper detail. The knowledge system is navigated top-down through these indexes.
-
-## Skills (Building Blocks)
-
-| Skill | What It Does |
-|-------|-------------|
-| `/ops-plan` | Research existing state, create a plan file with objective, steps, and success criteria. Presents to user for approval. |
-| `/ops-execute` | Execute an approved plan — research, write, review, update state, harvest insights, archive. |
-| `/ops-find-tasks` | Scan the project through 7 lenses (goal gaps, stale state, research opportunities, content gaps, follow-through, hygiene, new directions) to identify new backlog items. |
-| `/ops-find-opps` | Look beyond existing plans for new directions — adjacent opportunities, strategic gaps, emerging context, preparatory research, cross-pollination. |
-| `/ops-prioritize` | Score candidate tasks on impact, feasibility, and independence. Select 2-3 for autonomous execution. |
-| `/ops-update` | Ingest external information into the knowledge base. Inline mode (pass content directly) or inbox mode (process `.update/` folder). |
-| `/ops-scaffold` | Set up a new ops repo with the full folder structure, CLAUDE.md, MEMORY.md, and INDEX.md hierarchy. |
-| `work-autonomously` | Shared rules for unattended execution: never stop for input, never delete files, record decisions in follow-up files. |
-| `review-followup` | Walk through follow-up files from autonomous runs with the user. Present context and options for each item. |
-
-## Commands (Orchestrators)
+## All Commands
 
 ### Interactive
 
-| Command | What It Does |
-|---------|-------------|
-| `/ops:handle` | End-to-end workflow: `/ops-plan` → user approves → `/ops-execute`. Use for all non-trivial work. |
-| `/ops:overview` | Read-only executive summary. Synthesizes state, backlogs, and recent plans into a prioritized "What to do next" with status dashboard. |
-| `/ops:update` | Interactive wrapper for `/ops-update`. Process `.update/` inbox or inline content. |
-| `/ops:housekeeping` | Run 9 consistency checks on the knowledge structure (INDEX.md accuracy, stale dates, orphaned files, WAITING markers, backlog hygiene, etc.). Auto-fixes what it can, flags the rest. |
+| Command             | What It Does                                                                 |
+| ------------------- | ---------------------------------------------------------------------------- |
+| `/ops:handle`       | End-to-end workflow: plan → approve → execute. Use for all non-trivial work. |
+| `/ops:overview`     | Executive summary with prioritized "what to do next".                        |
+| `/ops:update`       | Ingest external information into the knowledge base.                         |
+| `/ops:housekeeping` | Run consistency checks on the knowledge structure. Auto-fixes what it can.   |
+| `/ops-scaffold`     | Set up a new ops repo from scratch.                                          |
 
 ### Autonomous
 
-| Command | What It Does |
-|---------|-------------|
-| `/ops:get-to-work` | Fully autonomous loop: identify work → prioritize → execute → repeat. Modes: `tasks` / `opps` / `full` / `escalating` (default). Creates a branch, commits after each task, produces a follow-up file for review. |
-| `/ops:batch-plan` | Write multiple plans without interruption. Spawns planner agents in parallel. Reviews follow-up items with user afterward. |
-| `/ops:batch-execute` | Execute multiple plans sequentially without interruption. Reviews follow-up items with user afterward. |
+| Command              | What It Does                                                                                                     |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `/ops:get-to-work`   | Fully autonomous loop: find work → prioritize → execute → repeat. Step away and come back to a follow-up review. |
+| `/ops:batch-plan`    | Write multiple plans in parallel without interruption.                                                           |
+| `/ops:batch-execute` | Execute multiple approved plans sequentially without interruption.                                               |
+| `/review-followup`   | Walk through decisions Claude made during autonomous runs.                                                       |
+
+### Discovery
+
+| Command           | What It Does                                                     |
+| ----------------- | ---------------------------------------------------------------- |
+| `/ops-find-tasks` | Scan the project through 7 lenses to surface new backlog items.  |
+| `/ops-find-opps`  | Look beyond existing plans for new directions and opportunities. |
+
+## Safety
+
+All autonomous commands enforce these rules:
+
+- **No real-world actions** — never sends emails, submits forms, posts to social media, or calls external APIs
+- **No file deletion** — intended deletions are recorded for your review
+- **No remote push** — only local branches and commits
+- **Transparent decisions** — when uncertain, records its reasoning for you to review
+
+## License
+
+MIT
+
+---
+
+<details>
+<summary>Technical Details</summary>
+
+### Architecture
+
+Commands (listed above) are orchestrators built from composable skills (`/ops-plan`, `/ops-execute`, `/ops-prioritize`, etc.). Autonomous commands delegate to **agents** — isolated sub-processes that run a skill, write outputs to files, and return only a concise summary to keep the orchestrator's context clean.
 
 ### The get-to-work Loop
 
@@ -106,48 +175,27 @@ Every folder has an `INDEX.md` that provides a complete overview at its level of
   /review-followup → walk through decisions with user
 ```
 
-## Agents (Context Isolation)
+### Permissions and Autonomous Execution
 
-Skills are designed for direct invocation in the main conversation. Agents wrap skills for autonomous contexts — they run in isolated sub-agent processes, write outputs to files, and return only concise summaries. This keeps the orchestrator's context clean.
+The autonomous commands (`/ops:get-to-work`, `/ops:batch-execute`) run for extended periods without user intervention. For this to work smoothly, Claude Code needs pre-approved permissions for the tools these agents use.
 
-| Agent | Wraps | Model |
-|-------|-------|-------|
-| `ops-planner` | `/ops-plan` | sonnet |
-| `ops-executor` | `/ops-execute` | caller's model |
-| `ops-task-finder` | `/ops-find-tasks` | sonnet |
-| `ops-updater` | `/ops-update` | sonnet |
-| `ops-opps-finder` | `/ops-find-opps` | caller's model |
-
-## Permissions and Autonomous Execution
-
-The autonomous commands (`/ops:get-to-work`, `/ops:batch-execute`) are designed to run for extended periods without user intervention. For this to work smoothly, Claude Code needs pre-approved permissions for the tools these agents use.
-
-**If the process keeps pausing for permission prompts, it's not truly autonomous.** To fix this, configure your `settings.json` (either globally at `~/.claude/settings.json` or per-project at `.claude/settings.json`) with comprehensive `allow` and `deny` lists covering:
+**If the process keeps pausing for permission prompts, it's not truly autonomous.** Configure your `settings.json` (globally at `~/.claude/settings.json` or per-project at `.claude/settings.json`) with `allow` lists covering:
 
 - File operations: `Bash(ls *)`, `Bash(mv *)`, `Bash(rm ".tmp/*")`
 - Git commands: `Bash(git add *)`, `Bash(git status *)`, `Bash(git log *)`, `Bash(git diff *)`, `Bash(git branch *)`, `Bash(git commit *)`
 - Web access: `WebSearch`, `WebFetch`
 - Skill invocation: `Skill(ops-execute)`, etc.
 
-The more commands you pre-approve in your allowlist, the longer the autonomous processes can run without interruption. Review Claude Code's [permissions documentation](https://docs.anthropic.com/en/docs/claude-code/security) to configure this for your comfort level.
+See Claude Code's [permissions documentation](https://docs.anthropic.com/en/docs/claude-code/security) for details.
 
-## Safety Constraints
+### Contributing to the Plugin
 
-All autonomous commands enforce these rules:
+Claude Code installs plugins as shallow clones (single commit, no full history). To edit the plugin source and push changes back, fetch the full history:
 
-- **No real-world actions**: never send emails, submit forms, post to social media, make purchases, or call external APIs that modify state
-- **No file deletion**: intended deletions are recorded in follow-up files for user review
-- **No remote push**: only local branches and commits
-- **Transparent decisions**: when uncertain, the agent makes a sensible choice and records its reasoning for user review
+```bash
+git -C ~/.claude/plugins/marketplaces/ops-workflow fetch --unshallow
+```
 
-## Getting Started
+Plugin updates via Claude Code (`/plugin update`) may re-shallow the clone — run `fetch --unshallow` again afterward if you need the full history.
 
-1. Install the plugin (see above)
-2. Create a new ops repo: run `/ops-scaffold` in an empty directory
-3. Start working: `/ops:handle research competitor pricing strategies`
-4. Check status: `/ops:overview`
-5. Go autonomous: `/ops:get-to-work`
-
-## License
-
-MIT
+</details>
