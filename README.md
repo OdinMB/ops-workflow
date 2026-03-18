@@ -195,7 +195,7 @@ See Claude Code's [permissions documentation](https://docs.anthropic.com/en/docs
 Claude Code installs plugins as shallow clones (single commit, no full history). To edit the plugin source and push changes back, fetch the full history:
 
 ```bash
-git -C ~/.claude/plugins/marketplaces/ops fetch --unshallow
+git -C ~/.claude/plugins/marketplaces/ops-workflow fetch --unshallow
 ```
 
 Plugin updates via Claude Code (`/plugin update`) may re-shallow the clone — run `fetch --unshallow` again afterward if you need the full history.
