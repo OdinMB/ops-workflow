@@ -1,5 +1,5 @@
 {
-  "name": "ops-workflow",
+  "name": "ops",
   "version": "1.0.0",
   "description": "Structured non-code project management for Claude Code: planning, execution, knowledge persistence, and autonomous work loops for research, strategy, and content projects. 9 skills, 5 agents, 7 commands.",
   "author": {

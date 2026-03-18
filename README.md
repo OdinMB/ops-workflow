@@ -1,8 +1,8 @@
-# ops-workflow
+# ops
 
 A [Claude Code](https://claude.com/claude-code) plugin for the stuff that isn't code.
 
-Research, strategy, content, compliance: ops-workflow gives Claude a structured repo to manage all of it. State files track what exists. Backlog tracks what's next. References hold research. Artifacts hold deliverables. Claude plans work, executes it, and keeps everything organized. Best part: you can tell it /ops:get-to-work and walk away. It'll find tasks, prioritize, execute, commit, repeat. Come back to a summary of what got done.
+Research, strategy, content, compliance: the ops plugin gives Claude a structured repo to manage all of it. State files track what exists. Backlog tracks what's next. References hold research. Artifacts hold deliverables. Claude plans work, executes it, and keeps everything organized. Best part: you can tell it /ops:get-to-work and walk away. It'll find tasks, prioritize, execute, commit, repeat. Come back to a summary of what got done.
 
 For solo founders and indie hackers who use Claude for development and want the same workflow for everything else.
 
@@ -107,7 +107,7 @@ Every folder has an `INDEX.md` that provides a complete overview at its level of
 
 ```bash
 claude plugin marketplace add OdinMB/ops-workflow
-claude plugin install ops-workflow
+claude plugin install ops
 ```
 
 ## All Commands
@@ -195,7 +195,7 @@ See Claude Code's [permissions documentation](https://docs.anthropic.com/en/docs
 Claude Code installs plugins as shallow clones (single commit, no full history). To edit the plugin source and push changes back, fetch the full history:
 
 ```bash
-git -C ~/.claude/plugins/marketplaces/ops-workflow fetch --unshallow
+git -C ~/.claude/plugins/marketplaces/ops fetch --unshallow
 ```
 
 Plugin updates via Claude Code (`/plugin update`) may re-shallow the clone — run `fetch --unshallow` again afterward if you need the full history.

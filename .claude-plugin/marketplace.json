@@ -1,5 +1,5 @@
 {
-  "name": "ops-workflow",
+  "name": "ops",
   "owner": {
     "name": "OdinMB",
     "url": "https://github.com/OdinMB"
@@ -9,7 +9,7 @@
   },
   "plugins": [
     {
-      "name": "ops-workflow",
+      "name": "ops",
       "source": "./",
       "description": "Structured non-code project management: planning, execution, knowledge persistence, and autonomous work loops for research, strategy, and content projects. 9 skills, 5 agents, 7 commands.",
       "author": {
