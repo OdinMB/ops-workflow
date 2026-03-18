@@ -13,7 +13,7 @@ You're launching an AI tutoring startup. The code is handled, but you also need 
 **Set up a project:**
 
 ```
-> /ops-scaffold
+> /scaffold
 ```
 
 Claude asks a few questions about your project, then creates a structured repo with folders for state, backlog, references, artifacts, and plans.
@@ -120,7 +120,7 @@ claude plugin install ops
 | `/ops:whats-next`     | Executive summary with prioritized "what to do next".                        |
 | `/ops:update`       | Ingest external information into the knowledge base.                         |
 | `/ops:tidy` | Run consistency checks on the knowledge structure. Auto-fixes what it can.   |
-| `/ops-scaffold`     | Set up a new ops repo from scratch.                                          |
+| `/scaffold`     | Set up a new ops repo from scratch.                                          |
 
 ### Autonomous
 
@@ -135,8 +135,8 @@ claude plugin install ops
 
 | Command           | What It Does                                                     |
 | ----------------- | ---------------------------------------------------------------- |
-| `/ops-find-tasks` | Scan the project through 7 lenses to surface new backlog items.  |
-| `/ops-find-opps`  | Look beyond existing plans for new directions and opportunities. |
+| `/find-tasks` | Scan the project through 7 lenses to surface new backlog items.  |
+| `/find-opps`  | Look beyond existing plans for new directions and opportunities. |
 
 ## Safety
 
@@ -158,19 +158,19 @@ MIT
 
 ### Architecture
 
-Commands (listed above) are orchestrators built from composable skills (`/ops-plan`, `/ops-execute`, `/ops-prioritize`, etc.). Autonomous commands delegate to **agents** — isolated sub-processes that run a skill, write outputs to files, and return only a concise summary to keep the orchestrator's context clean.
+Commands (listed above) are orchestrators built from composable skills (`/plan`, `/execute`, `/prioritize`, etc.). Autonomous commands delegate to **agents** — isolated sub-processes that run a skill, write outputs to files, and return only a concise summary to keep the orchestrator's context clean.
 
 ### The get-to-work Loop
 
 ```
 [Cycle 1]
-  ops-task-finder agent → scan 7 lenses → add backlog items
+  task-finder agent → scan 7 lenses → add backlog items
       ↓ (escalate if low yield)
-  ops-opps-finder agent → find new directions → add backlog items
+  opps-finder agent → find new directions → add backlog items
       ↓
-  ops-prioritize → select 2-3 independent, feasible tasks
+  prioritize → select 2-3 independent, feasible tasks
       ↓
-  ops-executor agents → execute each task, update state, commit
+  executor agents → execute each task, update state, commit
       ↓
 [Cycle 2, 3, ...] until stopping conditions met
       ↓
@@ -186,7 +186,7 @@ The autonomous commands (`/ops:get-to-work`, `/ops:batch-execute`) run for exten
 - File operations: `Bash(ls *)`, `Bash(mv *)`, `Bash(rm ".tmp/*")`
 - Git commands: `Bash(git add *)`, `Bash(git status *)`, `Bash(git log *)`, `Bash(git diff *)`, `Bash(git branch *)`, `Bash(git commit *)`
 - Web access: `WebSearch`, `WebFetch`
-- Skill invocation: `Skill(ops-execute)`, etc.
+- Skill invocation: `Skill(execute)`, etc.
 
 See Claude Code's [permissions documentation](https://docs.anthropic.com/en/docs/claude-code/security) for details.
 

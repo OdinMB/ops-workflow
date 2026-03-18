@@ -1,5 +1,5 @@
 ---
-name: ops-find-opps
+name: find-opps
 description: Identify new directions of work for an ops project — adjacent opportunities, strategic gaps, emerging context, preparatory research. Produces backlog-ready items that expand the project's horizon beyond existing plans. Use when the project's known work is well-mined and you need to look outward.
 ---
 
@@ -7,11 +7,11 @@ description: Identify new directions of work for an ops project — adjacent opp
 
 Identify **new directions of work** the project should explore — things that aren't already tracked, aren't obvious from the existing backlog, and that the project owner may not have thought to pursue yet. The output is backlog-ready items — this skill does NOT execute them.
 
-This is the outward-looking complement to `/ops-find-tasks`, which finds work within existing paths. This skill looks beyond current plans to find new territory.
+This is the outward-looking complement to `/find-tasks`, which finds work within existing paths. This skill looks beyond current plans to find new territory.
 
 ## When to Use
 
-- When `/ops-find-tasks` lenses 1-6 yield fewer than 2 new items (existing paths are well-mined)
+- When `/find-tasks` lenses 1-6 yield fewer than 2 new items (existing paths are well-mined)
 - When the user asks "what else should we be thinking about?"
 - Between major milestones when strategy should be reassessed
 - When the project feels stuck or stale

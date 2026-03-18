@@ -18,16 +18,16 @@ Follow the `work-autonomously` skill throughout.
 
 # Execution
 
-For each plan, spawn an **ops-executor sub-agent** (`agents/ops-executor.md`):
+For each plan, spawn an **executor sub-agent** (`agents/executor.md`):
 
 ```
-Read the ops-executor agent instructions at: agents/ops-executor.md
+Read the executor agent instructions at: agents/executor.md
 
 Plan file path: <path to the plan>
 Follow-up file path: <path to the follow-up file>
 ```
 
-After each ops-executor agent completes:
+After each executor agent completes:
 
 1. Review its summary for status and any follow-up items
 2. Verify the agent persisted insights: check if MEMORY.md or backlog files were updated when appropriate. If the agent produced findings but didn't persist them, do it now.

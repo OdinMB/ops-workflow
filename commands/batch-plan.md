@@ -18,19 +18,19 @@ Follow the `work-autonomously` skill throughout.
 
 # Planning
 
-For each task, spawn an **ops-planner sub-agent** (`agents/ops-planner.md`):
+For each task, spawn an **planner sub-agent** (`agents/planner.md`):
 
 ```
-Read the ops-planner agent instructions at: agents/ops-planner.md
+Read the planner agent instructions at: agents/planner.md
 
 Task description: <the task or idea to plan>
 Follow-up file path: <path to the follow-up file>
 Plan file path: plans/<NN>-YYYY-MM-DD-<slug>.md
 ```
 
-After each ops-planner agent completes, review its summary. If it recorded decisions or questions in the follow-up file, note them for the review phase.
+After each planner agent completes, review its summary. If it recorded decisions or questions in the follow-up file, note them for the review phase.
 
-You can spawn multiple ops-planner agents in parallel if the tasks don't directly relate to each other.
+You can spawn multiple planner agents in parallel if the tasks don't directly relate to each other.
 
 # Review
 

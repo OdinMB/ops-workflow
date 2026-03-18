@@ -1,5 +1,5 @@
 ---
-name: ops-plan
+name: plan
 description: Create an ops work plan for a new task. Proposes steps and success criteria for user approval before execution.
 disable-model-invocation: true
 argument-hint: <brief task description>
@@ -55,6 +55,6 @@ _Fill in when completed._
 
 3. **Present and clarify.** Summarize the objective, proposed steps, and success criteria. Then surface any scope decisions, trade-offs, or assumptions that need user input. Use the **AskUserQuestion** tool with concrete options — don't ask open-ended questions when specific choices are available. Group related decisions (up to 4 per question). If the task produces artifacts (copy, drafts, deliverables), clarify where they should be stored if not obvious (default: `artifacts/`). Skip clarification if the task is absolutely straightforward. Update the plan file with the user's answers. Wait for approval before any work begins.
 
-4. **Do NOT execute the plan.** This skill only creates and proposes the plan. Execution happens via the `/ops-execute` skill after the user approves.
+4. **Do NOT execute the plan.** This skill only creates and proposes the plan. Execution happens via the `/execute` skill after the user approves.
 
 5. **Scope check.** Plans in non-code repos must never include implementing code changes. This workflow produces content, research, specs, and briefs — not code. If a task involves building something in an app, the plan should cover producing the content/spec/brief that the user takes to the coding repo.

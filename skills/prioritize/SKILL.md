@@ -1,5 +1,5 @@
 ---
-name: ops-prioritize
+name: prioritize
 description: Select 2-3 independent tasks from an ops repo's active plans and backlog for autonomous execution. Considers impact, feasibility, independence, and project goals. Used by the get-to-work command — load when deciding which ops tasks to work on next.
 ---
 
@@ -9,7 +9,7 @@ Given a project's active plans, backlog, and goals, select 2-3 tasks for immedia
 
 ## Context Required
 
-You need the full project overview loaded (MEMORY.md, state, backlog, active plans) plus any newly identified work items from `ops-find-tasks`.
+You need the full project overview loaded (MEMORY.md, state, backlog, active plans) plus any newly identified work items from `find-tasks`.
 
 ## Selection Criteria
 
@@ -59,7 +59,7 @@ List all candidate tasks from:
 
 1. **Active plans** in `plans/` — these are already approved work
 2. **Backlog items** — particularly those marked as high priority or quick wins
-3. **Newly identified items** from the latest `ops-find-tasks` run
+3. **Newly identified items** from the latest `find-tasks` run
 
 For each, note: description, source file, estimated effort, and which files it would touch.
 
@@ -96,7 +96,7 @@ For each selected task, prepare an execution brief:
 ...
 ```
 
-If a selected task doesn't have an existing plan file, note that the sub-agent should create one as its first step (following `ops-plan` format).
+If a selected task doesn't have an existing plan file, note that the sub-agent should create one as its first step (following `plan` format).
 
 ### Step 5: Order
 

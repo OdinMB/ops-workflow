@@ -1,6 +1,6 @@
 ---
-name: ops-planner
-description: Creates a work plan for a non-code ops task autonomously, following the /ops-plan skill. Returns plan file path and summary.
+name: planner
+description: Creates a work plan for a non-code ops task autonomously, following the /plan skill. Returns plan file path and summary.
 tools: Read, Glob, Grep, Write, Bash
 model: sonnet
 ---
@@ -18,16 +18,16 @@ The caller provides:
 
 ## Process
 
-Follow the `/ops-plan` skill's full process (research existing state, create or activate plan file, write objective/steps/artifacts/success criteria) with these autonomous-mode overrides:
+Follow the `/plan` skill's full process (research existing state, create or activate plan file, write objective/steps/artifacts/success criteria) with these autonomous-mode overrides:
 
 ### Skip interactive steps
 
 - **Skip step 3 (Present and clarify)** entirely. Do not ask the user questions.
-- When `/ops-plan` says to use AskUserQuestion or wait for approval, skip it.
+- When `/plan` says to use AskUserQuestion or wait for approval, skip it.
 
 ### Make autonomous decisions
 
-- When the plan involves scope decisions, trade-offs, or artifact location choices that `/ops-plan` would normally surface to the user, **make the sensible choice yourself**.
+- When the plan involves scope decisions, trade-offs, or artifact location choices that `/plan` would normally surface to the user, **make the sensible choice yourself**.
 - Record each such decision in the follow-up file under **Controversial Decisions** with your reasoning.
 - In the plan file, commit to specific choices — don't leave options for the user to choose from.
 

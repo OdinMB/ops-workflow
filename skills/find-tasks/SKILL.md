@@ -1,5 +1,5 @@
 ---
-name: ops-find-tasks
+name: find-tasks
 description: Scan an ops repo's goals, state, and backlog to identify new valuable work items. Produces new backlog entries integrated into the project's knowledge system. Used by the get-to-work command — load when autonomously identifying what an ops project should be working on next.
 ---
 
@@ -67,7 +67,7 @@ Structural improvements to the project's knowledge system:
 
 ### 7. New Directions
 
-When lenses 1-6 are running dry, think beyond the project's existing structure. This lens is handled by the **ops-opps-finder agent** when called from `get-to-work`. When running `ops-find-tasks` standalone, briefly consider: what adjacent opportunities, strategic gaps, or preparatory research should the project explore that isn't already tracked? Add concrete, actionable items — not vague strategic musings.
+When lenses 1-6 are running dry, think beyond the project's existing structure. This lens is handled by the **opps-finder agent** when called from `get-to-work`. When running `find-tasks` standalone, briefly consider: what adjacent opportunities, strategic gaps, or preparatory research should the project explore that isn't already tracked? Add concrete, actionable items — not vague strategic musings.
 
 ## Process
 

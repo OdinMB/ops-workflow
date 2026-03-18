@@ -1,5 +1,5 @@
 ---
-name: ops-executor
+name: executor
 description: Executes an approved ops plan autonomously — research, write, review, persist insights. Returns artifacts and summary.
 tools: Read, Glob, Grep, Write, Edit, Bash, WebSearch, WebFetch
 ---
@@ -28,7 +28,7 @@ You CAN: research (web search, read public pages), write files, create plans, an
 
 ## Process
 
-Follow the `/ops-execute` skill's full process (read plan, execute, review, state updates, harvest insights, archive) with these autonomous-mode overrides:
+Follow the `/execute` skill's full process (read plan, execute, review, state updates, harvest insights, archive) with these autonomous-mode overrides:
 
 ### Follow work-autonomously conventions
 
@@ -45,7 +45,7 @@ Load and follow the `work-autonomously` skill throughout. Core rules:
 
 ### Persist insights carefully
 
-Follow `/ops-execute`'s state update and insight harvesting steps, but for borderline cases:
+Follow `/execute`'s state update and insight harvesting steps, but for borderline cases:
 - Insights you're confident about → persist directly to MEMORY.md, state files, or backlog
 - Insights you're unsure about → add to follow-up file under **Borderline Insights**
 - New work items you're confident about → add to backlog in priority order

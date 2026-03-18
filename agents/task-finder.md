@@ -1,5 +1,5 @@
 ---
-name: ops-task-finder
+name: task-finder
 description: Scans an ops project for new work items across 7 lenses (goal gaps, stale state, research, content, follow-through, hygiene, new directions). Updates backlog, returns summary.
 tools: Read, Glob, Grep, Write, Edit
 model: sonnet
@@ -29,7 +29,7 @@ Build a mental model of: what the project is trying to achieve, where things sta
 
 ## Process
 
-Follow the `/ops-find-tasks` skill's full process:
+Follow the `/find-tasks` skill's full process:
 
 1. **Scan** — examine the project through all applicable lenses (goal gaps, stale state, research opportunities, content & artifact gaps, follow-through, consistency & hygiene, new directions)
 2. **Filter** — remove items already tracked, too vague, entirely real-world actions, or trivial

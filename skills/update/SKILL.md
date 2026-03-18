@@ -1,5 +1,5 @@
 ---
-name: ops-update
+name: update
 description: Process external information into the ops repo's knowledge base. Drop files in .update/ or pass content inline. Use when you have new information (research, status changes, reference material, deliverables) to integrate into the project's structured knowledge system.
 argument-hint: <content to integrate, or empty to process .update/ folder>
 ---

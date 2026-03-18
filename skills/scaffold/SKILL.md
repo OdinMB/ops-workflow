@@ -1,5 +1,5 @@
 ---
-name: ops-scaffold
+name: scaffold
 description: Set up or adjust a non-code project management repo with the ops folder structure, CLAUDE.md, and INDEX.md hierarchy. Use when starting a new ops/PM repo from scratch or when an existing one needs to match the ops conventions.
 ---
 
@@ -231,7 +231,7 @@ Don't let insights live only in reference files where they'll be forgotten. The 
 
 ## Workflow
 
-Follow `/ops:handle` for all non-trivial tasks — it delegates to `/ops-plan` for planning and `/ops-execute` for execution.
+Follow `/ops:handle` for all non-trivial tasks — it delegates to `/plan` for planning and `/execute` for execution.
 
 ## Plans vs. Artifacts vs. References
 
@@ -393,7 +393,7 @@ Write a project README covering:
 
 1. **Header**: Project name and one-paragraph description from the interview.
 2. **Prerequisites**: Mention that this repo is designed to work with [Claude Code](https://claude.com/claude-code) and the **ops** plugin.
-3. **Key Commands**: The ops-relevant commands — interactive (`/ops:handle`, `/ops:whats-next`, `/ops:update`, `/ops:tidy`), discovery (`/ops-find-tasks`, `/ops-find-opps`), and autonomous (`/ops:get-to-work`, `/ops:batch-plan`, `/ops:batch-execute`, `/review-followup`).
+3. **Key Commands**: The ops-relevant commands — interactive (`/ops:handle`, `/ops:whats-next`, `/ops:update`, `/ops:tidy`), discovery (`/find-tasks`, `/find-opps`), and autonomous (`/ops:get-to-work`, `/ops:batch-plan`, `/ops:batch-execute`, `/review-followup`).
 4. **Folder Structure**: This repo's specific folders with one-line descriptions based on the interview context.
 5. **Typical Workflow**: 4-5 example commands using project-relevant language.
 

@@ -1,6 +1,6 @@
 ---
-name: ops-opps-finder
-description: Identifies new directions of work for ops projects — adjacent opportunities, strategic gaps, emerging context. Follows /ops-find-opps skill autonomously, returns backlog-ready items.
+name: opps-finder
+description: Identifies new directions of work for ops projects — adjacent opportunities, strategic gaps, emerging context. Follows /find-opps skill autonomously, returns backlog-ready items.
 tools: Read, Glob, Grep, WebSearch, WebFetch
 ---
 
@@ -16,11 +16,11 @@ The caller provides:
 
 ## Process
 
-Follow the `/ops-find-opps` skill's full process (load context, analyze through 5 lenses, filter, format output) with these autonomous-mode overrides:
+Follow the `/find-opps` skill's full process (load context, analyze through 5 lenses, filter, format output) with these autonomous-mode overrides:
 
 ### Self-sufficient context loading
 
-Load the project overview yourself following the `/ops-find-opps` skill's Context Required section. Don't rely on the caller to serialize context — explore independently. The caller may provide hints but you should verify and expand on them.
+Load the project overview yourself following the `/find-opps` skill's Context Required section. Don't rely on the caller to serialize context — explore independently. The caller may provide hints but you should verify and expand on them.
 
 ### Output handling
 
@@ -29,7 +29,7 @@ Load the project overview yourself following the `/ops-find-opps` skill's Contex
 
 ## Output
 
-When done, return the formatted output from the `/ops-find-opps` skill (the "New Opportunities Identified" section) plus a one-line summary:
+When done, return the formatted output from the `/find-opps` skill (the "New Opportunities Identified" section) plus a one-line summary:
 
 ```
 Opportunities identified: <N>

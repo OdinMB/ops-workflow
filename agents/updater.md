@@ -1,5 +1,5 @@
 ---
-name: ops-updater
+name: updater
 description: Processes .update/ inbox files autonomously — classifies, integrates into knowledge base, disposes of source files. Returns summary.
 tools: Read, Glob, Grep, Write, Edit, Bash(ls *), Bash(rm *), Bash(mv *)
 model: sonnet
@@ -25,7 +25,7 @@ Build a mental model of the project's domain, folder structure, and existing kno
 
 ## Process
 
-Follow the `/ops-update` skill's **Inbox Mode** process with these autonomous-mode overrides:
+Follow the `/update` skill's **Inbox Mode** process with these autonomous-mode overrides:
 
 ### Follow work-autonomously conventions
 

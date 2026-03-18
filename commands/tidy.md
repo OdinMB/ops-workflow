@@ -10,7 +10,7 @@ Scan this project's knowledge structure for inconsistencies and staleness. Repor
 
 ## Pre-check: Process .update/ Inbox
 
-Before running consistency checks, process any pending files in `.update/`. Spawn the `ops-updater` agent (`agents/ops-updater.md`) to handle this in an isolated context. Pass it a follow-up file path at `.tmp/housekeeping-update-followup.md`.
+Before running consistency checks, process any pending files in `.update/`. Spawn the `updater` agent (`agents/updater.md`) to handle this in an isolated context. Pass it a follow-up file path at `.tmp/housekeeping-update-followup.md`.
 
 If `.update/` is empty or doesn't exist, skip this step.
 
