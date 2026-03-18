@@ -393,7 +393,7 @@ Write a project README covering:
 
 1. **Header**: Project name and one-paragraph description from the interview.
 2. **Prerequisites**: Mention that this repo is designed to work with [Claude Code](https://claude.com/claude-code) and the **ops** plugin.
-3. **Key Commands**: The ops-relevant commands — interactive (`/ops:handle`, `/ops:overview`, `/ops:update`, `/ops:housekeeping`), discovery (`/ops-find-tasks`, `/ops-find-opps`), and autonomous (`/ops:get-to-work`, `/ops:batch-plan`, `/ops:batch-execute`, `/review-followup`).
+3. **Key Commands**: The ops-relevant commands — interactive (`/ops:handle`, `/ops:whats-next`, `/ops:update`, `/ops:tidy`), discovery (`/ops-find-tasks`, `/ops-find-opps`), and autonomous (`/ops:get-to-work`, `/ops:batch-plan`, `/ops:batch-execute`, `/review-followup`).
 4. **Folder Structure**: This repo's specific folders with one-line descriptions based on the interview context.
 5. **Typical Workflow**: 4-5 example commands using project-relevant language.
 

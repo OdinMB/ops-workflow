@@ -9,7 +9,7 @@ Analyze the project's goals, current state, and existing backlog to surface new 
 
 ## Context Required
 
-Before running this skill, you need the project overview already loaded (MEMORY.md, state files, backlog, recent plans). If you don't have it, gather it now following the same context-loading steps as `ops:overview`.
+Before running this skill, you need the project overview already loaded (MEMORY.md, state files, backlog, recent plans). If you don't have it, gather it now following the same context-loading steps as `ops:whats-next`.
 
 ## Analysis Lenses
 

@@ -37,7 +37,7 @@ Claude autonomously finds work — scanning existing goals for gaps and looking 
 **See where things stand:**
 
 ```
-> /ops:overview
+> /ops:whats-next
 ```
 
 A synthesized executive summary — what's been done, what's in progress, and a prioritized list of what to do next.
@@ -53,7 +53,7 @@ Claude classifies the information, updates the relevant state and backlog files,
 **Keep the knowledge base clean:**
 
 ```
-> /ops:housekeeping
+> /ops:tidy
 ```
 
 Runs 9 consistency checks — stale dates, orphaned files, INDEX.md accuracy, WAITING markers — auto-fixes what it can, flags the rest.
@@ -117,9 +117,9 @@ claude plugin install ops
 | Command             | What It Does                                                                 |
 | ------------------- | ---------------------------------------------------------------------------- |
 | `/ops:handle`       | End-to-end workflow: plan → approve → execute. Use for all non-trivial work. |
-| `/ops:overview`     | Executive summary with prioritized "what to do next".                        |
+| `/ops:whats-next`     | Executive summary with prioritized "what to do next".                        |
 | `/ops:update`       | Ingest external information into the knowledge base.                         |
-| `/ops:housekeeping` | Run consistency checks on the knowledge structure. Auto-fixes what it can.   |
+| `/ops:tidy` | Run consistency checks on the knowledge structure. Auto-fixes what it can.   |
 | `/ops-scaffold`     | Set up a new ops repo from scratch.                                          |
 
 ### Autonomous
