@@ -10,15 +10,19 @@ Generate an executive overview for this project. $ARGUMENTS
 
 ### 1. Gather Context
 
-Read the following files in this order. Skip any that don't exist — not every project will have all of them.
+Read only the high-level INDEX files first. Be selective about drilling into details — only read individual files when needed to answer a specific question or fill a gap.
 
-1. **`MEMORY.md`** — Project overview and knowledge map. This is your starting point.
-2. **`state/INDEX.md`** → then every file listed in it. These describe the current state of the project.
-3. **`backlog/INDEX.md`** → then every file and subfolder listed in it. These are the prioritized tasks and open decisions.
-4. **`plans/INDEX.md`** → then every **active** plan listed (not completed). These are work in progress.
-5. **`plans/completed/INDEX.md`** — Scan for the 5 most recent completed plans to understand recent momentum and what's already been done.
+**Round 1 — INDEX files only** (skip any that don't exist):
 
-If the user provided a focus area in $ARGUMENTS, pay special attention to state files and backlog items related to that topic — but still read everything for context.
+1. **`MEMORY.md`** — Project overview and knowledge map.
+2. **`state/INDEX.md`** — Area names and status summaries.
+3. **`backlog/INDEX.md`** — Priorities and item titles.
+4. **`plans/INDEX.md`** — Note active vs completed plans.
+
+**Round 2 — Selective drill-down:**
+
+- Read **active plan files** (not completed ones — titles in the INDEX are enough for momentum context).
+- Read up to **3** individual state or backlog files if they're directly relevant to your recommendations or the user's focus area. No more than 3.
 
 ### 2. Analyze
 
