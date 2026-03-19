@@ -6,6 +6,8 @@ Research, strategy, content, compliance: the ops plugin gives Claude a structure
 
 For solo founders and indie hackers who use Claude for development and want the same workflow for everything else.
 
+> **Note:** This is a Claude Code plugin. Use it in the Claude Code terminal, or in Claude Desktop with the **Code** mode enabled (not Cowork). The plugin's slash commands, skills, and agents all require Claude Code's runtime.
+
 ## Quick Example
 
 You're launching an AI tutoring startup. The code is handled, but you also need to research competitors, write grant applications, draft marketing copy, and track legal compliance.
@@ -13,7 +15,7 @@ You're launching an AI tutoring startup. The code is handled, but you also need 
 **Set up a project:**
 
 ```
-> /scaffold
+> /ops:scaffold
 ```
 
 Claude asks a few questions about your project, then creates a structured repo with folders for state, backlog, references, artifacts, and plans.
@@ -114,29 +116,30 @@ claude plugin install ops
 
 ### Interactive
 
-| Command             | What It Does                                                                 |
-| ------------------- | ---------------------------------------------------------------------------- |
-| `/ops:handle`       | End-to-end workflow: plan → approve → execute. Use for all non-trivial work. |
-| `/ops:whats-next`     | Executive summary with prioritized "what to do next".                        |
-| `/ops:update`       | Ingest external information into the knowledge base.                         |
-| `/ops:tidy` | Run consistency checks on the knowledge structure. Auto-fixes what it can.   |
-| `/scaffold`     | Set up a new ops repo from scratch.                                          |
+| Command           | What It Does                                                                 |
+| ----------------- | ---------------------------------------------------------------------------- |
+| `/ops:handle`     | End-to-end workflow: plan → approve → execute. Use for all non-trivial work. |
+| `/ops:whats-next` | Executive summary with prioritized "what to do next".                        |
+| `/ops:update`     | Ingest external information into the knowledge base.                         |
+| `/ops:tidy`       | Run consistency checks on the knowledge structure. Auto-fixes what it can.   |
+| `/ops:recap`      | Summarize what happened since a given date. Tables and lists, never prose.   |
+| `/ops:scaffold`   | Set up a new ops repo from scratch.                                          |
 
 ### Autonomous
 
-| Command              | What It Does                                                                                                     |
-| -------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `/ops:get-to-work`   | Fully autonomous loop: find work → prioritize → execute → repeat. Step away and come back to a follow-up review. |
-| `/ops:batch-plan`    | Write multiple plans in parallel without interruption.                                                           |
-| `/ops:batch-execute` | Execute multiple approved plans sequentially without interruption.                                               |
-| `/review-followup`   | Walk through decisions Claude made during autonomous runs.                                                       |
+| Command                | What It Does                                                                                                     |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `/ops:get-to-work`     | Fully autonomous loop: find work → prioritize → execute → repeat. Step away and come back to a follow-up review. |
+| `/ops:batch-plan`      | Write multiple plans in parallel without interruption.                                                           |
+| `/ops:batch-execute`   | Execute multiple approved plans sequentially without interruption.                                               |
+| `/ops:review-followup` | Walk through decisions Claude made during autonomous runs.                                                       |
 
 ### Discovery
 
 | Command           | What It Does                                                     |
 | ----------------- | ---------------------------------------------------------------- |
-| `/find-tasks` | Scan the project through 7 lenses to surface new backlog items.  |
-| `/find-opps`  | Look beyond existing plans for new directions and opportunities. |
+| `/ops:find-tasks` | Scan the project through 7 lenses to surface new backlog items.  |
+| `/ops:find-opps`  | Look beyond existing plans for new directions and opportunities. |
 
 ## Safety
 
@@ -199,5 +202,74 @@ git -C ~/.claude/plugins/marketplaces/ops-workflow fetch --unshallow
 ```
 
 Plugin updates via Claude Code (`/plugin update`) may re-shallow the clone — run `fetch --unshallow` again afterward if you need the full history.
+
+</details>
+
+---
+
+<details>
+<summary>Experimental: MCP Server for Claude Desktop (Cowork)</summary>
+
+> **Status: Experimental.** This MCP server is a proof-of-concept for using the ops plugin from Claude Desktop's Cowork mode. It works but is not the primary way to use this plugin. For the full experience, use Claude Code directly (terminal or Claude Desktop in Code mode).
+
+The plugin includes an MCP server that wraps Claude Code's ops capabilities as MCP tools. Each tool call spawns a Claude Code session via the [Claude Agent SDK](https://github.com/anthropics/claude-agent-sdk-typescript), runs the corresponding skill, and returns a structured summary.
+
+### Setup
+
+**Prerequisites:** [Claude Code](https://claude.com/claude-code) installed and authenticated. Node.js 18+.
+
+1. **Install the runtime dependency:**
+
+```bash
+cd ~/.claude/plugins/marketplaces/ops-workflow/mcp-server
+npm install --production
+```
+
+2. **Add the server to Claude Desktop's config.**
+
+Open `%APPDATA%\Claude\claude_desktop_config.json` (Windows) or `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) and add to the `mcpServers` object:
+
+```json
+"ops-workflow": {
+  "command": "node",
+  "args": ["/path/to/.claude/plugins/marketplaces/ops-workflow/mcp-server/dist/index.js"]
+}
+```
+
+Replace `/path/to/` with your actual home directory path.
+
+3. **Restart Claude Desktop** (fully quit from the system tray, then reopen).
+
+The ops tools should appear under "+" > "Connectors" in the chat window.
+
+### Available Tools
+
+| Tool | What It Does |
+| ---- | ------------ |
+| `ops_context` | Load the project's CLAUDE.md and MEMORY.md into context |
+| `ops_scaffold` | Set up a new ops project with the standard folder structure |
+| `ops_whats_next` | Executive overview and priorities |
+| `ops_recap` | Summarize activity since a date |
+| `ops_plan` | Create a plan (returns contents for review) |
+| `ops_execute` | Execute an approved plan |
+| `ops_update` | Integrate new information |
+| `ops_tidy` | Run consistency checks |
+| `ops_get_to_work` | Autonomous work session |
+| `ops_batch_plan` | Plan multiple tasks at once |
+| `ops_batch_execute` | Execute multiple plans in sequence |
+| `ops_dir` | Switch the active project |
+| `ops_list_projects` | List registered projects |
+| `ops_add_project` | Register a project folder |
+| `ops_remove_project` | Unregister a project |
+
+### Multi-Project Support
+
+Register multiple projects with `ops_add_project`, then switch between them with `ops_dir` — or pass a `project` parameter to any tool.
+
+### Limitations
+
+- **Latency** — tool calls take 30 seconds to several minutes depending on the operation
+- **No slash commands** — the ops `/` commands don't appear in Cowork's skills menu; you use natural language instead
+- **No cross-session memory** — Cowork doesn't persist context between sessions like Claude Code does
 
 </details>
