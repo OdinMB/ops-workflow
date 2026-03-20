@@ -110,21 +110,42 @@ Follow the `prioritize` skill:
 
 ### Step 3: Execute Tasks
 
-Execute the selected tasks one at a time. For each task, spawn an **executor sub-agent** (`agents/executor.md`):
+Execute the selected tasks one at a time.
+
+#### Classify each task as trivial or non-trivial
+
+**Trivial** — a small, obvious change: updating a single file, fixing a typo, adding a short entry, minor content edits. No research or multi-step coordination needed.
+
+**Non-trivial** — everything else.
+
+#### Trivial tasks: skip planning, execute directly
+
+For trivial tasks, spawn an **executor sub-agent** (`agents/executor.md`) directly with a task description:
 
 ```
 Read the executor agent instructions at: agents/executor.md
 
-Plan file path: <path to plan file — create one first if none exists>
+Task description: <the task from the execution brief>
 Follow-up file path: plans/YYYY-MM-DD_get-to-work-followup.md
 ```
 
-If no plan file exists for a task, first spawn an **planner sub-agent** (`agents/planner.md`) to create one:
+#### Non-trivial tasks: plan first, then execute
+
+For non-trivial tasks, first ensure a plan exists. If no plan file exists, spawn a **planner sub-agent** (`agents/planner.md`) to create one:
 
 ```
 Read the planner agent instructions at: agents/planner.md
 
 Task description: <the task from the execution brief>
+Follow-up file path: plans/YYYY-MM-DD_get-to-work-followup.md
+```
+
+Then spawn the **executor sub-agent** with the plan:
+
+```
+Read the executor agent instructions at: agents/executor.md
+
+Plan file path: <path to plan file>
 Follow-up file path: plans/YYYY-MM-DD_get-to-work-followup.md
 ```
 
