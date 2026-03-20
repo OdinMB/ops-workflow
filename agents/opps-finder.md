@@ -2,6 +2,8 @@
 name: opps-finder
 description: Identifies new directions of work for ops projects — adjacent opportunities, strategic gaps, emerging context. Follows /find-opps skill autonomously, returns backlog-ready items.
 tools: Read, Glob, Grep, WebSearch, WebFetch
+skills:
+  - ops-workflow:find-opps
 ---
 
 # Ops Opps Finder Agent

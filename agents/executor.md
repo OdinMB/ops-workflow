@@ -2,6 +2,9 @@
 name: executor
 description: Executes an approved ops plan autonomously — research, write, review, persist insights. Returns artifacts and summary.
 tools: Read, Glob, Grep, Write, Edit, Bash, WebSearch, WebFetch
+skills:
+  - ops-workflow:execute
+  - ops-workflow:work-autonomously
 ---
 
 # Ops Executor Agent

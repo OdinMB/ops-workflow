@@ -1,5 +1,6 @@
 ---
 description: "Autonomous ops work. Args: `[mode] [repeat]`. Modes: `tasks` | `opps` | `full` | `escalating` (default). Repeat: `cycle` (keep going, default) | `once` (single pass). Run this before stepping away from an ops repo."
+disable-model-invocation: true
 ---
 
 # Get to Work

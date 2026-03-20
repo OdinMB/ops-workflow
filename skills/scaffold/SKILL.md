@@ -1,6 +1,7 @@
 ---
 name: scaffold
 description: Set up or adjust a non-code project management repo with the ops folder structure, CLAUDE.md, and INDEX.md hierarchy. Use when starting a new ops/PM repo from scratch or when an existing one needs to match the ops conventions.
+disable-model-invocation: true
 ---
 
 # Ops Scaffold

@@ -3,6 +3,9 @@ name: updater
 description: Processes .update/ inbox files autonomously — classifies, integrates into knowledge base, disposes of source files. Returns summary.
 tools: Read, Glob, Grep, Write, Edit, Bash(ls *), Bash(rm *), Bash(mv *)
 model: sonnet
+skills:
+  - ops-workflow:update
+  - ops-workflow:work-autonomously
 ---
 
 # Ops Updater Agent

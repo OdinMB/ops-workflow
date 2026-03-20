@@ -1,7 +1,6 @@
 ---
 name: plan
 description: Create an ops work plan for a new task. Proposes steps and success criteria for user approval before execution.
-disable-model-invocation: true
 argument-hint: <brief task description>
 allowed-tools: Read, Glob, Grep, Write, Bash(ls *), Bash(mv *)
 ---

@@ -1,5 +1,6 @@
 ---
 description: Create a batch of ops plans continuously without user input, storing any user questions in a .md file to be processed with the user afterwards. Do NOT invoke this yourself! Should only be invoked by the user.
+disable-model-invocation: true
 ---
 
 # Task

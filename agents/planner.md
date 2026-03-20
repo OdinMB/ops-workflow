@@ -3,6 +3,9 @@ name: planner
 description: Creates a work plan for a non-code ops task autonomously, following the /plan skill. Returns plan file path and summary.
 tools: Read, Glob, Grep, Write, Bash
 model: sonnet
+skills:
+  - ops-workflow:plan
+  - ops-workflow:work-autonomously
 ---
 
 # Ops Planner Agent
