@@ -111,7 +111,7 @@ Follow the `prioritize` skill:
 
 ### Step 3: Execute Tasks
 
-Execute the selected tasks one at a time.
+Execute the selected tasks. Independent tasks that touch different files can run in parallel — see the worktree note below. Otherwise, execute sequentially.
 
 #### Classify each task as trivial or non-trivial
 
@@ -129,6 +129,10 @@ Read the executor agent instructions at: agents/executor.md
 Task description: <the task from the execution brief>
 Follow-up file path: plans/YYYY-MM-DD_get-to-work-followup.md
 ```
+
+You can spawn multiple executor agents in parallel for independent trivial tasks that touch different files.
+
+**Worktree isolation for parallel executors:** When spawning 2+ executor agents in parallel that might edit overlapping files (e.g., both updating MEMORY.md, the same state file, or the same backlog), use `isolation: "worktree"` on each agent so they work in separate git worktrees and don't create file conflicts. If the tasks clearly touch different files with no overlap, worktrees aren't needed — just spawn them normally. Don't create worktrees for a single agent running alone.
 
 #### Non-trivial tasks: plan first, then execute
 
@@ -157,7 +161,18 @@ After each executor agent completes:
 3. Commit all changes with a descriptive message: `"[task-slug]: [what was done]"`
 4. Note the completed task in the Cycle Log
 
-### Step 4: Assess & Loop
+### Step 4: Merge Worktrees
+
+If any executor agents ran in worktrees during this cycle, merge their branches back into the current get-to-work branch before proceeding:
+
+1. For each worktree branch, run `git merge <worktree-branch>`
+2. If a merge conflict occurs, resolve it sensibly — prefer the more complete change, or combine both if they're complementary
+3. Record any non-obvious conflict resolution decisions in the follow-up file under "Controversial Decisions" so the user can review them
+4. After merging, clean up: `git worktree remove <path>` and `git branch -d <worktree-branch>`
+
+Skip this step if no worktrees were used in this cycle.
+
+### Step 5: Assess & Loop
 
 After completing all tasks in a cycle:
 

@@ -142,6 +142,7 @@ Paired with coding repo at `<relative-path>`. Read-only access for context. Neve
 # AI development
 .playwright-mcp/
 .claude/settings.local.json
+.claude/worktrees/
 nul
 NUL
 
