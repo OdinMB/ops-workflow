@@ -74,13 +74,7 @@ Example: if the user says "grants, marketing, legal" →
 
 ## .claude/settings.json
 
-```json
-{
-  "permissions": {
-    "allow": []
-  }
-}
-```
+Read the template from `settings-json-template.md` (in this skill's directory). It covers both `.claude/settings.json` (enables ops plugin, base permissions) and `.claude/settings.local.json` (disables coding plugins).
 
 ## Connected Coding Repo (if applicable)
 
