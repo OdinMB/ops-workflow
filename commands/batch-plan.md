@@ -17,9 +17,36 @@ Follow the `work-autonomously` skill throughout.
 - You can write plans in parallel if they don't directly relate to each other.
 - **Scope check**: Plans must never include implementing changes in app codebases. This workflow produces content, research, specs, and briefs — not code.
 
+# Triage
+
+Before planning, classify each task as **trivial** or **needs-plan**:
+
+- **Trivial** — a single obvious deliverable with no open questions: a small content edit, a one-paragraph note, updating a single field in a tracker, pasting known information into a document, a short email draft. No research required, no structural decisions, no stakeholder calls to resolve.
+- **Needs-plan** — everything else: multi-step work, research, content requiring judgment, anything with open questions a planner could usefully surface.
+
+When in doubt, treat it as needs-plan.
+
+Trivial tasks skip the planner entirely and go into a single `plans/direct-tasks.md` file as numbered entries. Non-trivial tasks get planned as usual. **Use the same numeric prefix sequence for both** so execution order across the whole batch is preserved:
+
+- Task 1 (trivial) → entry `01.` in `plans/direct-tasks.md`
+- Task 2 (needs-plan) → `plans/02-YYYY-MM-DD-<slug>.md`
+- Task 3 (trivial) → entry `03.` in `plans/direct-tasks.md`
+- Task 4 (needs-plan) → `plans/04-YYYY-MM-DD-<slug>.md`
+
+`direct-tasks.md` format:
+
+```markdown
+# Direct Tasks
+
+01. <task description — one or two sentences, enough for an executor agent to act on>
+03. <task description>
+```
+
+If no trivial tasks are present, don't create the file.
+
 # Planning
 
-For each task, spawn an **planner sub-agent** (`agents/planner.md`):
+For each **needs-plan** task, spawn an **planner sub-agent** (`agents/planner.md`):
 
 ```
 Read the planner agent instructions at: agents/planner.md
