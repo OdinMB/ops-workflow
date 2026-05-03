@@ -17,7 +17,7 @@ This command composes the two existing batch commands. Run them in sequence usin
 
 ## 1. Planning phase
 
-Follow `/ops:batch-plan` to produce ordered plan files (`01-YYYY-MM-DD-<slug>.md`, `02-…`, …) in `plans/`. Create the follow-up file at the start of this phase — reuse it for the execution phase instead of creating a second one.
+Follow `/ops:batch-plan` to produce ordered plan files in `plans/` using a shared batch prefix (e.g. `music-01-YYYY-MM-DD-<slug>.md`, `music-02-…`, …). Create the follow-up file at the start of this phase — reuse it for the execution phase instead of creating a second one.
 
 Skip `/ops:batch-plan`'s own review step: do NOT run `/review-followup` between phases, and do NOT delete the follow-up file. The user reviews everything once at the end.
 

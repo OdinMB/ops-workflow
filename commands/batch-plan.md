@@ -12,8 +12,8 @@ Follow the `work-autonomously` skill throughout.
 # Guidelines
 
 - Create a follow-up file per the `work-autonomously` skill.
-- Filenames of plans should reference the goal of the plan, prefixed with today's date: `YYYY-MM-DD-<slug>.md`.
-- Give plan files an additional numeric prefix to indicate implementation order. (`01-`, `02-`, etc.)
+- At the start of the batch, pick a short slug-style **batch prefix** that names the theme of this batch (e.g. `music`, `q2-launch`, `donor-outreach`). Use the user's framing if they offered one; otherwise derive it from the tasks. Keep it lowercase, hyphenated, and brief.
+- Filenames of plans should reference the goal of the plan, with today's date and the batch+order prefix: `<batch>-<NN>-YYYY-MM-DD-<slug>.md` (e.g. `music-01-2026-04-19-launch-brief.md`). The batch prefix keeps multiple concurrent ordered batches in `plans/` from stepping on each other.
 - You can write plans in parallel if they don't directly relate to each other.
 - **Scope check**: Plans must never include implementing changes in app codebases. This workflow produces content, research, specs, and briefs — not code.
 
@@ -26,17 +26,17 @@ Before planning, classify each task as **trivial** or **needs-plan**:
 
 When in doubt, treat it as needs-plan.
 
-Trivial tasks skip the planner entirely and go into a single `plans/direct-tasks.md` file as numbered entries. Non-trivial tasks get planned as usual. **Use the same numeric prefix sequence for both** so execution order across the whole batch is preserved:
+Trivial tasks skip the planner entirely and go into a single `plans/<batch>-direct-tasks.md` file as numbered entries. Non-trivial tasks get planned as usual. **Use the same numeric prefix sequence for both** so execution order across the whole batch is preserved. With batch prefix `music`:
 
-- Task 1 (trivial) → entry `01.` in `plans/direct-tasks.md`
-- Task 2 (needs-plan) → `plans/02-YYYY-MM-DD-<slug>.md`
-- Task 3 (trivial) → entry `03.` in `plans/direct-tasks.md`
-- Task 4 (needs-plan) → `plans/04-YYYY-MM-DD-<slug>.md`
+- Task 1 (trivial) → entry `01.` in `plans/music-direct-tasks.md`
+- Task 2 (needs-plan) → `plans/music-02-YYYY-MM-DD-<slug>.md`
+- Task 3 (trivial) → entry `03.` in `plans/music-direct-tasks.md`
+- Task 4 (needs-plan) → `plans/music-04-YYYY-MM-DD-<slug>.md`
 
-`direct-tasks.md` format:
+`<batch>-direct-tasks.md` format:
 
 ```markdown
-# Direct Tasks
+# Direct Tasks (music)
 
 01. <task description — one or two sentences, enough for an executor agent to act on>
 03. <task description>
@@ -53,7 +53,7 @@ Read the planner agent instructions at: agents/planner.md
 
 Task description: <the task or idea to plan>
 Follow-up file path: <path to the follow-up file>
-Plan file path: plans/<NN>-YYYY-MM-DD-<slug>.md
+Plan file path: plans/<batch>-<NN>-YYYY-MM-DD-<slug>.md
 ```
 
 After each planner agent completes, review its summary. If it recorded decisions or questions in the follow-up file, note them for the review phase.
