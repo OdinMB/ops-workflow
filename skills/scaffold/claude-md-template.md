@@ -67,6 +67,19 @@ Three distinct roles — don't conflate them:
 3. Draft and submit → `artifacts/grants/2026-02-16_grant-application.md` (dated output)
 4. Complete the plan → `plans/completed/2026-02-16_grant-application.md` (process log linking to the artifact)
 
+## Where Does This File Belong? (Whole-File Test)
+
+Before writing any new file, ask: **does it describe a fact about the world, or a decision/framework the user has adopted?**
+
+- Fact about the world → `state/`
+- Decision / strategy / framework / guardrails → `references/`
+- Specific actions to do next → `backlog/`
+- Delivered output → `artifacts/`
+
+Sharper test: *if nothing in the world changes for 6 months, will this file change?* If yes, it's a framework the user might revise → `references/`. If no, facts haven't moved → `state/`.
+
+Trap: content "about the user's current strategic posture" feels state-shaped but is forward-looking strategy → `references/`. Examples: pricing strategy, sales process, measurement framework, guardrails, visibility/network/credentialing plans, strategic interpretation of credentials. Contrast with `state/`: current services, pipeline of active deals, credentials inventory.
+
 ## State vs. Backlog Separation
 
 State files describe **what currently exists** — present reality. Backlog files describe **what to do next** — actions and opportunities to pursue.

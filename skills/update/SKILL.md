@@ -21,13 +21,15 @@ The user provided content directly: $ARGUMENTS
 
 1. **Load context.** Read `CLAUDE.md` and `MEMORY.md` to understand the repo structure, goals, and current state.
 
-2. **Classify the information.** Determine what kind of knowledge this is:
-   - **Status update** → belongs in `state/`
-   - **Research / reference material** → belongs in `references/`
-   - **Actionable opportunity or task** → belongs in `backlog/`
-   - **Deliverable or work product** → belongs in `artifacts/`
+2. **Classify the information.** Apply the whole-file test from CLAUDE.md — *fact about the world, or decision/framework?*
+   - **Fact about the world** (status, metric, inventory) → `state/`
+   - **Decision / strategy / framework / guardrails / research** → `references/`
+   - **Specific actions to do next** → `backlog/`
+   - **Delivered output** → `artifacts/`
    - **Strategic insight** → may also warrant a MEMORY.md Key Learnings update
-   - **Mixed** → split into appropriate destinations
+   - **Mixed** → split
+
+   Trap: "current strategic posture" content feels state-shaped but is forward-looking strategy → `references/`.
 
 3. **Integrate.** For each piece of information:
    - Read the target file first — never overwrite blindly. Merge or append.
