@@ -1,6 +1,6 @@
 ---
 name: execute
-description: Execute an approved ops plan — research, write, review, update state, harvest insights, and archive the plan. Use after a plan has been approved via the /plan skill. Never for code changes.
+description: Execute an approved ops plan — research, write, review, update state, archive. Use after /plan approval. Not for code.
 argument-hint: <path to plan file>
 ---
 

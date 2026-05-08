@@ -1,6 +1,6 @@
 ---
 name: find-tasks
-description: Scan an ops repo's goals, state, and backlog to identify new valuable work items. Produces new backlog entries integrated into the project's knowledge system. Used by the get-to-work command — load when autonomously identifying what an ops project should be working on next.
+description: Scan an ops repo's goals, state, and backlog to surface new work items and add them to the backlog. Load when deciding what the project should work on next.
 ---
 
 # Ops Find Tasks

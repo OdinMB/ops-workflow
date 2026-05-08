@@ -1,6 +1,6 @@
 ---
 name: find-opps
-description: Identify new directions of work for an ops project — adjacent opportunities, strategic gaps, emerging context, preparatory research. Produces backlog-ready items that expand the project's horizon beyond existing plans. Use when the project's known work is well-mined and you need to look outward.
+description: Find new directions for an ops project — adjacent opportunities, strategic gaps, preparatory research. Use when known work is well-mined and you need to look outward.
 ---
 
 # Find Opportunities

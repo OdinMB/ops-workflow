@@ -1,6 +1,6 @@
 ---
 name: prioritize
-description: Select 2-3 independent tasks from an ops repo's active plans and backlog for autonomous execution. Considers impact, feasibility, independence, and project goals. Used by the get-to-work command — load when deciding which ops tasks to work on next.
+description: Pick 2–3 independent ops tasks from active plans and backlog for autonomous execution, weighing impact, feasibility, and project goals.
 ---
 
 # Ops Prioritize
