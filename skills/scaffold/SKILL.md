@@ -145,6 +145,7 @@ Normalize line endings to LF across all platforms:
 .playwright-mcp/
 .claude/settings.local.json
 .claude/worktrees/
+CLAUDE.local.md
 nul
 NUL
 
