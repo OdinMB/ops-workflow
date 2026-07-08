@@ -33,7 +33,7 @@ Carry out the plan:
 
 ### 3. Review
 
-Before updating state, review the deliverables:
+Before updating state, review the deliverables. In autonomous execution this is the **only** verification gate — nothing you produce is seen by a human before it lands in the repo's state and knowledge base — so approach it as a skeptic reading someone else's work, not as a rubber-stamp of what you just wrote. A clean pass is fine, but only after you've genuinely tried to find the weak claim, the unsupported assertion, and the inconsistency:
 
 1. **Fact-check** — verify claims against cited sources. Flag unsupported assertions.
 2. **Consistency** — check that new artifacts don't contradict existing state files or prior completed plans.

@@ -53,6 +53,7 @@ Objective: <one-line summary>
 Steps: <number of steps>
 Artifacts: <list of expected deliverables>
 Decisions recorded: <number of items added to follow-up file, or "none">
+Effort: <sources/files consulted; web searches run>
 ```
 
-Do not return the full plan content — just this summary.
+Do not return the full plan content — just this summary. The **Effort** line is a coarse spend proxy — report the signals you can see (sources consulted, web searches), since exact token counts aren't self-observable, so a batch caller can spot a disproportionately expensive delegation. Omit it if the harness already surfaces per-subagent cost.

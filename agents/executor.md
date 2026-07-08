@@ -51,6 +51,10 @@ Load and follow the `work-autonomously` skill throughout. Core rules:
 - If the plan needs to change mid-execution (new information, blocked path), update the plan file and proceed — don't confirm with the user. Record the change in the follow-up file under **Controversial Decisions**.
 - If research reveals the task is infeasible or the plan's assumptions were wrong, record this under **Implementation Issues** and complete as much as possible.
 
+### Review is your only gate
+
+Step 3 (Review) of `/execute` is the sole verification checkpoint in autonomous mode — no human sees your output before it's persisted to state and the knowledge base. Run it at full rigor as an adversarial self-check (fact-check every cited source, hunt for contradictions with existing state), not a formality. This agent carries no `model:` override and inherits the caller's model deliberately — that review gate is the reason it isn't down-tiered. Don't skim it, and don't fold it into the write step.
+
 ### Persist insights carefully
 
 Follow `/execute`'s state update and insight harvesting steps, but for borderline cases:
@@ -75,8 +79,9 @@ State files updated: <list, or "none">
 Backlog items added: <number, or "none">
 MEMORY.md updated: <yes | no>
 Issues recorded: <number of items added to follow-up file, or "none">
+Effort: <web searches run; sources consulted; artifacts produced>
 ```
 
 If partial or failed, include a one-line reason after Status.
 
-Do not return full artifact contents — just this summary. The caller can inspect files directly.
+Do not return full artifact contents — just this summary. The caller can inspect files directly. The **Effort** line is a coarse spend proxy — report the signals you can see (web searches, sources consulted, artifacts), since exact token counts aren't self-observable, so a batch caller can spot a delegation that cost far more than its peers. Omit it if the harness already surfaces per-subagent cost.

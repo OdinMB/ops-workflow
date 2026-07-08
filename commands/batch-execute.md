@@ -32,7 +32,7 @@ Follow-up file path: <path to the follow-up file>
 
 After each executor agent completes:
 
-1. Review its summary for status and any follow-up items
+1. Review its summary for status and any follow-up items. Note the summary's **Effort** line — if one delegation's effort dwarfs its peers, mention it in the follow-up file so the batch's expensive spots stay visible.
 2. Verify the agent persisted insights: check if MEMORY.md or backlog files were updated when appropriate. If the agent produced findings but didn't persist them, do it now.
 3. Commit all changes (artifacts + state updates + completed plan) with a descriptive message
 
