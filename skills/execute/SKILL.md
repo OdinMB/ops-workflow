@@ -48,7 +48,7 @@ Before updating state, review the deliverables. In autonomous execution this is 
 4. **Harvest insights** — review what you learned and persist it:
    - **MEMORY.md Key Learnings** — add or update if you learned something that changes the project's understanding of its landscape, constraints, opportunities, or strategic position. **Never put WAITING markers, task status, or blocked items in MEMORY.md.**
    - **New backlog items** — add actionable opportunities or follow-up tasks to the appropriate backlog file in priority order.
-5. **Patterns, anti-patterns, and conventions** — if the work revealed patterns worth documenting for future agents (e.g., effective research approaches, naming conventions for artifacts, common pitfalls in a domain), add them to `CLAUDE.md` or the relevant reference file.
+5. **Patterns, anti-patterns, and conventions** — if the work revealed patterns worth documenting for future agents (e.g., effective research approaches, naming conventions for artifacts, common pitfalls in a domain), add them to `CLAUDE.md` only if most sessions need them, otherwise to the relevant reference file.
 6. **INDEX.md cascade** — list every file created, moved, renamed, or significantly changed. For each, confirm its folder's `INDEX.md` is up to date. Cascade to parent INDEX.md if needed.
 
 ### 5. Archive the plan

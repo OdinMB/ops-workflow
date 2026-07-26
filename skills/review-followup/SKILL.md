@@ -63,8 +63,8 @@ Opportunities the agent chose not to act on. For each:
 
 ### Borderline Insights
 Findings the agent wasn't sure were worth persisting. For each:
-- **Add to CLAUDE.md** — if it's a project-wide convention or rule
-- **Add to context file** — if it's topic-specific (ask which file)
+- **Add to CLAUDE.md** — if it's a project-wide rule most sessions need
+- **Add to a reference file** — if it's topic-specific, or a close call (ask which file)
 - **Add to MEMORY.md** — if it's cross-project knowledge
 - **Dismiss** — not worth keeping
 
