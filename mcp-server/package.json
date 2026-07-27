@@ -13,7 +13,7 @@
     "@anthropic-ai/claude-agent-sdk": "^0.2.77"
   },
   "devDependencies": {
-    "@modelcontextprotocol/sdk": "^1.27.1",
+    "@modelcontextprotocol/sdk": "^1.30.0",
     "@types/node": "^22.19.15",
     "esbuild": "^0.25.12",
     "typescript": "^5.9.3",
