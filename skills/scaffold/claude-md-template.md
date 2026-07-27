@@ -105,7 +105,7 @@ When an action is **taken** or an opportunity is **secured**, the result moves f
 
 This repo uses a recursive `INDEX.md` pattern. Every folder has an `INDEX.md` that provides a **complete overview of that topic at its level of abstraction**, plus links to sub-files and subfolders for deeper detail.
 
-An INDEX.md is **not a file listing** — it should contain enough substantive content (~2 pages) that a reader understands the full picture without needing to open any sub-files. Concretely: include the key facts, numbers, and status for each entry — not just a title and link. A reader should only need to open a sub-file when they need *more* detail than the INDEX provides. When updating sub-files, always propagate key changes back to the INDEX summary.
+An INDEX.md is **not a file listing** — it should contain enough substantive content that a reader understands the full picture without needing to open any sub-files. Concretely: include the key facts, numbers, and status for each entry — not just a title and link. A reader should only need to open a sub-file when they need *more* detail than the INDEX provides. When updating sub-files, propagate key changes back to the INDEX summary — propagating means **replacing** the summary the change supersedes, not adding a second account of the same thing. Past roughly two pages, an INDEX has stopped being graspable at a glance, which is the only thing it is for: push detail down into sub-files or a new subfolder and keep the summary, rather than growing it further.
 
 **Retrieval protocol:**
 
@@ -119,6 +119,7 @@ An INDEX.md is **not a file listing** — it should contain enough substantive c
 1. When creating, deleting, renaming, or significantly changing any file → update that folder's `INDEX.md` entry.
 2. When the substance of a topic changes → update the INDEX.md's overview content.
 3. If the change shifts the folder's overall summary → cascade the update to the parent `INDEX.md`.
+4. When a file is deleted, or its content moves to another level → remove the entry it leaves behind. Superseded text is what makes an INDEX stop being read.
 
 **When to create a new subfolder:**
 
