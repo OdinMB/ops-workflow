@@ -11,9 +11,8 @@ Rules for commands and skills that run without user input (e.g., `/ops:get-to-wo
 
 1. **Never stop for user input.** Record questions and move on.
 2. **Never delete files.** Record intended deletions in the follow-up file.
-3. **Never apply DB migrations** beyond adjusting schema files. Record migration steps in the follow-up file.
-4. **Never push to remote.** Only local branches and commits.
-5. **When uncertain, make a sensible choice and move on.** Record your reasoning and alternatives in the follow-up file so the user can review. Only skip when the wrong choice could have truly bad consequences (data loss, security, breaking external contracts). Getting work done with transparent doubts beats a slightly lower chance of mistakes.
+3. **Never push to remote.** Only local branches and commits.
+4. **When uncertain, make a sensible choice and move on.** Record your reasoning and alternatives in the follow-up file so the user can review. Only skip when the wrong choice could have truly bad consequences (data loss, security, breaking external contracts). Getting work done with transparent doubts beats a slightly lower chance of mistakes.
 
 ## Follow-Up File
 
@@ -30,9 +29,6 @@ Opportunities identified but not acted on, with reasons.
 
 ## User Input Needed
 Questions that blocked progress on specific items.
-
-## DB Migrations
-Schema changes that need to be applied.
 
 ## Files to Delete
 Files that should be removed (agent does not delete files autonomously).

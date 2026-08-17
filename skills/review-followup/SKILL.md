@@ -49,9 +49,6 @@ For each entry: what the file held, why nothing needs it now, and what's lost if
 - **Pick individually** — go through one by one
 - **Skip** — leave them for now
 
-### DB Migrations
-List the schema changes. These always need manual review. Just present them clearly — don't offer to run them.
-
 ### Skipped Items
 Opportunities the agent chose not to act on. For each:
 - **Plan it** — create a plan file for future work
