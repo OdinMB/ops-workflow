@@ -122,7 +122,7 @@ claude plugin install ops
 | `/ops:whats-next` | Executive summary with prioritized "what to do next".                        |
 | `/ops:update`     | Ingest external information into the knowledge base.                         |
 | `/ops:tidy`       | Run consistency checks on the knowledge structure. Auto-fixes what it can.   |
-| `/ops:recap`      | Summarize what happened since a given date. Tables and lists, never prose.   |
+| `/ops:recap`      | Summarize what happened since a given date. Short lead, then the detail.     |
 | `/ops:scaffold`   | Set up a new ops repo from scratch.                                          |
 
 ### Autonomous
@@ -140,6 +140,7 @@ claude plugin install ops
 | ----------------- | ---------------------------------------------------------------- |
 | `/ops:find-tasks` | Scan the project through 7 lenses to surface new backlog items.  |
 | `/ops:find-opps`  | Look beyond existing plans for new directions and opportunities. |
+| `/ops:find-all`   | Run both finders in parallel and get briefed on what they found. |
 
 ## Safety
 

@@ -18,16 +18,13 @@ If `$ARGUMENTS` contains a file path, use that. Otherwise, search for follow-up 
 
 Read the file. Also read the branch's git log (`git log main..HEAD --oneline`) to understand what was done.
 
-## 2. Present the summary
+## 2. Frame what's open
 
-Give a brief overview:
-- How many items total across all sections
-- Which sections have items (skip empty ones)
-- The branch name and number of commits
+Triage first (see Rules), then open with two or three sentences: what the run produced, and what kinds of decisions are still waiting on the user. If whoever invoked this skill has already said what the run produced — the `/ops:get-to-work` handoff does — don't say it again; open with what's still open. No item count, no section-by-section inventory, no commit count — the branch and its log are yours to keep track of.
 
 ## 3. Walk through each section
 
-**Context before questions.** For every item you present, show the relevant context *first* — the actual code snippet, diff, file path, commit message, or whatever the user needs to understand the situation — before presenting options or asking anything. The follow-up file often contains only a brief summary; that's not enough. Read the relevant files, run `git show` on the relevant commit, or do whatever it takes so the user sees the concrete reality, not just an abstract description. Never ask "what do you want to do about X?" without first showing X.
+**Decidable before asked.** Never ask "what do you want to do about X?" without first making X decidable — at the level the user decides at. Read the plan file, the artifact, the state file, run `git show` on the commit, whatever it takes so *you* understand the concrete reality. Then say it in plain terms: what the project has now, what's wrong or thin about it, what each option would change, and what it costs. Don't paste what you read. Quote a document only when the text itself is the thing being decided — copy the user will send, an answer to a form, a spec — or when they ask.
 
 Process sections in this order (skip empty ones):
 
@@ -38,16 +35,16 @@ These block quality. Present each issue with options:
 - **Dismiss** — not worth fixing
 
 ### Controversial Decisions
-The agent made a judgment call. For each, show the decision and reasoning, then offer:
+The agent made a judgment call. For each, say what it chose and why in terms of what the deliverable now claims or does — not the edits it made — then offer:
 - **Keep as-is** — the agent's choice is fine
 - **Revert** — undo this specific change (identify the commit)
 - **Modify** — adjust the approach (ask what they want)
 
 ### User Input Needed
-Questions the agent couldn't resolve. For each, read the relevant code/files so you understand the full situation, then present the question with that context and concrete options where possible. The follow-up file's summary alone is rarely enough — the user needs to see what's actually going on before they can answer. After getting the answer, take action if the answer implies a code change.
+Questions the agent couldn't resolve. Read the plan file, the artifact, or the reference material first, then ask about intent — what the deliverable has to achieve, who it's for, what's acceptable — with concrete options where possible. Never hand the agent's question back in the agent's terms. After getting the answer, act on it: revise the artifact, the plan, or the state file it changes.
 
 ### Files to Delete
-List each file with a one-line explanation of why. Offer:
+For each entry: what the file held, why nothing needs it now, and what's lost if that judgment is wrong. Group entries that share the same reasoning into one ask; paths go at the end of an entry, never at the front of it. Offer:
 - **Delete all** — remove everything listed
 - **Pick individually** — go through one by one
 - **Skip** — leave them for now
@@ -62,11 +59,12 @@ Opportunities the agent chose not to act on. For each:
 - **Dismiss** — not worth pursuing
 
 ### Borderline Insights
-Findings the agent wasn't sure were worth persisting. For each:
-- **Add to CLAUDE.md** — if it's a project-wide rule most sessions need
-- **Add to a reference file** — if it's topic-specific, or a close call (ask which file)
-- **Add to MEMORY.md** — if it's cross-project knowledge
+Findings the agent wasn't sure were worth persisting. State each as a one-sentence rule or fact and say whether it applies project-wide or to one topic only, then offer:
+- **Keep it** — scoped to that one topic
+- **Keep it, project-wide** — most sessions need it
 - **Dismiss** — not worth keeping
+
+Pick the destination file yourself: project-wide rules go in `CLAUDE.md`, topic-specific ones in the matching `references/` or `state/` file, cross-project knowledge in `MEMORY.md`. Never ask which file — filing is your call.
 
 ### Suggested Follow-Up Work
 Potential new work items. For each:
@@ -79,14 +77,15 @@ Potential new work items. For each:
 After all items are resolved:
 
 1. Delete the follow-up file.
-2. Summarize what was done: items kept, reverted, planned, dismissed.
-3. If any items generated new plan or backlog files, list them.
+2. Close with what is now settled and what changed as a result — plus, in one line, the calls you took off the user's plate during triage. Not a tally of kept, reverted, planned, and dismissed.
+3. If the session queued new work, say what the work is; a path belongs at the end of that sentence, if at all.
 
 ## Rules
 
-- **Context first, always.** Before every question or set of options, show the concrete context: the relevant code snippet, diff (`git show <commit>`), file path, or error. The follow-up file's one-liner is a pointer, not enough context for a decision. Read the actual source before presenting anything to the user.
+- **Decidable before asked, always.** The follow-up file's one-liner is a pointer, not a decision brief — read the actual source before presenting anything. Then present what you learned as outcome and consequence, not as the material you read.
+- **Triage first.** Before walking the sections, take out everything that's yours to decide. An item reaches the user only if their answer changes content, scope, priority, or a real-world commitment. Filing choices, INDEX cascades, naming, and mechanical cleanups: decide them, do them, and say in one line at the end that you did.
 - Use **AskUserQuestion** with concrete options — don't ask open-ended questions when you can present choices.
-- Batch related items when possible (e.g., "these 3 skipped items are all test coverage — plan all, dismiss all, or pick individually?").
+- Batch related items when possible (e.g., "these 3 skipped items are all further research on the same funder — plan all, dismiss all, or pick individually?").
 - When reverting, use `git revert` on the specific commit rather than manual edits, unless the commit contains mixed changes.
 - When creating plan files, follow the project's existing plan format (check `.plans/` or `plans/` for examples).
 - Keep momentum — the goal is to process the entire file in one session.

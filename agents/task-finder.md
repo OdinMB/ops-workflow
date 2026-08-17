@@ -36,7 +36,7 @@ Follow the `/find-tasks` skill's full process:
 1. **Scan** — examine the project through all applicable lenses (goal gaps, stale state, research opportunities, content & artifact gaps, follow-through, consistency & hygiene, new directions)
 2. **Filter** — remove items already tracked, too vague, entirely real-world actions, or trivial
 3. **Create backlog entries** — add new items to appropriate backlog files in priority order
-4. **Report** — produce a summary of what was added
+4. **Report** — return the Output block below. `/find-tasks` Step 4 describes a briefing written for a person; that isn't your audience. Your report goes to the calling agent, so the fields below govern instead.
 
 ### Lens 7 (New Directions)
 
@@ -47,6 +47,10 @@ When running standalone (not under `get-to-work`), briefly consider adjacent opp
 - Don't ask the user about scope or priorities — scan everything.
 - If you find backlog items that are already done, delete them (done items aren't backlog). If unsure whether something is truly done, note it in the follow-up file rather than leaving a stale entry.
 - Record uncertain new items in the follow-up file under **Suggested Follow-Up Work** rather than adding them directly to the backlog.
+
+### Discovery mode
+
+If the caller says this is a discovery scan and gives you no follow-up file (`/find-all` does this), the repo is not yours to touch: add nothing to the backlog, delete nothing from it, and write no files. Return every item inline instead — the same fields you would have written into a backlog entry (what, why, effort), plus the backlog file it would belong in — and let the caller decide what to persist. Report completed-looking backlog items as findings too, rather than deleting them. In this mode the Output block's `Items added to backlog` line reports items *found*; say so on the line.
 
 ## Output
 

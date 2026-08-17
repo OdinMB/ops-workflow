@@ -87,6 +87,8 @@ Produce backlog-ready items:
 
 Aim for 3-5 items. Prefer a mix of lenses and effort levels. At least one should be a quick win (light effort, clear value), and at least one should be a deeper investigation that could shift the project's trajectory.
 
+This block is the record — it goes back to the caller when a subagent runs this skill, and into the backlog when the main agent runs it directly. When briefing the user, the same items become short prose instead: each one says what the project would learn or gain and what it would cost, with lens names and deliverable paths left out.
+
 ## Constraints
 
 - **Stay practical.** Every item must be something an autonomous agent could start working on — a research task, an analysis, a draft document, a state file update. "Consider pivoting the business model" is not actionable. "Research 3 alternative revenue models used by similar projects and write a comparison to references/revenue-models.md" is.

@@ -54,3 +54,9 @@ Before updating state, review the deliverables. In autonomous execution this is 
 ### 5. Archive the plan
 
 Move the plan to `plans/completed/` with a date prefix: `YYYY-MM-DD_original-filename.md`.
+
+### 6. Report
+
+Tell the user, in one short paragraph, what the project now knows or has that it did not, how solid it is — which claims you verified against a source versus which rest on a single unconfirmed claim — and anything you decided that the plan didn't settle. If something couldn't be verified, or part of the work is unfinished, lead with that. No file list, no per-file walkthrough, no INDEX-cascade checklist: the plan file and the commit are the record. If they need to open the deliverable, one path on a line at the end is enough.
+
+(A sub-agent running this skill returns whatever format its caller asked for instead.)

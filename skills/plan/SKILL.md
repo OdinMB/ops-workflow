@@ -52,7 +52,11 @@ _Fill in when completed._
 _Fill in when completed._
 ```
 
-3. **Present and clarify.** Summarize the objective, proposed steps, and success criteria. Then surface any scope decisions, trade-offs, or assumptions that need user input. Use the **AskUserQuestion** tool with concrete options — don't ask open-ended questions when specific choices are available. Group related decisions (up to 4 per question). If the task produces artifacts (copy, drafts, deliverables), clarify where they should be stored if not obvious (default: `artifacts/`). Skip clarification if the task is absolutely straightforward. Update the plan file with the user's answers. Wait for approval before any work begins.
+3. **Present and clarify.** Assume the user hasn't read the research and doesn't know this corner of the project. One or two sentences each: what the situation is, what the work will produce, and what it deliberately won't cover. No numbered walkthrough of the steps and no success-criteria checklist — those stay in the plan file for the executor.
+
+   Then surface the scope decisions, trade-offs, and assumptions that genuinely need the user. Use the **AskUserQuestion** tool with concrete options — don't ask open-ended questions when specific choices are available, and make every option differ in something the user can judge without opening a file: what the deliverable achieves, who it's for, what it costs, what it rules out later. Group related decisions (up to 4 per question).
+
+   Decide artifact placement yourself using the Whole-File Test in `CLAUDE.md` and state where things will land in a clause — never ask which folder. Skip clarification if the task is absolutely straightforward. Update the plan file with the user's answers. Wait for approval before any work begins.
 
 4. **Do NOT execute the plan.** This skill only creates and proposes the plan. Execution happens via the `/execute` skill after the user approves.
 

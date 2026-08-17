@@ -44,6 +44,8 @@ Problems encountered during execution.
 Summary of each identify → prioritize → execute cycle.
 ```
 
+**How to write an entry.** Every entry leads with the decision, question, or omission stated in plain terms — what it means for the project, what it costs to leave as-is, and what the realistic options are. Someone who has not read a single file in this repo must be able to decide from the entry alone. Anything only an agent needs — plan file paths, state file or artifact names, backlog entry wording, commit refs — goes at the end of the entry under a `For the executor:` line, never in the opening sentences.
+
 3. Parse `$ARGUMENTS`:
    - **First word** — mode: `tasks`, `opps`, `full`, or `escalating` (default if omitted)
    - **Second word** — repeat: `cycle` (default if omitted) or `once`
@@ -216,6 +218,10 @@ Create `plans/YYYY-MM-DD_get-to-work-summary.md`:
 **Branch:** YYYY-MM-DD-get-to-work
 **Cycles completed:** N
 
+## What Changed
+
+Three to six sentences: what the project now knows, has, or can do that it could not before, and what it cost. No file names, no counts.
+
 ## What Was Done
 
 | # | Task | Cycle | Status | Commit | Artifacts |
@@ -246,4 +252,8 @@ Commit the summary: `"get-to-work: summary and follow-up (N tasks completed acro
 
 ### Handoff
 
-When the user returns, present the summary and use the `/review-followup` skill to walk them through the follow-up file. After follow-up items are resolved, offer to merge the branch.
+When the user returns, tell them in plain terms what the project gained and what it cost, what you deliberately left alone and why, and what still needs a decision from them. The table and the Stats block are the record a future session reads — don't read them out, don't recite file names, and don't turn counts into the briefing.
+
+Then use the `/review-followup` skill to walk through the follow-up file.
+
+Once follow-up items are resolved, offer the closing decision at the level of the work rather than the level of commits: keep all of it, keep it except one named piece — named by what it is, "the funder research", never by commit hash or filename — or leave the branch parked for now. Whichever they pick, map it onto the actual commits yourself.

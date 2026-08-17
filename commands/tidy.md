@@ -6,7 +6,7 @@ allowed-tools: Read, Edit, Write, Glob, Grep, Bash(ls *), Bash(rm *), Bash(mv *)
 
 # Ops Housekeeping
 
-Scan this project's knowledge structure for inconsistencies and staleness. Report findings, then fix everything that can be fixed automatically.
+Scan this project's knowledge structure for inconsistencies and staleness, fix everything that can be fixed automatically, then brief the user on the little that's left for them to decide.
 
 ## Pre-check: Process .update/ Inbox
 
@@ -16,7 +16,7 @@ If `.update/` is empty or doesn't exist, skip this step.
 
 Wait for the updater agent to finish before proceeding — the consistency checks should run against the freshly-updated knowledge base.
 
-## Checks
+## Phase 1: Scan
 
 ### 1. INDEX.md Accuracy
 
@@ -70,12 +70,12 @@ Backlog items within each file should be ordered by priority (highest first). Ch
 
 Flag any folder with 5+ `.md` files that don't have subfolders — it may be time to organize.
 
-## Output
+### Working Record
 
-Present findings as a checklist grouped by check type:
+As you scan, keep findings as a checklist grouped by check type. This is your own working record: it carries you through the fix phase and tells you what's left over for the user. It is **not** the briefing — never read it out.
 
 ```markdown
-# Housekeeping Report
+# Housekeeping Record
 _Generated: <today's date>_
 
 ## INDEX.md Issues
@@ -105,17 +105,13 @@ _Generated: <today's date>_
 
 ## Subfolder Candidates
 - [ ] `references/marketing/` — 7 files, consider organizing
-
-## Summary
-- N issues found across N checks
-- N files scanned
 ```
 
 If a section has no findings, omit it.
 
 ## Phase 2: Fix
 
-After producing the report, fix every issue you can. Specifically:
+With the record in hand, fix every issue you can. Specifically:
 
 | Issue type | Action |
 |---|---|
@@ -128,16 +124,28 @@ After producing the report, fix every issue you can. Specifically:
 | Backlog item marked "done"/"completed" | Delete it |
 | Completed plan not moved | Move to `plans/completed/` with date prefix |
 | Completed plan in `plans/completed/` missing date prefix | Rename to add date prefix |
+| Folder that has outgrown flat organization | Decide the subfolder split yourself, move the files, and update the affected `INDEX.md` files. This is your call — never ask the user how to organize a folder |
 
 Do **not** auto-fix:
 - Stale dates (flag only — the content may still be accurate)
-- Stale WAITING markers (flag only — needs human judgement)
-- Backlog priority order (flag only — needs human judgement)
-- Subfolder candidates (flag only — needs human decision on organization)
+- Stale WAITING markers (flag only — needs the user's judgement)
+- Backlog priority order (flag only — needs the user's judgement)
 
-After fixing, update the report: change `[ ]` to `[x]` for each fixed item and append a brief note of what was done.
+After fixing, update the record: change `[ ]` to `[x]` for each fixed item and append a brief note of what was done.
+
+## Phase 3: Brief the User
+
+The record is not the briefing. Say in one line what you brought back into line — the kinds of drift you corrected, plus the fact that you reorganized a folder if you did. No file-by-file walkthrough, no issue count, no count of files scanned.
+
+Then bring only what needs the user's judgement, a short paragraph each, framed so they can decide it without opening anything:
+
+- **A state file whose facts may have moved** — what it currently claims, what decision is resting on that claim, and what changes if the claim is out of date.
+- **A WAITING marker old enough that the answer probably isn't coming** — who it's on and how long it's been, and what the project can't settle until it resolves. Offer chase it, drop it and proceed on a stated assumption, or keep waiting, and say which you'd pick.
+- **A backlog file whose order no longer matches what matters** — what's sitting at the top, what's below it that now looks more consequential, and what it costs to leave the order alone.
+
+End each with your recommendation and the one thing you need: a question about priority, intended direction, or acceptable cost. Use **AskUserQuestion** where the choice is closed-form. If nothing needs their judgement, say so in a sentence and stop.
 
 ## Rules
 
-- **Be specific.** Always include the exact filename and what's wrong.
+- **Be specific in the record.** Always note the exact filename and what's wrong — that's what makes the fix phase possible. In the briefing, name a file only when the file itself is what the user is deciding about.
 - **Don't over-flag.** Minor wording differences between an INDEX.md summary and a file's content are fine. Only flag when the summary is clearly wrong or misleading.

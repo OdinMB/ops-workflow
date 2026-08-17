@@ -104,20 +104,11 @@ For each new work item:
 
 ### Step 4: Report
 
-Produce a summary of what was added:
+The backlog entries you just wrote are the record. The report is not a second copy of them — it's a briefing on what the project is missing and what it costs to leave it that way.
 
-```markdown
-## New Work Items Identified
+Group what you added into 2-4 themes, a sentence or two each: what the project is missing, what leaving it alone costs, and where addressing it would take the project. Lead with whatever needs the user's judgment — a stated goal with nothing behind it, or a state file stale enough that a decision resting on it would be unsafe. Name the backlog files that hold the rest in one line. No per-item table, no lens names, no effort column. Mention a skipped item only when the reason is a call the user owns, and then in a clause ("left the pricing research aside — it only matters if the paid tier is still on the table").
 
-### Added to backlog
-| # | Item | File | Lens | Effort |
-|---|------|------|------|--------|
-| 1 | [description] | backlog/[file].md | [lens] | light/medium/heavy |
-| 2 | ... | ... | ... | ... |
-
-### Skipped (already tracked or not actionable)
-- [brief description] — [reason skipped]
-```
+When this skill runs under the `task-finder` agent, that agent's own Output block governs the report instead: those fields are written for the calling agent, not for the user.
 
 ## Rules
 

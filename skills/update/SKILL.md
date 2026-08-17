@@ -35,13 +35,13 @@ The user provided content directly: $ARGUMENTS
    - Read the target file first — never overwrite blindly. Merge or append.
    - When updating state files, update the `_Last updated: YYYY-MM-DD_` line.
    - When adding backlog items, insert in priority order (highest first), not at the end.
-   - If placement is genuinely ambiguous, ask the user before proceeding.
+   - If placement is ambiguous, apply the Whole-File Test and place it anyway — then note the call in a clause when you report. Ask the user only when the ambiguity is about what the information *means* for the project: a fact you can't reconcile with existing state, or a claim that changes a stated goal. Never ask which folder something belongs in.
 
 4. **INDEX.md cascade.** For every file created or significantly changed, update that folder's `INDEX.md`. If the folder's overall summary changed, cascade to the parent `INDEX.md`.
 
 5. **MEMORY.md check.** If the information shifts the project's strategic understanding — a new constraint, a key learning, a changed goal — add or update an entry under Key Learnings. Don't add specific data points (those belong in state/references); only add general insights.
 
-6. **Summarize.** Tell the user what was placed where.
+6. **Summarize.** Lead with one sentence on what the project now knows that it didn't, or what changed in its picture of reality. Then tell the user what was placed where.
 
 ---
 
@@ -71,11 +71,11 @@ Process all files in the `.update/` directory.
       - **Delete** if all useful information has been extracted into structured knowledge (the common case — raw notes, status emails, data dumps).
       - **Move to `references/`** if the file itself is a useful reference to keep (e.g., a PDF report, a detailed analysis document).
       - **Move to `artifacts/`** if the file is a deliverable or work product (e.g., a submitted application, a finalized spec). Date-prefix it if it's been delivered.
-      - If unsure whether to keep or delete, ask the user.
+      - If unsure whether to keep or delete, keep it — move it to `references/` and note the call in a clause when you report. Deleting is irreversible; keeping costs a file. Ask only when what's at stake is a judgement the user owns: the file contradicts something the project treats as settled, or it looks like a deliverable that may already have gone out.
 
 4. **MEMORY.md check** — same as inline mode. Update Key Learnings if warranted.
 
-5. **Summarize.** List each file processed, where its information was placed, and whether the file was deleted or moved.
+5. **Summarize.** Lead with one sentence on what the project now knows that it didn't, or what changed in its picture of reality. Then list each file processed, where its information was placed, and whether the file was deleted or moved. (A sub-agent running this skill returns whatever format its caller asked for instead.)
 
 ---
 
