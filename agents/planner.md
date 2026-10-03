@@ -4,8 +4,8 @@ description: Creates a work plan for a non-code ops task autonomously, following
 tools: Read, Glob, Grep, Write, Bash
 model: sonnet
 skills:
-  - ops-workflow:plan
-  - ops-workflow:work-autonomously
+  - ops:plan
+  - ops:work-autonomously
 ---
 
 # Ops Planner Agent

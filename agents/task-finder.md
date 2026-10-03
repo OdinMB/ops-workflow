@@ -4,7 +4,7 @@ description: Scan an ops project across 7 lenses (goal gaps, stale state, resear
 tools: Read, Glob, Grep, Write, Edit
 model: sonnet
 skills:
-  - ops-workflow:find-tasks
+  - ops:find-tasks
 ---
 
 # Ops Task Finder Agent
@@ -24,7 +24,7 @@ Before analyzing, gather the project overview. Read these files (skip any that d
 1. `MEMORY.md` — project overview and knowledge map
 2. `state/INDEX.md` → then every file listed in it
 3. `backlog/INDEX.md` → then every file and subfolder listed in it
-4. `plans/INDEX.md` → then every active plan (not completed)
+4. Active plans — glob `plans/*.md`, skip `INDEX.md`, and read the rest (`plans/INDEX.md` deliberately lists none of them)
 5. `plans/completed/INDEX.md` — scan the 5 most recent completed plans
 
 Build a mental model of: what the project is trying to achieve, where things stand, what's already planned, and what was recently done.

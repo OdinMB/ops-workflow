@@ -78,7 +78,7 @@ Scan depth: <"full" on first cycle, "follow-through" on subsequent cycles unless
 
 On the first cycle, use "full" scan depth. On subsequent cycles, start with "follow-through" (focused on recent completions). If the agent's summary reports "Lenses 1-6 yield: low", widen to a full scan on the next attempt.
 
-Record what was added in the Cycle Log section of the follow-up file. Commit the backlog updates: `"identify work: add N new backlog items (cycle M)"`
+Record what was added in the Cycle Log section of the follow-up file. Commit the backlog updates and the follow-up file, naming their paths (`git add -- <paths>`, then `git commit -m "identify work: add N new backlog items (cycle M)" -- <paths>`)
 
 **Escalation**: If the task-finder agent reports low yield from lenses 1-6, spawn an **opps-finder sub-agent** (`agents/opps-finder.md`):
 
@@ -160,7 +160,7 @@ After each executor agent completes:
 
 1. Review its summary for anything that should go in the follow-up file
 2. Verify the agent actually persisted insights: check if MEMORY.md or backlog files were updated when the task involved research or analysis. If the agent produced findings but didn't persist them, do it now.
-3. Commit all changes with a descriptive message: `"[task-slug]: [what was done]"`
+3. Commit the task's changes, naming their paths: `git add -- <paths>`, then `git commit -m "[task-slug]: [what was done]" -- <paths>`. Take the paths from the executor's summary and `git status`; never `git add -A` or a bare `git commit` (see `work-autonomously`, rule 4)
 4. Note the completed task in the Cycle Log
 
 ### Step 4: Merge Worktrees
@@ -170,7 +170,7 @@ If any executor agents ran in worktrees during this cycle, merge their branches 
 1. For each worktree branch, run `git merge <worktree-branch>`
 2. If a merge conflict occurs, resolve it sensibly — prefer the more complete change, or combine both if they're complementary
 3. Record any non-obvious conflict resolution decisions in the follow-up file under "Controversial Decisions" so the user can review them
-4. After merging, clean up: `git worktree remove <path>` and `git branch -d <worktree-branch>`
+4. After merging, clean up: `git worktree remove <path>` and `git branch -d <worktree-branch>` — one of the deletions `work-autonomously` allows, and only for worktrees this run created
 
 Skip this step if no worktrees were used in this cycle.
 
@@ -248,7 +248,7 @@ Three to six sentences: what the project now knows, has, or can do that it could
 [Summary of items from follow-up file, grouped by urgency]
 ```
 
-Commit the summary: `"get-to-work: summary and follow-up (N tasks completed across M cycles)"`
+Commit the summary and follow-up files by path — `git add --` those two paths, then `git commit -m "get-to-work: summary and follow-up (N tasks completed across M cycles)" -- plans/YYYY-MM-DD_get-to-work-summary.md plans/YYYY-MM-DD_get-to-work-followup.md`
 
 ### Handoff
 

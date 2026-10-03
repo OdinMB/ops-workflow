@@ -34,7 +34,7 @@ After each executor agent completes:
 
 1. Review its summary for status and any follow-up items. Note the summary's **Effort** line — if one delegation's effort dwarfs its peers, mention it in the follow-up file so the batch's expensive spots stay visible.
 2. Verify the agent persisted insights: check if MEMORY.md or backlog files were updated when appropriate. If the agent produced findings but didn't persist them, do it now.
-3. Commit all changes (artifacts + state updates + completed plan) with a descriptive message
+3. Commit the plan's changes (artifacts + state updates + completed plan) with a descriptive message, naming their paths: `git add -- <paths>`, then `git commit -m "<message>" -- <paths>`. Take the paths from the executor's summary and `git status`; never `git add -A` or a bare `git commit` (see `work-autonomously`, rule 4)
 
 Don't batch commits across multiple plans — one commit per plan.
 
@@ -49,6 +49,6 @@ Task description: <the direct-task entry, verbatim>
 Follow-up file path: <path to the follow-up file>
 ```
 
-The executor should carry out the work directly without writing a plan. Same discipline as plan-file items — one commit per direct task, insights persisted when relevant. After a successful direct task, remove its entry from `plans/<batch>-direct-tasks.md` and include the file change in the commit. When the last entry is processed, delete `plans/<batch>-direct-tasks.md` entirely.
+The executor should carry out the work directly without writing a plan. Same discipline as plan-file items — one commit per direct task, insights persisted when relevant. After a successful direct task, remove its entry from `plans/<batch>-direct-tasks.md` and include the file change in the commit. When the last entry is processed, delete `plans/<batch>-direct-tasks.md` entirely (one of the deletions `work-autonomously` allows) and name it in that commit's pathspec so the deletion is committed.
 
 If a direct task turns out to be non-trivial once the executor starts (surprising scope, unclear approach, surfacing design questions), record it in the follow-up file and move on — don't spiral into an ad-hoc plan inside the direct-task flow.

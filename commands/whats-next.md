@@ -17,11 +17,12 @@ Read only the high-level INDEX files first. Be selective about drilling into det
 1. **`MEMORY.md`** — Project overview and knowledge map.
 2. **`state/INDEX.md`** — Area names and status summaries.
 3. **`backlog/INDEX.md`** — Priorities and item titles.
-4. **`plans/INDEX.md`** — Note active vs completed plans.
+4. **`plans/completed/INDEX.md`** — Recently finished plans, for momentum.
+5. **Active plans** — Glob `plans/*.md` and skip `INDEX.md`. Every other file directly under `plans/` is an active plan. `plans/INDEX.md` deliberately lists none of them, so it can't tell you what's in flight.
 
 **Round 2 — Selective drill-down:**
 
-- Read **active plan files** (not completed ones — titles in the INDEX are enough for momentum context).
+- Read every **active plan file** found by the glob (not completed ones — titles in `plans/completed/INDEX.md` are enough for momentum context).
 - Read up to **3** individual state or backlog files if they're directly relevant to your recommendations or the user's focus area. No more than 3.
 
 ### 2. Analyze

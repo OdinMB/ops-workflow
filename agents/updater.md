@@ -4,8 +4,8 @@ description: Processes .update/ inbox files autonomously — classifies, integra
 tools: Read, Glob, Grep, Write, Edit, Bash(ls *), Bash(rm *), Bash(mv *)
 model: sonnet
 skills:
-  - ops-workflow:update
-  - ops-workflow:work-autonomously
+  - ops:update
+  - ops:work-autonomously
 ---
 
 # Ops Updater Agent
@@ -34,6 +34,7 @@ Follow the `/update` skill's **Inbox Mode** process with these autonomous-mode o
 
 Load and follow the `work-autonomously` skill throughout. Core rules:
 - Never stop for user input — record questions and move on
+- Delete only processed `.update/` source files, per the disposition rules below — that is the one deletion this agent may make; record any other intended deletion in the follow-up file
 - Never push to remote
 - When uncertain, make a sensible choice, record reasoning, and continue
 

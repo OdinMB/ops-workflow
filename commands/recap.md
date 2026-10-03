@@ -26,7 +26,7 @@ Read `plans/completed/INDEX.md`. Identify plans with date prefixes >= `$SINCE`. 
 
 #### b. Active Plans
 
-Read `plans/INDEX.md`. Note any plans that were created after `$SINCE` (check their date prefix or file modification context). These represent work that started but hasn't finished yet.
+Glob `plans/*.md` and skip `INDEX.md` — every other file directly under `plans/` is an active plan (`plans/INDEX.md` deliberately lists none of them). Note any that were created after `$SINCE` (check their date prefix or file modification context). These represent work that started but hasn't finished yet.
 
 #### c. Git History
 

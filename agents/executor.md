@@ -3,8 +3,8 @@ name: executor
 description: Executes an approved ops plan autonomously — research, write, review, persist insights. Returns artifacts and summary.
 tools: Read, Glob, Grep, Write, Edit, Bash, WebSearch, WebFetch
 skills:
-  - ops-workflow:execute
-  - ops-workflow:work-autonomously
+  - ops:execute
+  - ops:work-autonomously
 ---
 
 # Ops Executor Agent
@@ -42,7 +42,7 @@ Follow the `/execute` skill's full process (read plan, execute, review, state up
 
 Load and follow the `work-autonomously` skill throughout. Core rules:
 - Never stop for user input — record questions and move on
-- Never delete files — record intended deletions in the follow-up file
+- Never delete files — none of the deletions that skill allows fall to an executor, so record intended deletions in the follow-up file
 - Never push to remote
 - When uncertain, make a sensible choice, record reasoning, and continue
 

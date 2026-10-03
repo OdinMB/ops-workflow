@@ -23,7 +23,7 @@ Before running this skill, you need the project overview already loaded (MEMORY.
 1. `MEMORY.md` — project overview, goals, and knowledge map
 2. `state/INDEX.md` → then every file listed in it
 3. `backlog/INDEX.md` → then every file and subfolder listed in it
-4. `plans/INDEX.md` → then every active plan (not completed)
+4. Active plans — glob `plans/*.md`, skip `INDEX.md`, and read the rest (`plans/INDEX.md` deliberately lists none of them)
 5. `plans/completed/INDEX.md` — scan the 5 most recent completed plans
 6. `references/INDEX.md` — scan for existing research to avoid duplicating
 

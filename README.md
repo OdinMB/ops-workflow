@@ -147,7 +147,8 @@ claude plugin install ops
 All autonomous commands enforce these rules:
 
 - **No real-world actions** — never sends emails, submits forms, posts to social media, or calls external APIs
-- **No file deletion** — intended deletions are recorded for your review
+- **Only listed deletions** — processed `.update/` inbox files, a batch's finished direct-tasks file, and the worktrees and branches a run created and merged; every other intended deletion is recorded for your review
+- **Explicit-path commits** — each commit names its paths, so a run never sweeps someone else's half-finished work into its commit
 - **No remote push** — only local branches and commits
 - **Transparent decisions** — when uncertain, records its reasoning for you to review
 
@@ -188,7 +189,7 @@ The autonomous commands (`/ops:get-to-work`, `/ops:batch-execute`) run for exten
 **If the process keeps pausing for permission prompts, it's not truly autonomous.** Configure your `settings.json` (globally at `~/.claude/settings.json` or per-project at `.claude/settings.json`) with `allow` lists covering:
 
 - File operations: `Bash(ls *)`, `Bash(mv *)`, `Bash(rm ".tmp/*")`
-- Git commands: `Bash(git add *)`, `Bash(git status *)`, `Bash(git log *)`, `Bash(git diff *)`, `Bash(git branch *)`, `Bash(git commit *)`
+- Git commands (commits name their paths: `git add -- <paths>`, then `git commit -m "…" -- <paths>`): `Bash(git add *)`, `Bash(git status *)`, `Bash(git log *)`, `Bash(git diff *)`, `Bash(git branch *)`, `Bash(git commit *)`
 - Web access: `WebSearch`, `WebFetch`
 - Skill invocation: `Skill(execute)`, etc.
 
