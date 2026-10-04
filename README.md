@@ -109,8 +109,10 @@ Every folder has an `INDEX.md` that provides a complete overview at its level of
 
 ```bash
 claude plugin marketplace add OdinMB/ops-workflow
-claude plugin install ops
+claude plugin install ops@ops-workflow
 ```
+
+The marketplace registers as `ops-workflow`, so the plugin's id is `ops@ops-workflow` — the key that `/ops:scaffold` writes into a new ops repo's `.claude/settings.json`.
 
 ## All Commands
 
@@ -197,13 +199,20 @@ See Claude Code's [permissions documentation](https://docs.anthropic.com/en/docs
 
 ### Contributing to the Plugin
 
-Claude Code installs plugins as shallow clones (single commit, no full history). To edit the plugin source and push changes back, fetch the full history:
+Work on a clone of your own, and point the marketplace at it as a local directory. Claude Code reads a plugin from a local-directory marketplace in place, never from its cache, so an edit to the clone takes effect at the next session start or `/reload-plugins`, with no push, version bump, or `/plugin update`.
 
-```bash
-git -C ~/.claude/plugins/marketplaces/ops-workflow fetch --unshallow
+In `~/.claude/settings.json`, declare the marketplace under the same name with a `directory` source:
+
+```json
+"extraKnownMarketplaces": {
+  "ops-workflow": {
+    "source": { "source": "directory", "path": "/absolute/path/to/ops-workflow" },
+    "autoUpdate": false
+  }
+}
 ```
 
-Plugin updates via Claude Code (`/plugin update`) may re-shallow the clone — run `fetch --unshallow` again afterward if you need the full history.
+Then run `claude plugin marketplace add /absolute/path/to/ops-workflow` once. The name comes from `.claude-plugin/marketplace.json`, so it must stay `ops-workflow` for the plugin to keep its `ops@ops-workflow` id; installed plugins and every project's `enabledPlugins` entry survive the switch. Don't use `claude plugin marketplace remove` for it: that uninstalls the plugin and strips its `enabledPlugins` entries. `claude plugin list` shows `Read from: <your path>` once it took.
 
 </details>
 
