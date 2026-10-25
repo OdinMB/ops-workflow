@@ -190,7 +190,7 @@ Commands (listed above) are orchestrators built from composable skills (`/plan`,
 
 The autonomous commands (`/ops:get-to-work`, `/ops:batch-execute`) run for extended periods without user intervention. How their tool calls get approved depends on the permission mode, so name the mode when you start an unattended run rather than relying on whatever your settings default to:
 
-- **Auto mode** — a classifier judges each action, so a run rarely stops for a prompt and needs no long allow list. Headless: `CLAUDE_UNWATCHED=1 claude -p --permission-mode auto "/ops:get-to-work"` (`CLAUDE_UNWATCHED=1` marks the session as one nobody is watching, for hooks that hold unattended runs to stricter rules; it does nothing where no hook reads it).
+- **Auto mode** — a classifier judges each action, so a run rarely stops for a prompt and needs no long allow list. Headless: `CLAUDE_UNWATCHED=1 CLAUDE_CODE_EFFORT_LEVEL=xhigh claude -p --permission-mode auto "/ops:get-to-work"` (`CLAUDE_UNWATCHED=1` marks the session as one nobody is watching, for hooks that hold unattended runs to stricter rules; it does nothing where no hook reads it. `CLAUDE_CODE_EFFORT_LEVEL=xhigh` runs the whole run, every subagent included, at `xhigh` effort, since the variable outranks saved levels and agent frontmatter).
 - **Default or `dontAsk` mode** — only what your allow list covers runs without asking; in `dontAsk`, everything else is refused.
 
 **If the process keeps pausing for permission prompts, it's not truly autonomous.** Outside auto mode, configure your `settings.json` (globally at `~/.claude/settings.json` or per-project at `.claude/settings.json`) with `allow` lists covering:
