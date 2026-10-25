@@ -52,7 +52,7 @@ Load and follow the `work-autonomously` skill throughout. Core rules:
 
 ### INDEX.md cascade
 
-After creating or modifying files, update all affected INDEX.md files. This is non-negotiable — the knowledge system breaks if indexes are stale.
+Run `/update`'s INDEX.md cascade in full: the knowledge system is navigated through the indexes, so a stale one hides what you wrote.
 
 ## Output
 

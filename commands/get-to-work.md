@@ -5,20 +5,11 @@ disable-model-invocation: true
 
 # Get to Work
 
-You will autonomously advance this ops project. Follow the `work-autonomously` skill throughout — the entire process runs without user input.
+You will autonomously advance this ops project. Follow the `ops:work-autonomously` skill throughout — the entire process runs without user input.
 
 ## Safety Constraints
 
-**No real-world actions.** You must NEVER:
-
-- Send emails, messages, or notifications
-- Submit forms, applications, or registrations
-- Post to social media or external platforms
-- Make API calls that modify external state
-- Make purchases or financial transactions
-- Contact anyone on behalf of the user
-
-You CAN: research (web search, read public pages), write files, create plans, analyze data, produce drafts and artifacts the user can later use for world-affecting actions, and maintain the repo's knowledge system.
+No real-world actions: `ops:work-autonomously` lists what an unattended run never does and what it can do instead.
 
 ## Phase 1: Setup
 
@@ -70,7 +61,8 @@ Record what was added in the Cycle Log section of the follow-up file. Commit the
 Additional context:
 - What lenses 1-6 found (or didn't): <brief summary from task-finder agent>
 
-Your job: identify 3-5 new directions of work this project should explore.
+Your job: identify the new directions of work genuinely worth exploring
+(often 3-5; fewer or none is a valid result).
 Stay grounded in the project's goals and limitations from MEMORY.md.
 Every suggestion must be something an autonomous agent can start working on.
 ```
@@ -79,10 +71,10 @@ Add the opps-finder's output items to the backlog and continue the cycle.
 
 ### Step 2: Prioritize
 
-Follow the `prioritize` skill:
+Follow the `ops:prioritize` skill:
 
 - Score all candidate tasks (active plans + backlog items + newly added items)
-- Select 2-3 independent, feasible, high-impact tasks
+- Select the tasks genuinely worth doing this cycle, at most 3
 - Prepare execution briefs for each
 - Record the selection and reasoning in the Cycle Log
 

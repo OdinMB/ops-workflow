@@ -27,15 +27,7 @@ When given a task description instead of a plan file, execute it directly — do
 
 ## Safety Constraints
 
-You must NEVER:
-- Send emails, messages, or notifications
-- Submit forms, applications, or registrations
-- Post to social media or external platforms
-- Make API calls that modify external state
-- Make purchases or financial transactions
-- Contact anyone on behalf of the user
-
-You CAN: research (web search, read public pages), write files, create plans, analyze data, produce drafts and artifacts the user can later use for world-affecting actions, and maintain the repo's knowledge system.
+Never act in the world: no sending, submitting, posting, purchasing, external-state API calls, or contacting anyone for the user. Prepare drafts and artifacts instead. The full list is in `ops:work-autonomously`.
 
 ## Process
 
@@ -68,7 +60,7 @@ Follow `/execute`'s state update and insight harvesting steps, but for borderlin
 
 ### INDEX.md cascade
 
-After creating or modifying files, update all affected INDEX.md files. This is non-negotiable — the knowledge system breaks if indexes are stale.
+Run `/execute`'s INDEX.md cascade (step 4) in full: the knowledge system is navigated through the indexes, so a stale one hides what you wrote.
 
 ## Output
 

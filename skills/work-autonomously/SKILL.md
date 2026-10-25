@@ -14,6 +14,20 @@ Rules for commands and skills that run without user input (e.g., `/ops:get-to-wo
 3. **Never push to remote.** Only local branches and commits.
 4. **Commit with explicit pathspecs.** Name the paths you changed on the commit itself: `git add -- <path> <path> …` (needed for new files, which a commit pathspec alone does not pick up), then `git commit -m "<message>" -- <path> <path> …`. Never `git add -A`, `git add .` or `git commit -a`, and never a bare `git commit` after staging: a plain commit takes the whole index, so it can sweep a parallel agent's or the user's half-finished work into your commit. Work out the paths from the agent's summary and `git status`.
 5. **When uncertain, make a sensible choice and move on.** Record your reasoning and alternatives in the follow-up file so the user can review. Only skip when the wrong choice could have truly bad consequences (data loss, security, breaking external contracts). Getting work done with transparent doubts beats a slightly lower chance of mistakes.
+6. **No real-world actions** (the list below).
+
+### Real-world actions an unattended run never takes
+
+This is the one full list; agents and commands point here. Never:
+
+- Send emails, messages, or notifications
+- Submit forms, applications, or registrations
+- Post to social media or external platforms
+- Make API calls that modify external state
+- Make purchases or financial transactions
+- Contact anyone on behalf of the user
+
+You can: research (web search, read public pages), write files, create plans, analyze data, produce drafts and artifacts the user can later use for world-affecting actions, and maintain the repo's knowledge system.
 
 ### Deletions an unattended run may make
 
