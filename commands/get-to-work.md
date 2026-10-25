@@ -23,23 +23,9 @@ You CAN: research (web search, read public pages), write files, create plans, an
 ## Phase 1: Setup
 
 1. Determine today's date. Check the current branch — if you're already on a feature branch or a prior get-to-work branch, stay on it. Only create a new branch (`YYYY-MM-DD-get-to-work`) if you're on `main` (or the repo's default branch).
-2. Create a follow-up file at `plans/YYYY-MM-DD_get-to-work-followup.md`:
+2. Create a follow-up file at `plans/YYYY-MM-DD_get-to-work-followup.md`, titled `# Get to Work — Follow-up`, with every section `ops:work-autonomously` lists (the agents write to all of them) and one more at the end:
 
 ```markdown
-# Get to Work — Follow-up
-
-## Controversial Decisions
-Items where the agent made a judgment call the user should review.
-
-## Skipped Items
-Opportunities identified but not acted on, with reasons.
-
-## User Input Needed
-Questions that blocked progress on specific items.
-
-## Implementation Issues
-Problems encountered during execution.
-
 ## Cycle Log
 Summary of each identify → prioritize → execute cycle.
 ```
