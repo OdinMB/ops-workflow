@@ -95,7 +95,9 @@ Follow the `prioritize` skill:
 
 ### Step 3: Execute Tasks
 
-Execute the selected tasks. Independent tasks that touch different files can run in parallel — see the worktree note below. Otherwise, execute sequentially.
+Execute the selected tasks one at a time, in this folder, by default. Run executors in parallel only where it pays off — two or three substantial tasks (research, drafting) whose files don't overlap — and then give each its own nested worktree (see **Parallel executors** below). Two writers never share a folder, and this one is yours: you commit here. At most three executors run at once. A task that takes minutes isn't worth the ceremony and the merge; sequence it.
+
+Planners always run in this folder, one at a time, before any worktree is made. Commit each new plan by its path before going on, so a worktree made afterwards carries it.
 
 #### Classify each task as trivial or non-trivial
 
@@ -111,10 +113,6 @@ For trivial tasks, spawn an executor (`subagent_type: "ops:executor"`) directly 
 Task description: <the task from the execution brief>
 Follow-up file path: plans/YYYY-MM-DD_get-to-work-followup.md
 ```
-
-You can spawn multiple executor agents in parallel for independent trivial tasks that touch different files.
-
-**Worktree isolation for parallel executors:** When spawning 2+ executor agents in parallel that might edit overlapping files (e.g., both updating MEMORY.md, the same state file, or the same backlog), use `isolation: "worktree"` on each agent so they work in separate git worktrees and don't create file conflicts. If the tasks clearly touch different files with no overlap, worktrees aren't needed — just spawn them normally. Don't create worktrees for a single agent running alone.
 
 #### Non-trivial tasks: plan first, then execute
 
@@ -132,23 +130,41 @@ Plan file path: <path to plan file>
 Follow-up file path: plans/YYYY-MM-DD_get-to-work-followup.md
 ```
 
-After each executor agent completes:
+#### Parallel executors: nested worktrees from the run's branch
+
+Claude Code's `isolation: "worktree"` branches from `origin`, which lacks this run's unpushed commits, so don't use it. Make each worktree by hand, from the run's branch:
+
+1. Number the task `gtw-NN`, in one sequence across the run. `<run>` is `YYYY-MM-DD-get-to-work`.
+2. Make sure `.claude/worktrees/` is in `.gitignore` (`/ops:scaffold` puts it there); if it isn't, add the line and commit it by path first.
+3. From this folder: `git worktree add --no-track -b <run>-<task> .claude/worktrees/<run>-<task> HEAD`.
+4. Spawn the executor (`subagent_type: "ops:executor"`, no `isolation`) with its working folder and a notes file of its own in place of the shared follow-up file:
+
+```
+Working folder: <absolute path of .claude/worktrees/<run>-<task>>
+Plan file path: <path to plan file, relative to the working folder>   (or Task description: …)
+Follow-up file path: <absolute path of this folder>/plans/<run>-<task>-agent-notes.md
+```
+
+The notes file stays uncommitted in this folder, with the follow-up file's section headings; no other agent writes to it. When the executor returns, its work is committed inside its worktree (step 3 below).
+
+#### After each executor completes
 
 1. Review its summary for anything that should go in the follow-up file
-2. Verify the agent actually persisted insights: check if MEMORY.md or backlog files were updated when the task involved research or analysis. If the agent produced findings but didn't persist them, do it now.
-3. Commit the task's changes, naming their paths: `git add -- <paths>`, then `git commit -m "[task-slug]: [what was done]" -- <paths>`. Take the paths from the executor's summary and `git status`; never `git add -A` or a bare `git commit` (see `work-autonomously`, rule 4)
+2. Verify the agent actually persisted insights: check if MEMORY.md or backlog files were updated when the task involved research or analysis. If the agent produced findings but didn't persist them, do it now (in its worktree, if it had one).
+3. Commit the task's changes, naming their paths: `git add -- <paths>`, then `git commit -m "[task-slug]: [what was done]" -- <paths>` — for a parallel executor, the same two commands with `git -C <worktree>`, inside its worktree. Take the paths from the executor's summary and `git status`; never `git add -A` or a bare `git commit` (see `ops:work-autonomously`, rule 4)
 4. Note the completed task in the Cycle Log
 
 ### Step 4: Merge Worktrees
 
-If any executor agents ran in worktrees during this cycle, merge their branches back into the current get-to-work branch before proceeding:
+If any executors ran in worktrees during this cycle, bring their work back into the run's branch once all of them have returned:
 
-1. For each worktree branch, run `git merge <worktree-branch>`
-2. If a merge conflict occurs, resolve it sensibly — prefer the more complete change, or combine both if they're complementary
-3. Record any non-obvious conflict resolution decisions in the follow-up file under "Controversial Decisions" so the user can review them
-4. After merging, clean up: `git worktree remove <path>` and `git branch -d <worktree-branch>` — one of the deletions `work-autonomously` allows, and only for worktrees this run created
+1. From this folder, for each task branch: `git merge --no-ff <run>-<task>`
+2. If a merge conflict occurs, resolve it sensibly. The usual ones are an `INDEX.md`, `MEMORY.md` or a backlog file both tasks added to: keep both entries, in priority order. Otherwise prefer the more complete change, or combine both if they're complementary.
+3. Record any non-obvious conflict resolution under **Controversial Decisions** in the follow-up file
+4. Fold each task's notes file into the follow-up file, section by section, then delete the notes file
+5. Clean up: `git worktree remove .claude/worktrees/<run>-<task>` and `git branch -d <run>-<task>`. If git refuses because the worktree still holds uncommitted files, leave it and record it under **Files to Delete**; never `--force`
 
-Skip this step if no worktrees were used in this cycle.
+The notes files, worktrees and branches are among the deletions `ops:work-autonomously` allows, and only those this run created. Skip this step if no worktrees were used in this cycle.
 
 ### Step 5: Assess & Loop
 

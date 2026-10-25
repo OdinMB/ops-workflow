@@ -149,7 +149,8 @@ The marketplace registers as `ops-workflow`, so the plugin's id is `ops@ops-work
 All autonomous commands enforce these rules:
 
 - **No real-world actions** — never sends emails, submits forms, posts to social media, or calls external APIs
-- **Only listed deletions** — processed `.update/` inbox files, a batch's finished direct-tasks file, and the worktrees and branches a run created and merged; every other intended deletion is recorded for your review
+- **Only listed deletions** — processed `.update/` inbox files, a batch's finished direct-tasks file, and the worktrees, branches and per-task notes files a run created and merged; every other intended deletion is recorded for your review
+- **One writer per folder** — executors run one at a time by default; when `/ops:get-to-work` runs them in parallel, each gets its own nested worktree made from the run's branch
 - **Explicit-path commits** — each commit names its paths, so a run never sweeps someone else's half-finished work into its commit
 - **No remote push** — only local branches and commits
 - **Transparent decisions** — when uncertain, records its reasoning for you to review

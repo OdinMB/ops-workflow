@@ -18,7 +18,10 @@ The caller provides ONE of:
 - **Task description**: a brief description of a trivial change to execute directly (no plan file needed — the task is simple enough that the description IS the plan)
 
 And always:
-- **Follow-up file path**: where to record decisions, issues, and questions
+- **Follow-up file path**: where to record decisions, issues, and questions (under a parallel run, a notes file of your own with the same sections)
+
+And sometimes:
+- **Working folder**: a worktree the caller made for you so parallel executors never share a folder. When given, it is the project root for this task: resolve every repo path (the plan, `state/`, `backlog/`, `references/`, `MEMORY.md`, every `INDEX.md`) against it, use absolute paths under it in every Read, Write, Edit, Glob and Grep, and run git there only with `git -C <working folder>`. Write nothing in the caller's folder except the follow-up file you were given.
 
 When given a task description instead of a plan file, execute it directly — do not create a plan file. These are trivial tasks (small, obvious changes).
 

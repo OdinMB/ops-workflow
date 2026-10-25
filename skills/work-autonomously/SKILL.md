@@ -22,6 +22,7 @@ These are part of the commands' own process, so they happen without asking:
 - **Processed `.update/` inbox files** — a source file whose useful content has been fully extracted into the knowledge base, per the `update` skill's disposition rules. When unsure, keep it (move it to `references/`) rather than delete it.
 - **`plans/<batch>-direct-tasks.md`** — once `/ops:batch-execute` has processed its last entry.
 - **Worktrees this run created, and their branches** — after their branch is merged into the run's branch: `git worktree remove <path>` and `git branch -d <branch>`. Never `-D`, never `--force`, never a worktree or branch the run did not create.
+- **A parallel task's notes file** (`plans/<run>-<task>-agent-notes.md`) — once `/ops:get-to-work` has folded it into the follow-up file.
 
 Removing an entry from a file — a done backlog item, a stale `INDEX.md` line, a processed direct-task entry — is an edit, not a deletion. Moving a finished plan to `plans/completed/` is a move. Both are fine.
 
