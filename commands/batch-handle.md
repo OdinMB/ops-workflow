@@ -1,5 +1,5 @@
 ---
-description: Plan and execute a batch of ops tasks continuously without user input. Combines /ops:batch-plan and /ops:batch-execute for end-to-end autonomous handling of many items in a row. Never for code changes. Do NOT invoke this yourself! Should only be invoked by the user.
+description: Plan and execute a batch of ops tasks continuously without user input. Combines /ops:batch-plan and /ops:batch-execute for end-to-end autonomous handling of many items in a row. Never for code changes.
 disable-model-invocation: true
 ---
 
