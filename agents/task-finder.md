@@ -40,7 +40,7 @@ Follow the `/find-tasks` skill's full process:
 
 ### Lens 7 (New Directions)
 
-When running standalone (not under `get-to-work`), briefly consider adjacent opportunities and strategic gaps yourself. When running under `get-to-work`, the caller handles opps-finder escalation separately — just flag in your summary if lenses 1-6 yielded fewer than 2 items.
+When running standalone (not under `get-to-work`), briefly consider adjacent opportunities and strategic gaps yourself. When running under `get-to-work`, the caller handles opps-finder escalation separately and decides it from the count of new feasible items lenses 1-6 found, which your summary reports.
 
 ### Autonomous-mode overrides
 
@@ -60,7 +60,7 @@ When done, return a summary in exactly this format:
 Items added to backlog: <N>
 Items by lens: <e.g., "2 goal gaps, 1 stale state, 3 follow-through">
 Completed items cleaned: <N, or "none">
-Lenses 1-6 yield: <sufficient | low (fewer than 2 new feasible items)>
+Lenses 1-6 new feasible items: <N>
 Follow-up items recorded: <N, or "none">
 ```
 

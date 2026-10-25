@@ -65,7 +65,7 @@ Parse `$ARGUMENTS` for the mode (first word). Default to `escalating` if not spe
 - **`tasks`**: Spawn only the task-finder agent. Skip opps-finder entirely.
 - **`opps`**: Spawn only the opps-finder agent. Skip task-finder entirely. The opps-finder produces backlog-ready items — add them directly.
 - **`full`**: Spawn both task-finder and opps-finder agents **in parallel**. Merge their findings for Step 2.
-- **`escalating`** (default): Spawn the task-finder agent first. If it produces fewer than 3 actionable items, also spawn the opps-finder agent to expand the search.
+- **`escalating`** (default): Spawn the task-finder agent first. If its lenses 1-6 found fewer than 2 new feasible items, also spawn the opps-finder agent to expand the search (Escalation, below).
 
 Spawn the task finder with `subagent_type: "ops:task-finder"` and this prompt:
 
@@ -74,11 +74,11 @@ Follow-up file path: plans/YYYY-MM-DD_get-to-work-followup.md
 Scan depth: <"full" on first cycle, "follow-through" on subsequent cycles unless yield is low>
 ```
 
-On the first cycle, use "full" scan depth. On subsequent cycles, start with "follow-through" (focused on recent completions). If the agent's summary reports "Lenses 1-6 yield: low", widen to a full scan on the next attempt.
+On the first cycle, use "full" scan depth. On subsequent cycles, start with "follow-through" (focused on recent completions). If a follow-through scan's `Lenses 1-6 new feasible items` count is below 2, widen to a full scan on the next attempt.
 
 Record what was added in the Cycle Log section of the follow-up file. Commit the backlog updates and the follow-up file, naming their paths (`git add -- <paths>`, then `git commit -m "identify work: add N new backlog items (cycle M)" -- <paths>`)
 
-**Escalation**: If the task-finder agent reports low yield from lenses 1-6, spawn the opps finder with `subagent_type: "ops:opps-finder"` and this prompt:
+**Escalation** (`escalating` mode only; `tasks` never escalates, and `opps` and `full` already ran the opps finder): if the task finder's `Lenses 1-6 new feasible items` count is below 2, spawn the opps finder with `subagent_type: "ops:opps-finder"` and this prompt:
 
 ```
 Additional context:
