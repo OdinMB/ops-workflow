@@ -27,7 +27,7 @@ Before running this skill, you need the project overview already loaded (MEMORY.
 5. `plans/completed/INDEX.md` — scan the 5 most recent completed plans
 6. `references/INDEX.md` — scan for existing research to avoid duplicating
 
-**Isolate the heavy reading when you're on an expensive model.** If you're running on a frontier model (spawned from `/find-all` or `/get-to-work`, or a frontier interactive session), push the context-load above and the lens-3/lens-4 web research to a read-only reader subagent that returns a distilled overview + web digest with citations — then do the ideation (lenses, Filter, Constraints) yourself on that brief. Reading state files and full web pages doesn't need frontier judgment; the ideation does. Enumerate what the reader should extract, or it drops the signal. Skip this on a small project where there's nothing to isolate.
+**Isolate the heavy reading when you can.** In an interactive session on a frontier model, push the context-load above and the lens-3/lens-4 web research to a read-only reader subagent that returns a distilled overview + web digest with citations — then do the ideation (lenses, Filter, Constraints) yourself on that brief. Reading state files and full web pages doesn't need frontier judgment; the ideation does. Enumerate what the reader should extract, or it drops the signal. Skip this on a small project where there's nothing to isolate. The `ops:opps-finder` agent cannot spawn subagents; it does the reading itself, already apart from its caller's context.
 
 ## Analysis Lenses
 

@@ -20,14 +20,9 @@ The caller provides:
 
 Follow the `/find-opps` skill's full process (load context, analyze through 5 lenses, filter, format output) with these autonomous-mode overrides:
 
-### Isolate the heavy reading from the ideation
+### Load the context yourself
 
-You inherit the caller's model — often a frontier model spawned from `/find-all` or `/get-to-work` — and the strategic ideation needs that judgment. Loading MEMORY/state/backlog and fetching web pages does not. Keep the two apart:
-
-- **Delegate the mechanical legs.** Spawn a read-only reader subagent (e.g. the `Explore` subagent type) to (a) load the project overview from the `/find-opps` Context Required section and (b) run the lens-3 and lens-4 web research. Have it return a distilled project overview plus a short digest of web findings with citations — not raw file contents or full page bodies. Enumerate exactly what to extract in its brief (the Context Required list, the project's goals/constraints from MEMORY.md, and the backlog items to dedupe against; for the web legs, the specific questions), or it will summarize away the signal.
-- **Keep the ideation yourself.** Run the 5 lenses, the Filter step, and the scope/right-sizing judgment on the distilled brief, in your own context. Don't delegate this — finding new directions needs the caller's strategic judgment.
-
-Don't rely on the caller to serialize context for you — but don't run everything inline on the frontier model either. On a small project whose whole context is a few files, skip the reader and load it yourself.
+You have no Agent tool, so the skill's advice to hand the heavy reading to a reader subagent does not apply here: load the Context Required files and run the lens-3 and lens-4 web research yourself. You already run in your own context, apart from the caller's, and you inherit the caller's model because the ideation needs its judgment. Don't rely on the caller to serialize context for you.
 
 ### Output handling
 
