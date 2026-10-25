@@ -7,16 +7,16 @@ disable-model-invocation: true
 
 You will be going on a plan execution spree for non-code work. I will provide a list of plans. Execute these plans one by one without interruptions.
 
-Follow the `work-autonomously` skill throughout.
+Follow the `ops:work-autonomously` skill throughout.
 
 # Steps
 
 1. Check the current branch — if you're already on a feature branch, stay on it. Only create a new branch if you're on `main` (or the repo's default branch).
 2. Identify the **batch prefix** to process. The user usually names it (e.g. "execute the music batch"); otherwise infer it from the plan files they list, or ask. Plans use the convention `plans/<batch>-NN-YYYY-MM-DD-<slug>.md` and `plans/<batch>-direct-tasks.md` so multiple concurrent batches can coexist in `plans/`.
-3. Create a follow-up file per the `work-autonomously` skill.
+3. Create a follow-up file per the `ops:work-autonomously` skill.
 4. Build the ordered work queue: merge plan files (`plans/<batch>-NN-*.md`) and any entries in `plans/<batch>-direct-tasks.md` into a single list sorted by numeric prefix. Only include files matching this batch's prefix — leave other batches alone. Don't look ahead, don't run items in parallel.
 5. Process the queue in order. Plan-file items go through the plan-based flow below; direct-task items go through the direct-task flow.
-6. After all items are processed, use the `/review-followup` skill to walk through follow-up items with the user.
+6. After all items are processed, use the `/ops:review-followup` skill to walk through follow-up items with the user.
 7. When all follow-up items are resolved, confirm with the user to merge the branch. Then perform the merge.
 
 # Execution (plan files)
@@ -32,7 +32,7 @@ After each executor agent completes:
 
 1. Review its summary for status and any follow-up items. Note the summary's **Effort** line — if one delegation's effort dwarfs its peers, mention it in the follow-up file so the batch's expensive spots stay visible.
 2. Verify the agent persisted insights: check if MEMORY.md or backlog files were updated when appropriate. If the agent produced findings but didn't persist them, do it now.
-3. Commit the plan's changes (artifacts + state updates + completed plan) with a descriptive message, naming their paths: `git add -- <paths>`, then `git commit -m "<message>" -- <paths>`. Take the paths from the executor's summary and `git status`; never `git add -A` or a bare `git commit` (see `work-autonomously`, rule 4)
+3. Commit the plan's changes (artifacts + state updates + completed plan) with a descriptive message, naming their paths: `git add -- <paths>`, then `git commit -m "<message>" -- <paths>`. Take the paths from the executor's summary and `git status`; never `git add -A` or a bare `git commit` (see `ops:work-autonomously`, rule 4)
 
 Don't batch commits across multiple plans — one commit per plan.
 
@@ -45,6 +45,6 @@ Task description: <the direct-task entry, verbatim>
 Follow-up file path: <path to the follow-up file>
 ```
 
-The executor should carry out the work directly without writing a plan. Same discipline as plan-file items — one commit per direct task, insights persisted when relevant. After a successful direct task, remove its entry from `plans/<batch>-direct-tasks.md` and include the file change in the commit. When the last entry is processed, delete `plans/<batch>-direct-tasks.md` entirely (one of the deletions `work-autonomously` allows) and name it in that commit's pathspec so the deletion is committed.
+The executor should carry out the work directly without writing a plan. Same discipline as plan-file items — one commit per direct task, insights persisted when relevant. After a successful direct task, remove its entry from `plans/<batch>-direct-tasks.md` and include the file change in the commit. When the last entry is processed, delete `plans/<batch>-direct-tasks.md` entirely (one of the deletions `ops:work-autonomously` allows) and name it in that commit's pathspec so the deletion is committed.
 
 If a direct task turns out to be non-trivial once the executor starts (surprising scope, unclear approach, surfacing design questions), record it in the follow-up file and move on — don't spiral into an ad-hoc plan inside the direct-task flow.

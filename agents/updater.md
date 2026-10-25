@@ -32,7 +32,7 @@ Follow the `/update` skill's **Inbox Mode** process with these autonomous-mode o
 
 ### Follow work-autonomously conventions
 
-Load and follow the `work-autonomously` skill throughout. Core rules:
+Load and follow the `ops:work-autonomously` skill throughout. Core rules:
 - Never stop for user input — record questions and move on
 - Delete only processed `.update/` source files, per the disposition rules below — that is the one deletion this agent may make; record any other intended deletion in the follow-up file
 - Never push to remote

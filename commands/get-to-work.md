@@ -226,6 +226,6 @@ Commit the summary and follow-up files by path — `git add --` those two paths,
 
 When the user returns, tell them in plain terms what the project gained and what it cost, what you deliberately left alone and why, and what still needs a decision from them. The table and the Stats block are the record a future session reads — don't read them out, don't recite file names, and don't turn counts into the briefing.
 
-Then use the `/review-followup` skill to walk through the follow-up file.
+Then use the `/ops:review-followup` skill to walk through the follow-up file.
 
 Once follow-up items are resolved, offer the closing decision at the level of the work rather than the level of commits: keep all of it, keep it except one named piece — named by what it is, "the funder research", never by commit hash or filename — or leave the branch parked for now. Whichever they pick, map it onto the actual commits yourself.

@@ -35,7 +35,7 @@ Follow the `/execute` skill's full process (read plan, execute, review, state up
 
 ### Follow work-autonomously conventions
 
-Load and follow the `work-autonomously` skill throughout. Core rules:
+Load and follow the `ops:work-autonomously` skill throughout. Core rules:
 - Never stop for user input — record questions and move on
 - Never delete files — none of the deletions that skill allows fall to an executor, so record intended deletions in the follow-up file
 - Never push to remote

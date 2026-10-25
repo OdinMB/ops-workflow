@@ -7,11 +7,11 @@ disable-model-invocation: true
 
 You will be going on a plan writing spree for non-code work. I will provide a list of tasks or ideas. Write an ops plan for each of these items without interruptions.
 
-Follow the `work-autonomously` skill throughout.
+Follow the `ops:work-autonomously` skill throughout.
 
 # Guidelines
 
-- Create a follow-up file per the `work-autonomously` skill.
+- Create a follow-up file per the `ops:work-autonomously` skill.
 - At the start of the batch, pick a short slug-style **batch prefix** that names the theme of this batch (e.g. `music`, `q2-launch`, `donor-outreach`). Use the user's framing if they offered one; otherwise derive it from the tasks. Keep it lowercase, hyphenated, and brief.
 - Filenames of plans should reference the goal of the plan, with today's date and the batch+order prefix: `<batch>-<NN>-YYYY-MM-DD-<slug>.md` (e.g. `music-01-2026-04-19-launch-brief.md`). The batch prefix keeps multiple concurrent ordered batches in `plans/` from stepping on each other.
 - You can write plans in parallel if they don't directly relate to each other.
@@ -60,4 +60,4 @@ You can spawn multiple planner agents in parallel if the tasks don't directly re
 
 # Review
 
-Once all plans are written, use the `/review-followup` skill to walk through the follow-up file with the user. After each item is resolved, integrate the decision into the relevant plan file so each plan is self-contained. Then delete the follow-up file.
+Once all plans are written, use the `/ops:review-followup` skill to walk through the follow-up file with the user. After each item is resolved, integrate the decision into the relevant plan file so each plan is self-contained. Then delete the follow-up file.

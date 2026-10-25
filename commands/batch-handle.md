@@ -7,7 +7,7 @@ disable-model-invocation: true
 
 You will be going on a plan-and-execute spree for non-code work. I will provide a list of tasks or ideas. For each one, write an ops plan and then execute it — without interruptions.
 
-Follow the `work-autonomously` skill throughout.
+Follow the `ops:work-autonomously` skill throughout.
 
 **Scope check**: This workflow produces content, research, specs, and briefs — not code. Never include app codebase changes in plans or execution.
 
@@ -19,17 +19,17 @@ This command composes the two existing batch commands. Run them in sequence usin
 
 Follow `/ops:batch-plan` to produce ordered plan files in `plans/` using a shared batch prefix (e.g. `music-01-YYYY-MM-DD-<slug>.md`, `music-02-…`, …). Create the follow-up file at the start of this phase — reuse it for the execution phase instead of creating a second one.
 
-Skip `/ops:batch-plan`'s own review step: do NOT run `/review-followup` between phases, and do NOT delete the follow-up file. The user reviews everything once at the end.
+Skip `/ops:batch-plan`'s own review step: do NOT run `/ops:review-followup` between phases, and do NOT delete the follow-up file. The user reviews everything once at the end.
 
 ## 2. Execution phase
 
 Follow `/ops:batch-execute` against the plans just written, passing the same follow-up file. Execute plans in the order their prefixes indicate.
 
-Skip `/ops:batch-execute`'s final `/review-followup` step as well — you'll run it once at the very end.
+Skip `/ops:batch-execute`'s final `/ops:review-followup` step as well — you'll run it once at the very end.
 
 ## 3. Review
 
-Once all plans are executed, run `/review-followup` on the shared follow-up file. After all items are resolved, confirm with the user to merge the branch back into the main branch, then perform the merge.
+Once all plans are executed, run `/ops:review-followup` on the shared follow-up file. After all items are resolved, confirm with the user to merge the branch back into the main branch, then perform the merge.
 
 # Why compose instead of duplicate
 
