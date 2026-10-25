@@ -134,6 +134,7 @@ The marketplace registers as `ops-workflow`, so the plugin's id is `ops@ops-work
 | `/ops:get-to-work`     | Fully autonomous loop: find work → prioritize → execute → repeat. Step away and come back to a follow-up review. |
 | `/ops:batch-plan`      | Write multiple plans in parallel without interruption.                                                           |
 | `/ops:batch-execute`   | Execute multiple approved plans sequentially without interruption.                                               |
+| `/ops:batch-handle`    | Plan and then execute a batch of tasks in one run, with a single review at the end.                              |
 | `/ops:review-followup` | Walk through decisions Claude made during autonomous runs.                                                       |
 
 ### Discovery
@@ -187,9 +188,12 @@ Commands (listed above) are orchestrators built from composable skills (`/plan`,
 
 ### Permissions and Autonomous Execution
 
-The autonomous commands (`/ops:get-to-work`, `/ops:batch-execute`) run for extended periods without user intervention. For this to work smoothly, Claude Code needs pre-approved permissions for the tools these agents use.
+The autonomous commands (`/ops:get-to-work`, `/ops:batch-execute`) run for extended periods without user intervention. How their tool calls get approved depends on the permission mode, so name the mode when you start an unattended run rather than relying on whatever your settings default to:
 
-**If the process keeps pausing for permission prompts, it's not truly autonomous.** Configure your `settings.json` (globally at `~/.claude/settings.json` or per-project at `.claude/settings.json`) with `allow` lists covering:
+- **Auto mode** — a classifier judges each action, so a run rarely stops for a prompt and needs no long allow list. Headless: `claude -p --permission-mode auto "/ops:get-to-work"`.
+- **Default or `dontAsk` mode** — only what your allow list covers runs without asking; in `dontAsk`, everything else is refused.
+
+**If the process keeps pausing for permission prompts, it's not truly autonomous.** Outside auto mode, configure your `settings.json` (globally at `~/.claude/settings.json` or per-project at `.claude/settings.json`) with `allow` lists covering:
 
 - File operations: `Bash(ls *)`, `Bash(mv *)`, `Bash(rm ".tmp/*")`
 - Git commands (commits name their paths: `git add -- <paths>`, then `git commit -m "…" -- <paths>`): `Bash(git add *)`, `Bash(git status *)`, `Bash(git log *)`, `Bash(git diff *)`, `Bash(git branch *)`, `Bash(git commit *)`
