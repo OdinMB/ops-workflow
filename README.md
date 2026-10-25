@@ -176,7 +176,7 @@ Commands (listed above) are orchestrators built from composable skills (`/plan`,
       ↓ (escalate if low yield)
   opps-finder agent → find new directions → add backlog items
       ↓
-  prioritize → select 2-3 independent, feasible tasks
+  prioritize → select up to 3 feasible tasks worth doing
       ↓
   executor agents → execute each task, update state, commit
       ↓

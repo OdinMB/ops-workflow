@@ -23,7 +23,8 @@ fields, and let the caller decide what to persist.
 **Opps finder** — spawn with `subagent_type: "ops:opps-finder"` and this prompt:
 
 ```
-Your job: identify 3-5 new directions of work this project should explore.
+Your job: identify the new directions of work genuinely worth exploring
+(often 3-5; fewer or none is a valid result).
 Stay grounded in the project's goals and limitations from MEMORY.md.
 Every suggestion must be something an autonomous agent can start working on.
 ```

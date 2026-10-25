@@ -1,11 +1,11 @@
 ---
 name: prioritize
-description: Pick 2–3 independent ops tasks from active plans and backlog for autonomous execution, weighing impact, feasibility, and project goals.
+description: Pick the ops tasks genuinely worth doing next (at most 3) from active plans and backlog for autonomous execution, weighing impact, feasibility, and project goals.
 ---
 
 # Ops Prioritize
 
-Given a project's active plans, backlog, and goals, select 2-3 tasks for immediate autonomous execution. The output is a ranked shortlist with execution order — this skill does NOT execute them.
+Given a project's active plans, backlog, and goals, select the tasks genuinely worth executing now — at most 3. The output is a ranked shortlist with execution order — this skill does NOT execute them.
 
 ## Context Required
 
@@ -33,23 +33,13 @@ Can an autonomous agent complete this task without human input or real-world act
 
 Tasks with low feasibility should be skipped — they'll end up in the follow-up file anyway.
 
-### Independence (weight: critical)
+### Independence (only for tasks meant to run in parallel)
 
-Can this task be completed without depending on or conflicting with other selected tasks?
+Tasks that will run one after another need not be independent. If the caller wants to run two in parallel, they must be:
 
 - Tasks that modify the same files are NOT independent
 - Tasks where one's output is the other's input are NOT independent
 - Tasks touching different backlog areas, state files, or reference topics are usually independent
-
-Independence is a hard constraint, not a gradient. If two high-impact tasks conflict, pick the higher-impact one and find an independent alternative for the second slot.
-
-### Effort (weight: moderate)
-
-Prefer a mix of effort levels. A good batch might be:
-- 1 medium task (the main contribution of this cycle)
-- 1-2 light tasks (quick wins that keep momentum)
-
-Avoid selecting only heavy tasks — the cycle should produce visible progress. Avoid selecting only light tasks — the cycle should produce meaningful progress.
 
 ## Process
 
@@ -69,12 +59,7 @@ Rate each candidate on impact and feasibility. Discard anything with low feasibi
 
 ### Step 3: Select
 
-Pick 2-3 tasks that:
-
-1. Have the highest combined impact × feasibility score
-2. Are mutually independent (hard constraint)
-3. Include a mix of effort levels (soft preference)
-4. Together represent a productive cycle of work
+Pick the tasks with the highest combined impact × feasibility that are worth the user's review time — at most 3, and fewer, or none, when that is all the candidates justify. A cosmetic or speculative item doesn't earn a slot because one is free.
 
 If active plans exist, prioritize them — they represent work the user already approved. Backlog items and newly identified work fill remaining slots.
 
@@ -103,13 +88,10 @@ If a selected task doesn't have an existing plan file, note that the sub-agent s
 Determine execution order. Preferences:
 
 1. Tasks with existing plans go first (less setup overhead)
-2. Light tasks before heavy ones (quick wins build momentum and context)
-3. If a task might inform another (even if independent), put it first
+2. If a task might inform another, put it first
 
 ## Rules
 
-- **Always select at least 2 tasks** unless the backlog is nearly empty
 - **Never select more than 3** — better to complete a focused batch and reassess
-- **Skip tasks that require real-world actions** — no emails, form submissions, API calls to external services, purchases, or social media posts
-- **Prefer breadth over depth** — touching multiple project areas in one cycle is better than deep-diving one area, unless one area is clearly the bottleneck
+- **Skip tasks that need a real-world action** — `ops:work-autonomously` lists them
 - **Respect the user's priorities** — if MEMORY.md or state files indicate urgency on a topic, weight those tasks higher

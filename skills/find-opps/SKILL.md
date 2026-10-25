@@ -85,7 +85,7 @@ Produce backlog-ready items:
 ...
 ```
 
-Aim for 3-5 items. Prefer a mix of lenses and effort levels. At least one should be a quick win (light effort, clear value), and at least one should be a deeper investigation that could shift the project's trajectory.
+Return the items genuinely worth pursuing — often 3-5; fewer, or none, is a valid result. There is no required mix of lenses or effort levels.
 
 This block is the record — it goes back to the caller when a subagent runs this skill, and into the backlog when the main agent runs it directly. When briefing the user, the same items become short prose instead: each one says what the project would learn or gain and what it would cost, with lens names and deliverable paths left out.
 
