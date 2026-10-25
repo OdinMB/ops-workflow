@@ -21,11 +21,9 @@ Follow the `work-autonomously` skill throughout.
 
 # Execution (plan files)
 
-For each plan file, spawn an **executor sub-agent** (`agents/executor.md`):
+For each plan file, spawn an executor with `subagent_type: "ops:executor"` and this prompt:
 
 ```
-Read the executor agent instructions at: agents/executor.md
-
 Plan file path: <path to the plan>
 Follow-up file path: <path to the follow-up file>
 ```
@@ -40,11 +38,9 @@ Don't batch commits across multiple plans — one commit per plan.
 
 # Execution (direct tasks)
 
-For each entry in `plans/<batch>-direct-tasks.md`, spawn an **executor sub-agent** with just the task description (no plan file):
+For each entry in `plans/<batch>-direct-tasks.md`, spawn an executor (`subagent_type: "ops:executor"`) with just the task description (no plan file):
 
 ```
-Read the executor agent instructions at: agents/executor.md
-
 Task description: <the direct-task entry, verbatim>
 Follow-up file path: <path to the follow-up file>
 ```

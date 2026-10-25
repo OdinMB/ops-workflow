@@ -10,11 +10,9 @@ Run both finder agents in parallel, then brief the user on what the project's ga
 
 Launch two sub-agents simultaneously:
 
-**Task finder** — spawn a `task-finder` agent:
+**Task finder** — spawn with `subagent_type: "ops:task-finder"` and this prompt:
 
 ```
-Read the task-finder agent instructions at: agents/task-finder.md
-
 Scan depth: full
 
 This is a discovery scan. Do NOT add anything to the backlog, and do NOT write a
@@ -22,11 +20,9 @@ follow-up file — return every item you find in your response, with your usual
 fields, and let the caller decide what to persist.
 ```
 
-**Opps finder** — spawn an `opps-finder` agent:
+**Opps finder** — spawn with `subagent_type: "ops:opps-finder"` and this prompt:
 
 ```
-Read the opps-finder agent instructions at: agents/opps-finder.md
-
 Your job: identify 3-5 new directions of work this project should explore.
 Stay grounded in the project's goals and limitations from MEMORY.md.
 Every suggestion must be something an autonomous agent can start working on.

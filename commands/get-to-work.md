@@ -67,11 +67,9 @@ Parse `$ARGUMENTS` for the mode (first word). Default to `escalating` if not spe
 - **`full`**: Spawn both task-finder and opps-finder agents **in parallel**. Merge their findings for Step 2.
 - **`escalating`** (default): Spawn the task-finder agent first. If it produces fewer than 3 actionable items, also spawn the opps-finder agent to expand the search.
 
-Spawn an **task-finder sub-agent** (`agents/task-finder.md`):
+Spawn the task finder with `subagent_type: "ops:task-finder"` and this prompt:
 
 ```
-Read the task-finder agent instructions at: agents/task-finder.md
-
 Follow-up file path: plans/YYYY-MM-DD_get-to-work-followup.md
 Scan depth: <"full" on first cycle, "follow-through" on subsequent cycles unless yield is low>
 ```
@@ -80,11 +78,9 @@ On the first cycle, use "full" scan depth. On subsequent cycles, start with "fol
 
 Record what was added in the Cycle Log section of the follow-up file. Commit the backlog updates and the follow-up file, naming their paths (`git add -- <paths>`, then `git commit -m "identify work: add N new backlog items (cycle M)" -- <paths>`)
 
-**Escalation**: If the task-finder agent reports low yield from lenses 1-6, spawn an **opps-finder sub-agent** (`agents/opps-finder.md`):
+**Escalation**: If the task-finder agent reports low yield from lenses 1-6, spawn the opps finder with `subagent_type: "ops:opps-finder"` and this prompt:
 
 ```
-Read the opps-finder agent instructions at: agents/opps-finder.md
-
 Additional context:
 - What lenses 1-6 found (or didn't): <brief summary from task-finder agent>
 
@@ -123,11 +119,9 @@ Execute the selected tasks. Independent tasks that touch different files can run
 
 #### Trivial tasks: skip planning, execute directly
 
-For trivial tasks, spawn an **executor sub-agent** (`agents/executor.md`) directly with a task description:
+For trivial tasks, spawn an executor (`subagent_type: "ops:executor"`) directly with a task description:
 
 ```
-Read the executor agent instructions at: agents/executor.md
-
 Task description: <the task from the execution brief>
 Follow-up file path: plans/YYYY-MM-DD_get-to-work-followup.md
 ```
@@ -138,20 +132,16 @@ You can spawn multiple executor agents in parallel for independent trivial tasks
 
 #### Non-trivial tasks: plan first, then execute
 
-For non-trivial tasks, first ensure a plan exists. If no plan file exists, spawn a **planner sub-agent** (`agents/planner.md`) to create one:
+For non-trivial tasks, first ensure a plan exists. If no plan file exists, spawn a planner (`subagent_type: "ops:planner"`) to create one:
 
 ```
-Read the planner agent instructions at: agents/planner.md
-
 Task description: <the task from the execution brief>
 Follow-up file path: plans/YYYY-MM-DD_get-to-work-followup.md
 ```
 
-Then spawn the **executor sub-agent** with the plan:
+Then spawn an executor (`subagent_type: "ops:executor"`) with the plan:
 
 ```
-Read the executor agent instructions at: agents/executor.md
-
 Plan file path: <path to plan file>
 Follow-up file path: plans/YYYY-MM-DD_get-to-work-followup.md
 ```

@@ -46,11 +46,9 @@ If no trivial tasks are present, don't create the file.
 
 # Planning
 
-For each **needs-plan** task, spawn an **planner sub-agent** (`agents/planner.md`):
+For each **needs-plan** task, spawn a planner with `subagent_type: "ops:planner"` and this prompt:
 
 ```
-Read the planner agent instructions at: agents/planner.md
-
 Task description: <the task or idea to plan>
 Follow-up file path: <path to the follow-up file>
 Plan file path: plans/<batch>-<NN>-YYYY-MM-DD-<slug>.md

@@ -13,4 +13,4 @@ Process external information into the knowledge base.
 
 Use the `/update` skill with `$ARGUMENTS` passed through. The skill handles both inline and inbox modes.
 
-**When called from autonomous contexts** (e.g., `/ops:tidy`, `/ops:get-to-work`): the caller should spawn the `updater` agent instead of invoking this command, to keep the work in an isolated context window.
+**When called from autonomous contexts** (e.g., `/ops:tidy`, `/ops:get-to-work`): the caller should spawn the updater agent (`subagent_type: "ops:updater"`) instead of invoking this command, to keep the work in an isolated context window.
