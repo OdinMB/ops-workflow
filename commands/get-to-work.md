@@ -54,7 +54,7 @@ Summary of each identify → prioritize → execute cycle.
 
 Repeat this cycle until one of the stopping conditions (Phase 3) is met.
 
-**Core duty: your job is to find and do useful work.** If the current backlog is full of blocked items, that means you need to generate new items — not stop. Research, state refreshes, content drafts, consistency fixes, and knowledge-gap analysis are always available. "Everything is blocked" means the backlog needs new entries, not that you're done.
+**Your job is to use the time while the user is away on work worth doing.** A backlog of blocked items is a reason to look for work an agent can do — preparatory research, state refreshes, drafts, knowledge gaps — before concluding there is none. Everything you finish lands in the user's review, so the bar is whether it is worth their time, not whether it is possible.
 
 ### Step 1: Identify New Work
 
@@ -105,7 +105,7 @@ Follow the `prioritize` skill:
 - **`tasks` mode**: Only maintenance and improvement work — consistency fixes, state refreshes, knowledge gaps, stale content. New strategic directions are out of scope.
 - **`opps`/`full`/`escalating` modes**: New strategic directions ARE in scope. The opps-finder exists specifically to find these. Do not skip items for being "new work" or "not maintenance" when the opps-finder suggested them.
 
-**If prioritization yields zero feasible tasks**: this is not a stopping condition. Go back to Step 1 immediately and run a full-lens scan focused on generating agent-feasible work.
+**If prioritization yields no task worth doing** after only a follow-through scan, go back to Step 1 for a full scan (and, outside `tasks` mode, the opps finder) before applying Phase 3.
 
 ### Step 3: Execute Tasks
 
@@ -174,28 +174,16 @@ After completing all tasks in a cycle:
 
 ## Phase 3: Stopping Conditions
 
-Keep cycling. The default is to **keep going**, not to stop.
+Keep cycling while there is work worth the user's review time; stop when what remains is not. A cosmetic edit, a speculative direction that nothing in MEMORY.md, state or the backlog points to, or filler that restates what the knowledge base already holds does not justify another cycle. Record such items under **Suggested Follow-Up Work** in the follow-up file rather than writing them into the knowledge base.
 
-You stop ONLY when:
+Stop when one of these holds:
 
-- **`once` mode**: Stop after completing one full identify→prioritize→execute pass
-- **User-specified cutoff**: if the user provided a task limit or time constraint in $ARGUMENTS, respect it
-- **Hard block**: ALL of the following must be true simultaneously:
-  1. Every candidate task in the current backlog requires real-world actions or is blocked on user input
-  2. You ran the task-finder agent with a **full scan across ALL lenses** — not just follow-through
-  3. You spawned the **opps-finder agent** and it produced zero feasible items even after considering adjacent opportunities, strategic gaps, and preparatory research
-  4. That combined effort produced zero new feasible items that an autonomous agent could work on
-  5. You have already completed at least one full identify→prioritize→execute cycle in this session
+- **`once` mode** — after one full identify→prioritize→execute pass.
+- **The user's cutoff** — a task, cycle or time limit given in `$ARGUMENTS` (e.g. "max 3 cycles").
+- **Nothing left worth doing** — after a full task-finder scan (not only follow-through) and, outside `tasks` mode, the opps finder, the feasible candidates left are cosmetic or speculative.
+- **Hard block** — every candidate needs a real-world action or the user's input, and that same full search found nothing an agent can do.
 
-Before declaring a hard block, verify each condition. If you only ran follow-through, go back and run a full scan. If you haven't spawned the opps-finder agent yet, do that before stopping.
-
-These are NOT reasons to stop:
-- "Diminishing returns" — small tasks are still valuable
-- "The backlog is empty" — generate more items
-- "Most items are blocked" — generate new ones that aren't
-- "Remaining items require user action" — that describes the *current* backlog, not all possible work. Find new work.
-
-When a stopping condition is met, proceed to Phase 4.
+Write which one held, and why, under **Stopping Reason** in the summary, then proceed to Phase 4.
 
 ## Phase 4: Summary & Handoff
 
