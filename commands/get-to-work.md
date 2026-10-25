@@ -143,7 +143,7 @@ The notes file stays uncommitted in this folder, with the follow-up file's secti
 
 1. Review its summary for anything that should go in the follow-up file
 2. Verify the agent actually persisted insights: check if MEMORY.md or backlog files were updated when the task involved research or analysis. If the agent produced findings but didn't persist them, do it now (in its worktree, if it had one).
-3. Commit the task's changes, naming their paths: `git add -- <paths>`, then `git commit -m "[task-slug]: [what was done]" -- <paths>` — for a parallel executor, the same two commands with `git -C <worktree>`, inside its worktree. Take the paths from the executor's summary and `git status`; never `git add -A` or a bare `git commit` (see `ops:work-autonomously`, rule 4)
+3. Commit the task's changes, naming their paths: `git add -- <paths>`, then `git commit -m "[task-slug]: [what was done]" -- <paths>` — for a parallel executor, the same two commands with `git -C <worktree>`, inside its worktree. Take the paths from the executor's summary and `git status`; never `git add -A` or a bare `git commit` (see `ops:work-autonomously`, rule 4). Never name a `*-agent-notes.md` file: it stays uncommitted until Step 4 folds it in and deletes it
 4. Note the completed task in the Cycle Log
 
 ### Step 4: Merge Worktrees
