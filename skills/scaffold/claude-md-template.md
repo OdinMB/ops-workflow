@@ -35,7 +35,7 @@ You cannot: write code, create components, modify apps, or run app commands.
 - `plans/` — Active plans currently being executed.
 - `plans/completed/` — Completed plans with outcomes documented.
 - `.update/` — **Inbox**: drop files here for processing via `/ops:update`. Contents are gitignored. After processing, files are either deleted or moved to `references/` or `artifacts/`.
-- `MEMORY.md` — Always loaded in the system prompt. Contains project description, constraints, and key learnings only.
+- `MEMORY.md` — Imported at the end of this file, so every session loads it. Contains project description, constraints, and key learnings only.
 
 ## Persisting Insights
 
@@ -152,3 +152,5 @@ Any living document (state files, backlogs, MEMORY.md) should have a `_Last upda
 ## Memory
 
 All project memory lives in this `CLAUDE.md` file and `MEMORY.md`. Do not use or update the auto-memory file under `~/.claude/projects/`.
+
+@MEMORY.md
