@@ -1,7 +1,6 @@
 ---
 description: Generate an executive overview of the project. Synthesizes state, backlogs, and recent plans into a ranked action plan answering "What should we do next?"
-model: sonnet
-allowed-tools: Read, Glob, Grep
+allowed-tools: Read, Glob, Grep, Bash(git log *)
 ---
 
 Generate an executive overview for this project. $ARGUMENTS
@@ -23,9 +22,19 @@ Read only the high-level INDEX files first. Be selective about drilling into det
 **Round 2 — Selective drill-down:**
 
 - Read every **active plan file** found by the glob (not completed ones — titles in `plans/completed/INDEX.md` are enough for momentum context).
-- Read up to **3** individual state or backlog files if they're directly relevant to your recommendations or the user's focus area. No more than 3.
+- Read the individual state or backlog files your recommendations rest on, or that the user's focus area needs. Stay selective: read to check a candidate, not to survey the repo.
 
-### 2. Analyze
+### 2. Verify before ranking
+
+The INDEX summaries, backlog entries and plans are claims about the project, and they drift. Before a candidate goes on your list, check the claims it rests on:
+
+- **Already done?** Look for its output in `references/`, `artifacts/`, `state/` or `plans/completed/`. An active plan whose artifacts already exist, or a backlog item whose research is already written up, is housekeeping, not next work.
+- **Still blocked?** A `WAITING (` marker or a dependency may have resolved since it was written; check the state file it points at.
+- **Still current?** Check the date in the state file it relies on, and `git log --oneline -15` for work the indexes don't show yet.
+
+Drop or demote what fails the check, and put the mismatch under Housekeeping.
+
+### 3. Analyze
 
 With all context loaded, assess:
 
@@ -35,7 +44,7 @@ With all context loaded, assess:
 - **Strategic bets**: What bigger moves could shift the project's trajectory?
 - **Staleness**: Are any state files outdated? Are backlog items obsolete?
 
-### 3. Output
+### 4. Output
 
 Present the overview using this structure. Do not explain the project — the user knows what it is. Focus on **where things stand** and **what to do next**.
 
@@ -120,7 +129,7 @@ Grep all files under `state/` and `backlog/` for the marker `WAITING (`. Each ma
 
 ---
 
-### 4. Focus Area
+### 5. Focus Area
 
 If the user specified a focus area, add an additional section after "What to Do Next":
 
