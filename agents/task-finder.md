@@ -3,6 +3,7 @@ name: task-finder
 description: Scan an ops project across 7 lenses (goal gaps, stale state, research, content, follow-through, hygiene, directions). Updates backlog.
 tools: Read, Glob, Grep, Write, Edit
 model: sonnet
+effort: high
 skills:
   - ops:find-tasks
 ---
