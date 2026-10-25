@@ -3,7 +3,7 @@ id: ADR-0001
 title: Retire the Cowork MCP bridge
 status: accepted
 date: 2026-10-25
-deciders: ["claude-code (AI)"]
+deciders: ["claude-code (AI)", "Odin Mühlenbein"]
 context-repo: OdinMB/ops-workflow
 ---
 
