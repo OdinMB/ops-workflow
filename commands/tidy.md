@@ -18,6 +18,8 @@ Wait for the updater agent to finish before proceeding — the consistency check
 
 ## Phase 1: Scan
 
+If the repo has an `autopilot/` folder (see the `## Autopilot` section of its CLAUDE.md), leave it out of every check below and every fix in Phase 2: its files are autopilot's, so housekeeping never indexes, splits, moves, archives or deletes anything inside it.
+
 ### 1. INDEX.md Accuracy
 
 For every folder that contains an `INDEX.md`:
@@ -40,7 +42,7 @@ For every folder that contains an `INDEX.md`:
 
 Find `.md` files that aren't listed in any `INDEX.md`. Exclude:
 - `MEMORY.md`, `CLAUDE.md`, `README.md` (root-level files)
-- Files in `.claude/`, `.context/`, `.plans/` directories
+- Files in `.claude/`, `.context/`, `.plans/`, `.tmp/`, `autopilot/` directories
 - Files in `plans/` (active plans aren't indexed)
 
 ### 4. Stale Dates

@@ -34,7 +34,7 @@ Read the existing structure (CLAUDE.md, MEMORY.md, folder listing). Then ask:
 
 1. **What needs changing?** — or just check against the template and propose fixes
 2. **Missing folders?** — offer to create any missing standard folders with INDEX.md files
-3. **CLAUDE.md drift?** — show specific differences from the template and offer to patch
+3. **CLAUDE.md drift?** — show specific differences from the template and offer to patch. An `## Autopilot` section, which autopilot's setup writes, is not drift: leave it and the `autopilot/` folder as they are
 
 ## Directory Structure
 
@@ -267,8 +267,8 @@ Write a project README covering:
 
 After scaffolding (new repo) or adjusting:
 
-1. Verify every folder has an INDEX.md
+1. Verify every folder has an INDEX.md (skip `autopilot/`, which keeps its own files)
 2. Verify MEMORY.md references are valid
 3. Verify CLAUDE.md has no remaining `[PROJECT NAME]` placeholders
 4. Run `ls` on each directory to confirm structure matches expectations
-5. Stage all files and create the initial commit: `"Initial scaffolding"`
+5. Commit only the files this run wrote or changed, by explicit pathspec: `git add -- <paths>`, then `git commit -m "<message>" -- <paths>`, leaving out the gitignored `.claude/settings.local.json`. In new repo mode that is every file scaffolded, as the initial commit `"Initial scaffolding"`; in adjust mode, a message saying what was aligned. Never `git add -A`, `git add .` or a bare `git commit`: in an existing repo they sweep another writer's work into the commit.

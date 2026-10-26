@@ -48,6 +48,10 @@ Check git log for commits that touched MEMORY.md since `$SINCE`. If any exist, n
 
 Compare the current backlog state against git history to identify items that were added or removed since `$SINCE`. Use `git log --oneline --after=$SINCE -- backlog/` to approximate this.
 
+#### h. Autopilot Digests
+
+If the repo has an `autopilot/digests/` folder (see the `## Autopilot` section of its CLAUDE.md), read the digests dated on or after `$SINCE` (`YYYY-MM-DD.md`) and note what autopilot built, landed or proposed in the period.
+
 ### 3. Assess Volume and Set Granularity
 
 Count the total number of changes (completed plans + state updates + artifacts + significant commits). The output should scale with what actually happened — **never pad quiet periods with filler**. A busy period needs compression; a quiet period just needs less output.
@@ -112,6 +116,14 @@ Prioritize by impact, not chronology. Group related work on adjacent rows.
 ## Backlog Changes
 - Added: <item> _(backlog/<file>.md)_
 - Removed: <item>
+```
+
+#### Autopilot (omit if no digest falls in the period)
+
+```
+## Autopilot
+- Built or landed: <what> _(autopilot/digests/<date>.md)_
+- Proposed: <what>
 ```
 
 #### Key Learnings (omit if MEMORY.md didn't change)

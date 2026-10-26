@@ -11,6 +11,8 @@ Given a project's active plans, backlog, and goals, select the tasks genuinely w
 
 You need the full project overview loaded (MEMORY.md, state, backlog, active plans) plus any newly identified work items from `find-tasks`.
 
+If the repo has an `autopilot/` folder (see the `## Autopilot` section of its CLAUDE.md), the product goals are the ones in `autopilot/charter.md`, and MEMORY.md's goals cover everything else; weigh impact against both.
+
 ## Selection Criteria
 
 Score each candidate task on these dimensions:

@@ -9,7 +9,7 @@ You will be going on a plan-and-execute spree for non-code work. I will provide 
 
 Follow the `ops:work-autonomously` skill throughout.
 
-**Scope check**: This workflow produces content, research, specs, and briefs — not code. Never include app codebase changes in plans or execution.
+**Scope check**: This workflow produces content, research, specs, and briefs — not code. Never include app codebase changes in plans or execution. Where the repo has an `autopilot/` folder, code or product work also becomes a note in `autopilot/inbox/`, as `/ops:batch-plan` says.
 
 # Process
 

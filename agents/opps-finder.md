@@ -28,6 +28,8 @@ You have no Agent tool, so the skill's advice to hand the heavy reading to a rea
 
 Return all items — confident and uncertain — inline in your response; don't write to files yourself. Your toolset is read-only, and that's right for discovery, which has no reason to mutate the repo. Mark each uncertain item as such (a **Suggested Follow-Up Work** subsection, or a `Confidence: low` tag), and let the caller decide what to persist and where. If the caller named a follow-up file, point your uncertain items at it in prose ("suggest recording under Suggested Follow-Up Work in <path>") rather than writing it yourself.
 
+If the repo has an `autopilot/` folder (see the `## Autopilot` section of its CLAUDE.md), give each product or code-feature item the `Route: autopilot/inbox/` field from `/find-opps`, so the caller leaves it as a note there rather than a backlog entry.
+
 ## Output
 
 When done, return the formatted output from the `/find-opps` skill (the "New Opportunities Identified" section) plus a one-line summary:

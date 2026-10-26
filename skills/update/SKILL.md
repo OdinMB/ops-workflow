@@ -31,6 +31,8 @@ The user provided content directly: $ARGUMENTS
 
    Trap: "current strategic posture" content feels state-shaped but is forward-looking strategy → `references/`.
 
+   If the repo has an `autopilot/` folder (see the `## Autopilot` section of its CLAUDE.md), product feedback, user voice and product or feature ideas go to a short note in `autopilot/inbox/` (`YYYY-MM-DD-<slug>.md`), not to `state/`, `backlog/` or `references/`. Only when the user explicitly asks you to change product goals, personas or the roadmap do you edit autopilot's files directly, as far as that section allows, and say so in the commit message.
+
 3. **Integrate.** For each piece of information:
    - Read the target file first — never overwrite blindly. Merge or append.
    - When updating state files, update the `_Last updated: YYYY-MM-DD_` line.
@@ -60,7 +62,7 @@ Process all files in the `.update/` directory.
    b. **Classify** — same categories as inline mode (status update, research, task, deliverable, mixed).
 
    c. **Extract and integrate** relevant information into the knowledge base:
-      - Create or update files in `state/`, `references/`, `backlog/`, or `artifacts/` as appropriate.
+      - Create or update files in `state/`, `references/`, `backlog/`, or `artifacts/` as appropriate — or, for product feedback and ideas in a repo with an `autopilot/` folder, an `autopilot/inbox/` note (inline mode, step 2).
       - Read target files before writing — merge, don't overwrite.
       - Update `_Last updated:_` dates on state files.
       - Insert backlog items in priority order.

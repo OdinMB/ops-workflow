@@ -60,4 +60,4 @@ _Fill in when completed._
 
 4. **Do NOT execute the plan.** This skill only creates and proposes the plan. Execution happens via the `/execute` skill after the user approves.
 
-5. **Scope check.** Plans in non-code repos must never include implementing code changes. This workflow produces content, research, specs, and briefs — not code. If a task involves building something in an app, the plan should cover producing the content/spec/brief that the user takes to the coding repo.
+5. **Scope check.** Plans in non-code repos must never include implementing code changes. This workflow produces content, research, specs, and briefs — not code. If a task involves building something in an app, the plan should cover producing the content/spec/brief that the user takes to the coding repo. If the repo has an `autopilot/` folder (see the `## Autopilot` section of its CLAUDE.md), the plan for such code or product work also ends with a short note in `autopilot/inbox/` (`YYYY-MM-DD-<slug>.md`, linking the spec), so autopilot weighs it against the product.

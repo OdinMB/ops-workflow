@@ -27,6 +27,7 @@ Before analyzing, gather the project overview. Read these files (skip any that d
 3. `backlog/INDEX.md` → then every file and subfolder listed in it
 4. Active plans — glob `plans/*.md`, skip `INDEX.md`, and read the rest (`plans/INDEX.md` deliberately lists none of them)
 5. `plans/completed/INDEX.md` — scan the 5 most recent completed plans
+6. If the repo has an `autopilot/` folder (see the `## Autopilot` section of its CLAUDE.md): `autopilot/charter.md` for the product goals (MEMORY.md's goals cover the rest), and `autopilot/ideas.md` and `autopilot/discards.md` to check before proposing a product idea
 
 Build a mental model of: what the project is trying to achieve, where things stand, what's already planned, and what was recently done.
 
@@ -48,10 +49,11 @@ When running standalone (not under `get-to-work`), briefly consider adjacent opp
 - Don't ask the user about scope or priorities — scan everything.
 - If you find backlog items that are already done, delete them (done items aren't backlog). If unsure whether something is truly done, note it in the follow-up file rather than leaving a stale entry.
 - Record uncertain new items in the follow-up file under **Suggested Follow-Up Work** rather than adding them directly to the backlog.
+- Where the repo has an `autopilot/` folder, a product or code-feature item becomes a note in `autopilot/inbox/` instead of a backlog entry, as `/find-tasks` Step 3 says. Write nothing else under `autopilot/`.
 
 ### Discovery mode
 
-If the caller says this is a discovery scan and gives you no follow-up file (`/find-all` does this), the repo is not yours to touch: add nothing to the backlog, delete nothing from it, and write no files. Return every item inline instead — the same fields you would have written into a backlog entry (what, why, effort), plus the backlog file it would belong in — and let the caller decide what to persist. Report completed-looking backlog items as findings too, rather than deleting them. In this mode the Output block's `Items added to backlog` line reports items *found*; say so on the line.
+If the caller says this is a discovery scan and gives you no follow-up file (`/find-all` does this), the repo is not yours to touch: add nothing to the backlog, delete nothing from it, and write no files. Return every item inline instead — the same fields you would have written into a backlog entry (what, why, effort), plus the backlog file it would belong in (or `autopilot/inbox/`, for a product item in a repo with an `autopilot/` folder) — and let the caller decide what to persist. Report completed-looking backlog items as findings too, rather than deleting them. In this mode the Output block's `Items added to backlog` line reports items *found*; say so on the line.
 
 ## Output
 
@@ -59,6 +61,7 @@ When done, return a summary in exactly this format:
 
 ```
 Items added to backlog: <N>
+Notes left in autopilot/inbox/: <N, or "none"> (only where the repo has an autopilot/ folder; not counted as feasible items)
 Items by lens: <e.g., "2 goal gaps, 1 stale state, 3 follow-through">
 Completed items cleaned: <N, or "none">
 Lenses 1-6 new feasible items: <N>

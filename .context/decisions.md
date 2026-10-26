@@ -10,3 +10,4 @@ under `.plans/` and `.plans/completed/` (which is why an id can be missing from 
 its file, `.context/decisions/NNNN-<short-slug>.md`; and add its line at the bottom of this list.
 
 - [ADR-0001 · Retire the Cowork MCP bridge](decisions/0001-retire-cowork-mcp-bridge.md)
+- [ADR-0002 · Ops yields a repo's product to autopilot when an autopilot/ folder is present](decisions/0002-yield-product-to-autopilot.md)

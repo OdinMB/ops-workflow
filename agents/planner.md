@@ -35,7 +35,7 @@ Follow the `/plan` skill's full process (research existing state, create or acti
 
 ### Scope check
 
-Plans must never include implementing code changes. This workflow produces content, research, specs, and briefs — not code. If a task involves building something in an app, the plan should cover producing the content/spec/brief.
+Plans must never include implementing code changes. This workflow produces content, research, specs, and briefs — not code. If a task involves building something in an app, the plan should cover producing the content/spec/brief. If the repo has an `autopilot/` folder (see the `## Autopilot` section of its CLAUDE.md), the plan also ends with a short note in `autopilot/inbox/` linking that spec, so autopilot weighs the work against the product.
 
 ### Record blockers
 

@@ -58,6 +58,7 @@ Follow `/execute`'s state update and insight harvesting steps, but for borderlin
 - Insights you're unsure about → add to follow-up file under **Borderline Insights**
 - New work items you're confident about → add to backlog in priority order
 - New work items you're unsure about → add to follow-up file under **Suggested Follow-Up Work**
+- Product or feature ideas, where the repo has an `autopilot/` folder (see the `## Autopilot` section of its CLAUDE.md) → a note in `autopilot/inbox/`, never the backlog
 
 ### INDEX.md cascade
 

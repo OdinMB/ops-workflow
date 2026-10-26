@@ -40,7 +40,7 @@ Repeat this cycle until one of the stopping conditions (Phase 3) is met.
 Parse `$ARGUMENTS` for the mode (first word). Default to `escalating` if not specified.
 
 - **`tasks`**: Spawn only the task-finder agent. Skip opps-finder entirely.
-- **`opps`**: Spawn only the opps-finder agent. Skip task-finder entirely. The opps-finder produces backlog-ready items — add them directly.
+- **`opps`**: Spawn only the opps-finder agent. Skip task-finder entirely. The opps-finder produces backlog-ready items — add them directly (an item it routes to `autopilot/inbox/` becomes a note there instead).
 - **`full`**: Spawn both task-finder and opps-finder agents **in parallel**. Merge their findings for Step 2.
 - **`escalating`** (default): Spawn the task-finder agent first. If its lenses 1-6 found fewer than 2 new feasible items, also spawn the opps-finder agent to expand the search (Escalation, below).
 
@@ -53,7 +53,7 @@ Scan depth: <"full" on first cycle, "follow-through" on subsequent cycles unless
 
 On the first cycle, use "full" scan depth. On subsequent cycles, start with "follow-through" (focused on recent completions). If a follow-through scan's `Lenses 1-6 new feasible items` count is below 2, widen to a full scan on the next attempt.
 
-Record what was added in the Cycle Log section of the follow-up file. Commit the backlog updates and the follow-up file, naming their paths (`git add -- <paths>`, then `git commit -m "identify work: add N new backlog items (cycle M)" -- <paths>`)
+Record what was added in the Cycle Log section of the follow-up file. Commit the backlog updates, any `autopilot/inbox/` notes and the follow-up file, naming their paths (`git add -- <paths>`, then `git commit -m "identify work: add N new backlog items (cycle M)" -- <paths>`)
 
 **Escalation** (`escalating` mode only; `tasks` never escalates, and `opps` and `full` already ran the opps finder): if the task finder's `Lenses 1-6 new feasible items` count is below 2, spawn the opps finder with `subagent_type: "ops:opps-finder"` and this prompt:
 
@@ -67,7 +67,7 @@ Stay grounded in the project's goals and limitations from MEMORY.md.
 Every suggestion must be something an autonomous agent can start working on.
 ```
 
-Add the opps-finder's output items to the backlog and continue the cycle.
+Add the opps-finder's output items to the backlog and continue the cycle. In every mode, an item it routes to `autopilot/inbox/` becomes a short note there (`YYYY-MM-DD-<slug>.md`), never a backlog entry.
 
 ### Step 2: Prioritize
 

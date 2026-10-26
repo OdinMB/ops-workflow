@@ -85,4 +85,5 @@ After all items are resolved:
 - Batch related items when possible (e.g., "these 3 skipped items are all further research on the same funder — plan all, dismiss all, or pick individually?").
 - When reverting, use `git revert` on the specific commit rather than manual edits, unless the commit contains mixed changes.
 - When creating plan files, follow the project's existing plan format (check `.plans/` or `plans/` for examples).
+- If the repo has an `autopilot/` folder (see the `## Autopilot` section of its CLAUDE.md), offer a product or feature item as a note in `autopilot/inbox/` instead of a backlog item — or, when the user asks for it, an entry in `autopilot/ideas.md`, which the commit message then mentions.
 - Keep momentum — the goal is to process the entire file in one session.

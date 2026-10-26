@@ -23,6 +23,8 @@ Compare the project's stated goals (from MEMORY.md and state files) against what
 - Goals where progress has stalled — the last related completed plan is old
 - Sub-goals or prerequisites that are implied but not explicitly tracked
 
+If the repo has an `autopilot/` folder (see the `## Autopilot` section of its CLAUDE.md), the product goals are the ones in `autopilot/charter.md`, and MEMORY.md's goals cover everything else. Before proposing a product idea, check `autopilot/ideas.md` and `autopilot/discards.md`, so you don't re-propose one already tracked or turned down.
+
 ### 2. Stale State
 
 State files describe reality. When reality changes, state files need updating:
@@ -101,6 +103,8 @@ For each new work item:
    - **Effort estimate**: light (< 1 hour), medium (1-3 hours), or heavy (3+ hours)
 3. Insert the entry into the appropriate backlog file **in priority order** (highest first). Read the existing items, judge where the new item ranks relative to them, and place it there — not at the end
 4. Update the backlog file's INDEX.md if needed
+
+Where the repo has an `autopilot/` folder, a product or code-feature item goes to a short note in `autopilot/inbox/` (`YYYY-MM-DD-<slug>.md`, a few lines) instead of `backlog/`, for autopilot to weigh against the product.
 
 ### Step 4: Report
 
