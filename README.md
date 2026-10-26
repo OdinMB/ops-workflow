@@ -103,7 +103,7 @@ ai-tutoring-ops/
 └── .tmp/
 ```
 
-Every folder has an `INDEX.md` that provides a complete overview at its level of abstraction, with links to sub-files for deeper detail.
+Every folder (except an `autopilot/` folder, below) has an `INDEX.md` that provides a complete overview at its level of abstraction, with links to sub-files for deeper detail.
 
 Ops also works alongside Odin's autopilot convention. If a repo has an `autopilot/` folder, ops reads it for product direction, sends product ideas there as notes in `autopilot/inbox/`, and otherwise leaves its files alone.
 

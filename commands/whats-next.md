@@ -121,7 +121,7 @@ Grep all files under `state/` and `backlog/` for the marker `WAITING (`. Each ma
 | <what needs deciding> | <A / B / C> | <what can't proceed> | <when> |
 ```
 
-If `autopilot/waiting.md` lists anything, this section appears even with no other decision, and ends with what autopilot waits on: the count, and one line each for its ship questions, variant picks, ask-first items and an overdue charter reconfirmation. Tell the user to say "autopilot" in a session to decide them.
+If `autopilot/waiting.md` has entries under its Stack, Variants, Show, Ask first, Read-backs pending or "Approved, awaiting a live landing" sections, this section appears even with no other decision, and ends with what autopilot waits on: one line per section that has entries, with how many. Its other sections are bookkeeping, not decisions: a charter reconfirmation under "For review when convenient" gets one line, marked not counted, and the rest none. Tell the user to say "autopilot" in a session to decide them.
 
 #### Housekeeping (optional — omit if nothing is stale)
 

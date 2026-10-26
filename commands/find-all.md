@@ -25,7 +25,7 @@ fields, and let the caller decide what to persist.
 ```
 Your job: identify the new directions of work genuinely worth exploring
 (often 3-5; fewer or none is a valid result).
-Stay grounded in the project's goals and limitations from MEMORY.md.
+Stay grounded in the project's goals and limitations from MEMORY.md, and the product goals in autopilot/charter.md where the repo has an autopilot/ folder.
 Every suggestion must be something an autonomous agent can start working on.
 ```
 

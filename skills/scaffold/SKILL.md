@@ -34,7 +34,7 @@ Read the existing structure (CLAUDE.md, MEMORY.md, folder listing). Then ask:
 
 1. **What needs changing?** — or just check against the template and propose fixes
 2. **Missing folders?** — offer to create any missing standard folders with INDEX.md files
-3. **CLAUDE.md drift?** — show specific differences from the template and offer to patch. An `## Autopilot` section, which autopilot's setup writes, is not drift: leave it and the `autopilot/` folder as they are
+3. **CLAUDE.md drift?** — show specific differences from the template and offer to patch. An `## Autopilot` section, which autopilot's setup writes, and the folder-structure bullet for `autopilot/` are not drift: leave them and the `autopilot/` folder as they are. If an `autopilot/` folder exists but the section doesn't, say so and suggest running autopilot's setup in a session started from the code repo
 
 ## Directory Structure
 
