@@ -74,6 +74,12 @@ Potential new work items that emerged during execution but the agent wasn't conf
 
 Not every section will be used by every command — include the ones that are relevant.
 
+## Showing the run
+
+The handoff of a long run shows its effect as well as saying it, wherever the session talking to the user can: a rendered excerpt of a deliverable, a small diagram of a plan or structure the run reshaped, a few before → after numbers about the project (open questions, stale items, backlog items with an owner) — whichever the run already has, often just one. Numbers describe the project, never the run's activity: no commit, file or task counts.
+
+Where `SendUserFile` is in your tool list (cloud sessions, and sessions with Remote Control connected), send it as one or two files, each with a one-line caption: a deliverable's excerpt or a diagram with `display: "render"`, the numbers as one short Markdown file. Otherwise write one throwaway HTML page holding all of it to the session's scratchpad and give its full absolute path. Never the Artifact tool. It is a by-product, never a step: nothing is produced only for it (no extra research, no generated images), it is skipped if it would take more than a few minutes, and it carries no personal data, since a sent file leaves the machine. Only the session talking to the user sends it, at the handoff, never a task agent mid-run, and it never replaces the plain-terms handoff or the follow-up review. A headless run with nobody to hand it to skips it.
+
 ## Resolving Follow-Up Items
 
 After all work is complete, go through follow-up items with the user:

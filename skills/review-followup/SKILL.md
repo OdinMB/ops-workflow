@@ -20,7 +20,7 @@ Read the file. Also read the branch's git log (`git log main..HEAD --oneline`) t
 
 ## 2. Frame what's open
 
-Triage first (see Rules), then open with two or three sentences: what the run produced, and what kinds of decisions are still waiting on the user. If whoever invoked this skill has already said what the run produced — the `/ops:get-to-work` handoff does — don't say it again; open with what's still open. No item count, no section-by-section inventory, no commit count — the branch and its log are yours to keep track of.
+Triage first (see Rules), then open with two or three sentences: what the run produced, and what kinds of decisions are still waiting on the user. If whoever invoked this skill has already said what the run produced — the `/ops:get-to-work` handoff does — don't say it again; open with what's still open. No item count, no section-by-section inventory, no commit count — the branch and its log are yours to keep track of. Unless a handoff already did, show the run as `ops:work-autonomously`'s "Showing the run" says.
 
 ## 3. Walk through each section
 

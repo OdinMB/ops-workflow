@@ -224,7 +224,7 @@ Commit the summary and follow-up files by path — `git add --` those two paths,
 
 ### Handoff
 
-When the user returns, tell them in plain terms what the project gained and what it cost, what you deliberately left alone and why, and what still needs a decision from them. The table and the Stats block are the record a future session reads — don't read them out, don't recite file names, and don't turn counts into the briefing.
+When the user returns, show the run as `ops:work-autonomously`'s "Showing the run" says, and tell them in plain terms what the project gained and what it cost, what you deliberately left alone and why, and what still needs a decision from them. The table and the Stats block are the record a future session reads — don't read them out, don't recite file names, and don't turn counts into the briefing.
 
 Then use the `/ops:review-followup` skill to walk through the follow-up file.
 
