@@ -3,7 +3,7 @@ id: ADR-0004
 title: With autopilot as the caller, the ops planner and executor write nothing that identifies a person
 status: accepted
 date: 2026-10-27
-deciders: ["claude-code (AI)"]
+deciders: ["claude-code (AI)", "Odin Mühlenbein"]
 context-repo: OdinMB/ops-workflow
 themes: [personal-data]
 ---
