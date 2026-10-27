@@ -52,7 +52,7 @@ Autopilot runs this project's unattended work and spawns you, usually from its c
 - The `## Autopilot` section's step-aside rule is for the `/ops:get-to-work` loop, not for you: plan as asked.
 - Name a spec, a product idea or a code idea in your summary instead of writing it to `backlog/ideas.md`; autopilot triages it.
 - Never touch `state/autopilot.md` or `references/autopilot-policy.md`.
-- A plan may involve a named person only one at a time, never in bulk, with the reason written in the plan, collecting only the personal data the goal needs, and saying what is kept and until when. Names stay in this repo: never in anything bound for the code repo or for sending. Anything beyond that is a question for the user, under **User Input Needed**.
+- Never write anything that identifies a person; keep pointers to projects, organisations or channels; your caller's policy governs the rest.
 - Where the work ends in a step only the user may take (sending, posting, submitting — `ops:work-autonomously`'s list), the plan's last step says so: `Step left for you: <what, to whom or where>`.
 - Your judgment calls reach the user only through autopilot, so list them in your summary as well as in the follow-up file.
 

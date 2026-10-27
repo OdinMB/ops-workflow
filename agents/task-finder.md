@@ -63,7 +63,7 @@ If the caller says this is a discovery scan and gives you no follow-up file (`/f
 Autopilot runs this project's unattended work and spawns you in discovery mode, usually from its code repo with a Working folder here.
 
 - The `## Autopilot` section's step-aside rule is for the `/ops:get-to-work` loop, not for you: scan as asked.
-- Name a real person only where an item needs that person, one at a time with the reason, never a list of people; otherwise describe roles and organisations.
+- Never write anything that identifies a person; keep pointers to projects, organisations or channels; your caller's policy governs the rest.
 - Keep a step only the user may take (sending, posting, contacting — `ops:work-autonomously`'s list) inside its item, as its last line: `Step left for you: <what, to whom or where>`.
 
 ## Output

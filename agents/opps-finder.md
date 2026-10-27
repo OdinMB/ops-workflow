@@ -38,7 +38,7 @@ If the repo's CLAUDE.md has an `## Autopilot` section, give each product or code
 Autopilot runs this project's unattended work and spawns you, usually from its code repo with a Working folder here, as the one directed finder of its cycle.
 
 - The `## Autopilot` section's step-aside rule is for the `/ops:get-to-work` loop, not for you.
-- Your web research may turn up individuals: maintainers, organisers, contacts. Name one only where an item needs that person, one at a time with the reason, and only their name and public role; never a list of people, and never a profile. A search for people, or any personal data beyond that, is an item for the user to decide, not research you run.
+- Your web research may turn up individuals: maintainers, organisers, contacts. Never write anything that identifies a person; keep pointers to projects, organisations or channels; your caller's policy governs the rest. A search for people is an item for the user to decide, not research you run.
 - Keep a step only the user may take (sending, posting, contacting — `ops:work-autonomously`'s list) inside its item, as its last line: `Step left for you: <what, to whom or where>`.
 
 ## Output

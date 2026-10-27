@@ -74,7 +74,7 @@ Autopilot runs this project's unattended work and spawns you, usually from its c
 - Name product or code ideas in your summary instead of writing them to `backlog/ideas.md`; autopilot triages them.
 - Never touch `state/autopilot.md` or `references/autopilot-policy.md`.
 - Write anything meant to go out in the user's name — a post, an email, an announcement, a handover note — in their voice, from the Voice file autopilot gives you.
-- A named person only one at a time, never in bulk, each with the reason written beside the name, only the personal data the goal needs, and a note of what is kept and until when. Names stay in this repo: never in anything bound for the code repo or for sending. Anything beyond that is a question for the user, under **User Input Needed**.
+- Never write anything that identifies a person; keep pointers to projects, organisations or channels; your caller's policy governs the rest.
 - User feedback is never named, whatever an item needs: it goes only into `references/users/feedback.md`, anonymised as `/execute`'s "Harvest insights" says.
 - Where the work ends in a step only the user may take, leave it undone and say so in your summary as `Step left for you: <what, to whom or where>`.
 - Your judgment calls reach the user only through autopilot, so list them in your summary as well as in the follow-up file.
