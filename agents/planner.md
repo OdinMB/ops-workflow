@@ -17,6 +17,9 @@ The caller provides:
 - **Task description**: what to plan (may be a backlog item, a brief, or a free-form description)
 - **Follow-up file path**: where to record decisions and questions
 - **Plan file path** (optional): specific path for the plan file; if omitted, use `plans/YYYY-MM-DD-<slug>.md`
+- **Working folder** (optional): a worktree of the ops repo the caller made, as for `ops:executor`. When given, it is the project root: read its `CLAUDE.md` first, since a caller working from another repository means it isn't loaded for you; resolve every repo path (the plan, `charter.md`, `MEMORY.md`, `state/`, `backlog/`, `references/`, `plans/`) against it; use absolute paths under it in every Read, Write, Glob and Grep; run git there only with `git -C <working folder>`; and write nothing in the caller's folder except the follow-up file you were given.
+- **Focus** (optional): what the work is for, such as the charter goal and the audience it serves. Aim the plan's objective and success criteria at it.
+- **Caller** (optional): `autopilot` when an autopilot cycle spawned you (see "When autopilot is the caller").
 
 ## Process
 
@@ -35,12 +38,23 @@ Follow the `/plan` skill's full process (research existing state, create or acti
 
 ### Scope check
 
-Plans must never include implementing code changes. This workflow produces content, research, specs, and briefs — not code. If a task involves building something in an app, the plan should cover producing the content/spec/brief. If the repo has an `autopilot/` folder (see the `## Autopilot` section of its CLAUDE.md), the plan also ends with a short note in `autopilot/inbox/` linking that spec, so autopilot weighs the work against the product.
+Plans must never include implementing code changes. This workflow produces content, research, specs, and briefs — not code. If a task involves building something in an app, the plan should cover producing the content/spec/brief. If the repo's CLAUDE.md has an `## Autopilot` section, the plan also ends with an entry in `backlog/ideas.md` linking that spec, so autopilot routes it to a repository — unless autopilot is your caller.
 
 ### Record blockers
 
 - If you encounter something that genuinely blocks planning, record it in the follow-up file under **User Input Needed** and proceed with your best assumption.
 - If you identify follow-up work, add it to the follow-up file under **Suggested Follow-Up Work**.
+
+### When autopilot is the caller
+
+Autopilot runs this project's unattended work and spawns you, usually from its code repo with a Working folder here.
+
+- The `## Autopilot` section's step-aside rule is for the `/ops:get-to-work` loop, not for you: plan as asked.
+- Name a spec, a product idea or a code idea in your summary instead of writing it to `backlog/ideas.md`; autopilot triages it.
+- Never touch `state/autopilot.md` or `references/autopilot-policy.md`.
+- A plan may involve a named person only one at a time, never in bulk, with the reason written in the plan, collecting only the personal data the goal needs, and saying what is kept and until when. Names stay in this repo: never in anything bound for the code repo or for sending. Anything beyond that is a question for the user, under **User Input Needed**.
+- Where the work ends in a step only the user may take (sending, posting, submitting — `ops:work-autonomously`'s list), the plan's last step says so: `Step left for you: <what, to whom or where>`.
+- Your judgment calls reach the user only through autopilot, so list them in your summary as well as in the follow-up file.
 
 ## Output
 
@@ -52,6 +66,8 @@ Objective: <one-line summary>
 Steps: <number of steps>
 Artifacts: <list of expected deliverables>
 Decisions recorded: <number of items added to follow-up file, or "none">
+Judgment calls: <only when autopilot is the caller: one line each, what you chose and what you set aside, or "none">
+Ideas for autopilot: <only when autopilot is the caller: specs, product or code ideas, one line each, or "none">
 Effort: <sources/files consulted; web searches run>
 ```
 

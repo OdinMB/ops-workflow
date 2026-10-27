@@ -9,7 +9,7 @@ Create a work plan for the following task: $ARGUMENTS
 
 ## Instructions
 
-1. **Research first.** Read `MEMORY.md`, `backlog/INDEX.md`, and any relevant `state/` or `references/` files to understand current state and prior work. Check `plans/completed/` for related past tasks. Check `backlog/` for an existing draft plan that matches this task.
+1. **Research first.** Read `MEMORY.md`, `charter.md`, `backlog/INDEX.md`, and any relevant `state/` or `references/` files to understand current state and prior work. Check `plans/completed/` for related past tasks. Check `backlog/` for an existing draft plan that matches this task.
 
 2. **Create or activate the plan file.** If a draft plan exists in `backlog/`, move it to `plans/`, update its date to today, and set status to `active`. Refine the plan based on your research. If no draft exists, write a new file at `plans/YYYY-MM-DD-<slug>.md` where the slug is a short kebab-case name derived from the task. Use today's date. Use this format:
 
@@ -60,4 +60,4 @@ _Fill in when completed._
 
 4. **Do NOT execute the plan.** This skill only creates and proposes the plan. Execution happens via the `/execute` skill after the user approves.
 
-5. **Scope check.** Plans in non-code repos must never include implementing code changes. This workflow produces content, research, specs, and briefs — not code. If a task involves building something in an app, the plan should cover producing the content/spec/brief that the user takes to the coding repo. If the repo has an `autopilot/` folder (see the `## Autopilot` section of its CLAUDE.md), the plan for such code or product work also ends with a short note in `autopilot/inbox/` (`YYYY-MM-DD-<slug>.md`, linking the spec), so autopilot weighs it against the product.
+5. **Scope check.** Plans in non-code repos must never include implementing code changes. This workflow produces content, research, specs, and briefs — not code. If a task involves building something in an app, the plan should cover producing the content/spec/brief that the user takes to the coding repo. If the repo's CLAUDE.md has an `## Autopilot` section, the plan for such code or product work also ends with an entry in `backlog/ideas.md` linking the spec, so autopilot routes it to a repository and weighs it against the charter.

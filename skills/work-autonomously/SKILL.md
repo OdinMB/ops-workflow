@@ -15,7 +15,7 @@ Rules for commands and skills that run without user input (e.g., `/ops:get-to-wo
 4. **Commit with explicit pathspecs.** Name the paths you changed on the commit itself: `git add -- <path> <path> …` (needed for new files, which a commit pathspec alone does not pick up), then `git commit -m "<message>" -- <path> <path> …`. Never `git add -A`, `git add .` or `git commit -a`, and never a bare `git commit` after staging: a plain commit takes the whole index, so it can sweep a parallel agent's or the user's half-finished work into your commit. Work out the paths from the agent's summary and `git status`.
 5. **When uncertain, make a sensible choice and move on.** Record your reasoning and alternatives in the follow-up file so the user can review. Only skip when the wrong choice could have truly bad consequences (data loss, security, breaking external contracts). Getting work done with transparent doubts beats a slightly lower chance of mistakes.
 6. **No real-world actions** (the list below).
-7. **Leave `autopilot/` to autopilot.** If the repo has an `autopilot/` folder (see the `## Autopilot` section of its CLAUDE.md), never edit, move or delete anything under it; the one thing an unattended run may do there is add a note to `autopilot/inbox/`.
+7. **Goals and autopilot's files are the user's.** Never change `charter.md`: a goal, audience or non-goal that looks wrong goes under **User Input Needed**. Where the repo's CLAUDE.md has an `## Autopilot` section, never edit, move or delete `state/autopilot.md` or `references/autopilot-policy.md` either: they are autopilot's alone. Every other file is shared, and a run works in it by the usual rules.
 
 ### Real-world actions an unattended run never takes
 

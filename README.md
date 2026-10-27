@@ -18,7 +18,7 @@ You're launching an AI tutoring startup. The code is handled, but you also need 
 > /ops:scaffold
 ```
 
-Claude asks a few questions about your project, then creates a structured repo with folders for state, backlog, references, artifacts, and plans.
+Claude asks a few questions about your project, then creates a structured repo: a charter of who it's for and what you're aiming at, and folders for state, backlog, references, artifacts, and plans.
 
 **Do some work:**
 
@@ -66,6 +66,7 @@ Runs 9 consistency checks — stale dates, orphaned files, INDEX.md accuracy, WA
 ai-tutoring-ops/
 ├── CLAUDE.md
 ├── MEMORY.md
+├── charter.md                               # Goals, who it's for, non-goals
 ├── state/
 │   ├── INDEX.md
 │   ├── product.md                           # Current platform capabilities
@@ -103,9 +104,9 @@ ai-tutoring-ops/
 └── .tmp/
 ```
 
-Every folder (except an `autopilot/` folder, below) has an `INDEX.md` that provides a complete overview at its level of abstraction, with links to sub-files for deeper detail.
+Every folder has an `INDEX.md` that provides a complete overview at its level of abstraction, with links to sub-files for deeper detail. `charter.md` is the one place the project's goals live, and every finder and ranking measures work against it.
 
-Ops also works alongside Odin's autopilot convention. If a repo has an `autopilot/` folder, ops reads it for product direction, sends product ideas there as notes in `autopilot/inbox/`, and otherwise leaves its files alone.
+Ops also works alongside Odin's autopilot, a private product-manager skill. Where a repo's `CLAUDE.md` has an `## Autopilot` section, autopilot works in this same layout and runs the project's unattended work, so `/ops:get-to-work` steps aside there. Ops sends product and code ideas to `backlog/ideas.md` for autopilot to route, files user feedback only anonymised, in `references/users/feedback.md`, and leaves autopilot's two files of its own, `state/autopilot.md` and `references/autopilot-policy.md`, alone.
 
 ## Installation
 
@@ -156,6 +157,7 @@ All autonomous commands enforce these rules:
 - **One writer per folder** — executors run one at a time by default; when `/ops:get-to-work` runs them in parallel, each gets its own nested worktree made from the run's branch
 - **Explicit-path commits** — each commit names its paths, so a run never sweeps someone else's half-finished work into its commit
 - **No remote push** — only local branches and commits
+- **Goals stay yours** — a run never changes `charter.md`; a goal that looks wrong comes to you as a question
 - **Transparent decisions** — when uncertain, records its reasoning for you to review
 
 ## License

@@ -22,11 +22,11 @@ Collect changes from these sources. Read them in parallel where possible. Skip s
 
 #### a. Completed Plans
 
-Read `plans/completed/INDEX.md`. Identify plans with date prefixes >= `$SINCE`. Read each matching plan file — focus on the **Objective**, **Outcome**, **Key Decisions**, and **Artifacts** sections.
+Read `plans/completed/INDEX.md`. Identify plans with date prefixes >= `$SINCE`. Read each matching plan file — focus on the **Objective**, **Outcome**, **Key Decisions**, and **Artifacts** sections. Leave autopilot cycle records (`*autopilot-cycle*`) to h.
 
 #### b. Active Plans
 
-Glob `plans/*.md` and skip `INDEX.md` — every other file directly under `plans/` is an active plan (`plans/INDEX.md` deliberately lists none of them). Note any that were created after `$SINCE` (check their date prefix or file modification context). These represent work that started but hasn't finished yet.
+Glob `plans/*.md` and skip `INDEX.md` — every other file directly under `plans/` is an active plan (`plans/INDEX.md` deliberately lists none of them), except an autopilot cycle record (`*autopilot-cycle*`), which h reads. Note any that were created after `$SINCE` (check their date prefix or file modification context). These represent work that started but hasn't finished yet.
 
 #### c. Git History
 
@@ -42,15 +42,15 @@ Scan `artifacts/` (and subfolders) for files with date prefixes >= `$SINCE`. The
 
 #### f. MEMORY.md Changes
 
-Check git log for commits that touched MEMORY.md since `$SINCE`. If any exist, note what Key Learnings or context was added.
+Check git log for commits that touched MEMORY.md or `charter.md` since `$SINCE`. If any exist, note what Key Learnings or context was added, and which goals, audiences or non-goals changed.
 
 #### g. Backlog Movement
 
 Compare the current backlog state against git history to identify items that were added or removed since `$SINCE`. Use `git log --oneline --after=$SINCE -- backlog/` to approximate this.
 
-#### h. Autopilot Digests
+#### h. Autopilot Cycles
 
-If the repo has an `autopilot/digests/` folder (see the `## Autopilot` section of its CLAUDE.md), read the digests dated on or after `$SINCE` (`YYYY-MM-DD.md`) and note what autopilot built, landed or proposed in the period.
+If the repo's CLAUDE.md has an `## Autopilot` section, read autopilot's cycle records dated on or after `$SINCE`: `plans/YYYY-MM-DD_autopilot-cycle*.md` while the user has yet to decide what one offered, and in `plans/completed/` after. Note what autopilot built, landed or proposed in the period, in both repositories.
 
 ### 3. Assess Volume and Set Granularity
 
@@ -118,19 +118,20 @@ Prioritize by impact, not chronology. Group related work on adjacent rows.
 - Removed: <item>
 ```
 
-#### Autopilot (omit if no digest falls in the period)
+#### Autopilot (omit if no cycle record falls in the period)
 
 ```
 ## Autopilot
-- Built or landed: <what> _(autopilot/digests/<date>.md)_
+- Built or landed: <what> _(plans/completed/<date>_autopilot-cycle.md)_
 - Proposed: <what>
 ```
 
-#### Key Learnings (omit if MEMORY.md didn't change)
+#### Key Learnings (omit if neither MEMORY.md nor the charter changed)
 
 ```
 ## Key Learnings
 - <insight>
+- Goal changed: <what, and from what> _(charter.md)_
 ```
 
 ---

@@ -1,8 +1,9 @@
 ---
 id: ADR-0002
 title: Ops yields a repo's product to autopilot when an autopilot/ folder is present
-status: accepted
-date: 2026-10-26
+status: superseded
+date: 2026-10-27
+superseded-by: ADR-0003
 deciders: ["Odin Mühlenbein", "claude-code (AI)"]
 context-repo: OdinMB/ops-workflow
 ---

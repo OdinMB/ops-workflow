@@ -9,9 +9,9 @@ Given a project's active plans, backlog, and goals, select the tasks genuinely w
 
 ## Context Required
 
-You need the full project overview loaded (MEMORY.md, state, backlog, active plans) plus any newly identified work items from `find-tasks`.
+You need the full project overview loaded (`charter.md`, MEMORY.md, state, backlog, active plans) plus any newly identified work items from `find-tasks`.
 
-If the repo has an `autopilot/` folder (see the `## Autopilot` section of its CLAUDE.md), the product goals are the ones in `autopilot/charter.md`, and MEMORY.md's goals cover everything else; weigh impact against both.
+The project's goals are in `charter.md` (a repo set up before it existed keeps them in MEMORY.md): weigh impact against them.
 
 ## Selection Criteria
 
@@ -49,8 +49,8 @@ Tasks that will run one after another need not be independent. If the caller wan
 
 List all candidate tasks from:
 
-1. **Active plans** in `plans/` — these are already approved work
-2. **Backlog items** — particularly those marked as high priority or quick wins
+1. **Active plans** in `plans/` — these are already approved work, except an autopilot cycle record (`*autopilot-cycle*`), which is autopilot's record, not a plan
+2. **Backlog items** — particularly those marked as high priority or quick wins; where the repo's CLAUDE.md has an `## Autopilot` section, not `backlog/ideas.md` or an item marked `(code item)`, which are autopilot's to route or build
 3. **Newly identified items** from the latest `find-tasks` run
 
 For each, note: description, source file, estimated effort, and which files it would touch.
@@ -96,4 +96,4 @@ Determine execution order. Preferences:
 
 - **Never select more than 3** — better to complete a focused batch and reassess
 - **Skip tasks that need a real-world action** — `ops:work-autonomously` lists them
-- **Respect the user's priorities** — if MEMORY.md or state files indicate urgency on a topic, weight those tasks higher
+- **Respect the user's priorities** — if the charter, MEMORY.md or state files indicate urgency on a topic, weight those tasks higher

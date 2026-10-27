@@ -18,7 +18,13 @@ Wait for the updater agent to finish before proceeding — the consistency check
 
 ## Phase 1: Scan
 
-If the repo has an `autopilot/` folder (see the `## Autopilot` section of its CLAUDE.md), leave it out of every check below and every fix in Phase 2: its files are autopilot's, so housekeeping never indexes, splits, moves, archives or deletes anything inside it.
+If the repo's CLAUDE.md has an `## Autopilot` section, autopilot's files are checked like any others, with three limits:
+
+- `state/autopilot.md` and `references/autopilot-policy.md` are autopilot's own: fix their `INDEX.md` entries, but never split, move, rename, rewrite or delete them.
+- Never move or rename a file or folder autopilot finds by path: those the section names, and `backlog/ideas.md`, `backlog/code.md`, `references/discards.md`, `references/decisions.md`, `references/users/` and `state/harness.md`.
+- An autopilot cycle record (`plans/*autopilot-cycle*`, with the folder of variant screenshots beside it, which needs no `INDEX.md`) stays where autopilot put it; autopilot moves it to `plans/completed/` once the user has decided what it offered.
+
+An `autopilot/` folder left from before autopilot moved into this layout waits for autopilot to migrate it: leave it out of every check and fix.
 
 ### 1. INDEX.md Accuracy
 
@@ -41,8 +47,8 @@ For every folder that contains an `INDEX.md`:
 ### 3. Orphaned Files
 
 Find `.md` files that aren't listed in any `INDEX.md`. Exclude:
-- `MEMORY.md`, `CLAUDE.md`, `README.md` (root-level files)
-- Files in `.claude/`, `.context/`, `.plans/`, `.tmp/`, `autopilot/` directories
+- `MEMORY.md`, `charter.md`, `CLAUDE.md`, `README.md` (root-level files)
+- Files in `.claude/`, `.context/`, `.plans/`, `.tmp/` directories
 - Files in `plans/` (active plans aren't indexed)
 
 ### 4. Stale Dates

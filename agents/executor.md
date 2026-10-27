@@ -22,7 +22,9 @@ And always:
 - **Follow-up file path**: where to record decisions, issues, and questions (under a parallel run, a notes file of your own with the same sections)
 
 And sometimes:
-- **Working folder**: a worktree the caller made for you so parallel executors never share a folder. When given, it is the project root for this task: resolve every repo path (the plan, `state/`, `backlog/`, `references/`, `MEMORY.md`, every `INDEX.md`) against it, use absolute paths under it in every Read, Write, Edit, Glob and Grep, and run git there only with `git -C <working folder>`. Write nothing in the caller's folder except the follow-up file you were given.
+- **Working folder**: a worktree the caller made for you so parallel executors never share a folder, or so a caller working from another repository can hand you this one. When given, it is the project root for this task: read its `CLAUDE.md` first, since a caller in another repository means it isn't loaded for you; resolve every repo path (the plan, `state/`, `backlog/`, `references/`, `MEMORY.md`, every `INDEX.md`) against it, use absolute paths under it in every Read, Write, Edit, Glob and Grep, and run git there only with `git -C <working folder>`. Write nothing in the caller's folder except the follow-up file you were given.
+- **Caller**: `autopilot` when an autopilot cycle spawned you (see "When autopilot is the caller").
+- **Voice file**: a writing-voice file to follow for anything written in the user's name. You have no Skill tool, so read it by its path before drafting.
 
 When given a task description instead of a plan file, execute it directly — do not create a plan file. These are trivial tasks (small, obvious changes).
 
@@ -58,11 +60,24 @@ Follow `/execute`'s state update and insight harvesting steps, but for borderlin
 - Insights you're unsure about → add to follow-up file under **Borderline Insights**
 - New work items you're confident about → add to backlog in priority order
 - New work items you're unsure about → add to follow-up file under **Suggested Follow-Up Work**
-- Product or feature ideas, where the repo has an `autopilot/` folder (see the `## Autopilot` section of its CLAUDE.md) → a note in `autopilot/inbox/`, never the backlog
+- Product or feature ideas, where the repo's CLAUDE.md has an `## Autopilot` section → `backlog/ideas.md`, unless autopilot is your caller
 
 ### INDEX.md cascade
 
 Run `/execute`'s INDEX.md cascade (step 4) in full: the knowledge system is navigated through the indexes, so a stale one hides what you wrote.
+
+### When autopilot is the caller
+
+Autopilot runs this project's unattended work and spawns you, usually from its code repo with a Working folder here; it reviews what you wrote and commits it itself.
+
+- The `## Autopilot` section's step-aside rule is for the `/ops:get-to-work` loop, not for you: execute as asked.
+- Name product or code ideas in your summary instead of writing them to `backlog/ideas.md`; autopilot triages them.
+- Never touch `state/autopilot.md` or `references/autopilot-policy.md`.
+- Write anything meant to go out in the user's name — a post, an email, an announcement, a handover note — in their voice, from the Voice file autopilot gives you.
+- A named person only one at a time, never in bulk, each with the reason written beside the name, only the personal data the goal needs, and a note of what is kept and until when. Names stay in this repo: never in anything bound for the code repo or for sending. Anything beyond that is a question for the user, under **User Input Needed**.
+- User feedback is never named, whatever an item needs: it goes only into `references/users/feedback.md`, anonymised as `/execute`'s "Harvest insights" says.
+- Where the work ends in a step only the user may take, leave it undone and say so in your summary as `Step left for you: <what, to whom or where>`.
+- Your judgment calls reach the user only through autopilot, so list them in your summary as well as in the follow-up file.
 
 ## Output
 
@@ -76,6 +91,9 @@ State files updated: <list, or "none">
 Backlog items added: <number, or "none">
 MEMORY.md updated: <yes | no>
 Issues recorded: <number of items added to follow-up file, or "none">
+Judgment calls: <only when autopilot is the caller: one line each, what you chose and what you set aside, or "none">
+Ideas for autopilot: <only when autopilot is the caller: product or code ideas, one line each, or "none">
+Step left for you: <only when autopilot is the caller and the work ends in one; otherwise omit>
 Effort: <web searches run; sources consulted; artifacts produced>
 ```
 

@@ -13,6 +13,8 @@ No real-world actions: `ops:work-autonomously` lists what an unattended run neve
 
 ## Phase 1: Setup
 
+**Where autopilot runs the unattended work, this loop steps aside.** If the repo's `CLAUDE.md` has an `## Autopilot` section saying that autopilot runs this project's unattended work, say so in one line — an autopilot cycle, started from the code repo, does this work here — and stop, with no branch and no follow-up file. The check is this loop's alone: an ops planner or executor that an autopilot cycle spawns carries on.
+
 1. Determine today's date. Check the current branch — if you're already on a feature branch or a prior get-to-work branch, stay on it. Only create a new branch (`YYYY-MM-DD-get-to-work`) if you're on `main` (or the repo's default branch).
 2. Create a follow-up file at `plans/YYYY-MM-DD_get-to-work-followup.md`, titled `# Get to Work — Follow-up`, with every section `ops:work-autonomously` lists (the agents write to all of them) and one more at the end:
 
@@ -40,7 +42,7 @@ Repeat this cycle until one of the stopping conditions (Phase 3) is met.
 Parse `$ARGUMENTS` for the mode (first word). Default to `escalating` if not specified.
 
 - **`tasks`**: Spawn only the task-finder agent. Skip opps-finder entirely.
-- **`opps`**: Spawn only the opps-finder agent. Skip task-finder entirely. The opps-finder produces backlog-ready items — add them directly (an item it routes to `autopilot/inbox/` becomes a note there instead).
+- **`opps`**: Spawn only the opps-finder agent. Skip task-finder entirely. The opps-finder produces backlog-ready items — add them directly.
 - **`full`**: Spawn both task-finder and opps-finder agents **in parallel**. Merge their findings for Step 2.
 - **`escalating`** (default): Spawn the task-finder agent first. If its lenses 1-6 found fewer than 2 new feasible items, also spawn the opps-finder agent to expand the search (Escalation, below).
 
@@ -53,7 +55,7 @@ Scan depth: <"full" on first cycle, "follow-through" on subsequent cycles unless
 
 On the first cycle, use "full" scan depth. On subsequent cycles, start with "follow-through" (focused on recent completions). If a follow-through scan's `Lenses 1-6 new feasible items` count is below 2, widen to a full scan on the next attempt.
 
-Record what was added in the Cycle Log section of the follow-up file. Commit the backlog updates, any `autopilot/inbox/` notes and the follow-up file, naming their paths (`git add -- <paths>`, then `git commit -m "identify work: add N new backlog items (cycle M)" -- <paths>`)
+Record what was added in the Cycle Log section of the follow-up file. Commit the backlog updates and the follow-up file, naming their paths (`git add -- <paths>`, then `git commit -m "identify work: add N new backlog items (cycle M)" -- <paths>`)
 
 **Escalation** (`escalating` mode only; `tasks` never escalates, and `opps` and `full` already ran the opps finder): if the task finder's `Lenses 1-6 new feasible items` count is below 2, spawn the opps finder with `subagent_type: "ops:opps-finder"` and this prompt:
 
@@ -63,11 +65,11 @@ Additional context:
 
 Your job: identify the new directions of work genuinely worth exploring
 (often 3-5; fewer or none is a valid result).
-Stay grounded in the project's goals and limitations from MEMORY.md, and the product goals in autopilot/charter.md where the repo has an autopilot/ folder.
+Stay grounded in the project's goals in charter.md and its limitations in MEMORY.md.
 Every suggestion must be something an autonomous agent can start working on.
 ```
 
-Add the opps-finder's output items to the backlog and continue the cycle. In every mode, an item it routes to `autopilot/inbox/` becomes a short note there (`YYYY-MM-DD-<slug>.md`), never a backlog entry.
+Add the opps-finder's output items to the backlog and continue the cycle.
 
 ### Step 2: Prioritize
 
@@ -168,7 +170,7 @@ After completing all tasks in a cycle:
 
 ## Phase 3: Stopping Conditions
 
-Keep cycling while there is work worth the user's review time; stop when what remains is not. A cosmetic edit, a speculative direction that nothing in MEMORY.md, state or the backlog points to, or filler that restates what the knowledge base already holds does not justify another cycle. Record such items under **Suggested Follow-Up Work** in the follow-up file rather than writing them into the knowledge base.
+Keep cycling while there is work worth the user's review time; stop when what remains is not. A cosmetic edit, a speculative direction that nothing in the charter, MEMORY.md, state or the backlog points to, or filler that restates what the knowledge base already holds does not justify another cycle. Record such items under **Suggested Follow-Up Work** in the follow-up file rather than writing them into the knowledge base.
 
 Stop when one of these holds:
 

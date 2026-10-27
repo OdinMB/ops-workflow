@@ -15,7 +15,7 @@ Follow the `ops:work-autonomously` skill throughout.
 - At the start of the batch, pick a short slug-style **batch prefix** that names the theme of this batch (e.g. `music`, `q2-launch`, `donor-outreach`). Use the user's framing if they offered one; otherwise derive it from the tasks. Keep it lowercase, hyphenated, and brief.
 - Filenames of plans should reference the goal of the plan, with today's date and the batch+order prefix: `<batch>-<NN>-YYYY-MM-DD-<slug>.md` (e.g. `music-01-2026-04-19-launch-brief.md`). The batch prefix keeps multiple concurrent ordered batches in `plans/` from stepping on each other.
 - You can write plans in parallel if they don't directly relate to each other.
-- **Scope check**: Plans must never include implementing changes in app codebases. This workflow produces content, research, specs, and briefs — not code. If the repo has an `autopilot/` folder (see the `## Autopilot` section of its CLAUDE.md), a plan for code or product work also ends with a short note in `autopilot/inbox/` linking its spec, so autopilot weighs it against the product.
+- **Scope check**: Plans must never include implementing changes in app codebases. This workflow produces content, research, specs, and briefs — not code. If the repo's CLAUDE.md has an `## Autopilot` section, a plan for code or product work also ends with an entry in `backlog/ideas.md` linking its spec, so autopilot routes it to a repository and weighs it against the charter.
 
 # Triage
 

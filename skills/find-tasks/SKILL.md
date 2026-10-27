@@ -9,7 +9,7 @@ Analyze the project's goals, current state, and existing backlog to surface new 
 
 ## Context Required
 
-Before running this skill, you need the project overview already loaded (MEMORY.md, state files, backlog, recent plans). If you don't have it, gather it now following the same context-loading steps as `ops:whats-next`.
+Before running this skill, you need the project overview already loaded (`charter.md`, MEMORY.md, state files, backlog, recent plans). If you don't have it, gather it now following the same context-loading steps as `ops:whats-next`.
 
 ## Analysis Lenses
 
@@ -17,13 +17,13 @@ Examine the project through these lenses to find work that isn't already tracked
 
 ### 1. Goal Gaps
 
-Compare the project's stated goals (from MEMORY.md and state files) against what's actually being tracked in the backlog:
+Compare the project's stated goals (in `charter.md`; a repo set up before it existed keeps them in MEMORY.md) against what's actually being tracked in the backlog:
 
 - Goals with no corresponding backlog items or active plans
 - Goals where progress has stalled — the last related completed plan is old
 - Sub-goals or prerequisites that are implied but not explicitly tracked
 
-If the repo has an `autopilot/` folder (see the `## Autopilot` section of its CLAUDE.md), the product goals are the ones in `autopilot/charter.md`, and MEMORY.md's goals cover everything else. Before proposing a product idea, check `autopilot/ideas.md` and `autopilot/discards.md`, so you don't re-propose one already tracked or turned down.
+If `references/discards.md` exists, check it before proposing anything: it holds ideas already turned down, each with its reason and what would reopen it.
 
 ### 2. Stale State
 
@@ -80,7 +80,7 @@ For each applicable lens, search for opportunities. Use Glob/Grep/Read to examin
 - All state files and their freshness
 - All backlog files and their items
 - Recent completed plans (last 5-10)
-- MEMORY.md for stated goals and priorities
+- `charter.md` for stated goals and priorities
 - References directory for existing research
 
 ### Step 2: Filter
@@ -104,7 +104,7 @@ For each new work item:
 3. Insert the entry into the appropriate backlog file **in priority order** (highest first). Read the existing items, judge where the new item ranks relative to them, and place it there — not at the end
 4. Update the backlog file's INDEX.md if needed
 
-Where the repo has an `autopilot/` folder, a product or code-feature item goes to a short note in `autopilot/inbox/` (`YYYY-MM-DD-<slug>.md`, a few lines) instead of `backlog/`, for autopilot to weigh against the product.
+Where the repo's CLAUDE.md has an `## Autopilot` section, a product or code-feature item goes into `backlog/ideas.md` instead of a topic file: autopilot routes it to a repository at its next cycle.
 
 ### Step 4: Report
 

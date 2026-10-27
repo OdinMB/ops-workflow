@@ -22,7 +22,7 @@ Ask the user:
 1. **Project name** — what the project is called
 2. **One-paragraph description** — what the project does, who it's for
 3. **Constraints** — team size, budget, timeline, key limitations
-4. **Goals** — 2-4 strategic goals for the near term
+4. **The charter** — one topic at a time, offering your best guess from what they've said, and reading each answer back before you write it: who the project is for and the job they need done; 2-4 goals for the near term, each with how they'd know it is working; the audiences those goals target beyond the people it's for (a funder, a partner, a would-be maintainer); non-goals; what they care about and won't trade away; how bold to be. These become `charter.md`
 5. **Initial domain areas** — what topics will the project cover? These become the initial subfolders. Examples:
    - Marketing, legal, fundraising, partnerships, technical research
    - Or more specific: grants, audience growth, competitor analysis
@@ -34,7 +34,8 @@ Read the existing structure (CLAUDE.md, MEMORY.md, folder listing). Then ask:
 
 1. **What needs changing?** — or just check against the template and propose fixes
 2. **Missing folders?** — offer to create any missing standard folders with INDEX.md files
-3. **CLAUDE.md drift?** — show specific differences from the template and offer to patch. An `## Autopilot` section, which autopilot's setup writes, and the folder-structure bullet for `autopilot/` are not drift: leave them and the `autopilot/` folder as they are. If an `autopilot/` folder exists but the section doesn't, say so and suggest running autopilot's setup in a session started from the code repo
+3. **CLAUDE.md drift?** — show specific differences from the template and offer to patch. An `## Autopilot` section, which autopilot's setup writes, is not drift: leave it as it is. An `autopilot/` folder is autopilot's memory from before it moved into this layout: leave it, and suggest running autopilot in a session started from the code repo, which moves it
+4. **No `charter.md`?** — a repo set up before it existed keeps its goals in MEMORY.md, under "Constraints & Goals". Offer to move them into a new `charter.md` (template below), asking for what the template needs and MEMORY.md doesn't say, and to leave the constraints in MEMORY.md with the pointer line from its template. Where an `autopilot/` folder exists, leave this to autopilot's move, which merges its own charter in
 
 ## Directory Structure
 
@@ -58,7 +59,8 @@ Read the existing structure (CLAUDE.md, MEMORY.md, folder listing). Then ask:
 │   └── .gitkeep
 ├── .gitignore
 ├── CLAUDE.md
-└── MEMORY.md
+├── MEMORY.md
+└── charter.md
 ```
 
 For each domain area the user specified, create a subfolder with an `INDEX.md` in the appropriate parent:
@@ -159,7 +161,7 @@ NUL
 
 ## MEMORY.md
 
-**MEMORY.md is for stable project context only** — description, constraints, goals, and key learnings. It is NOT for task status, WAITING markers, blocked items, or anything that changes week-to-week. Those belong in `state/` and `backlog/` files.
+**MEMORY.md is for stable project context only** — description, constraints, and key learnings, with a pointer to `charter.md` for the goals. It is NOT for task status, WAITING markers, blocked items, or anything that changes week-to-week. Those belong in `state/` and `backlog/` files.
 
 Fill in from the interview answers:
 
@@ -172,14 +174,53 @@ _Last updated: <today's date>_
 
 <one-paragraph description from interview>
 
-## Constraints & Goals
+Goals, who the project is for and what it won't do: `charter.md`.
 
-<constraints and goals from interview, as bullet points>
+## Constraints
+
+<constraints from interview, as bullet points>
 
 ## Key Learnings
 
 _None yet._
 ```
+
+## charter.md
+
+**The charter is the one place the project's goals live**, every kind of goal: what the project delivers, and also who should run it, how it is funded, who hears about it. Every finder, `/ops:prioritize` and `/ops:whats-next` measure work against it. It changes only when the user says a goal changed.
+
+Fill in from the interview's charter answers:
+
+```markdown
+# Charter — <project name>
+
+_Last updated: <today's date>_
+Confirmed: <today's date>
+
+## Who it's for
+<the primary group, in one or two sentences; secondary groups marked as such>
+
+## The job they need done
+<what they are trying to get done, in their words>
+
+## Goals
+1. <outcome, said as something that could be observed> — how we'd know: <signal>
+2. …
+
+## Audiences
+- <each group a goal targets beyond the people it's for, and which goal: a funder, a partner, a would-be maintainer>
+
+## Non-goals
+- <what this project deliberately does not do, and why>
+
+## What the owner cares about
+- <taste, principles, things they won't trade away>
+
+## Risk appetite
+<how bold to be: what is live or public, who is hurt by a bad change>
+```
+
+Goals are numbered because other files refer to them by number. `Confirmed:` is the date the user last read the whole charter back and agreed with it.
 
 ## CLAUDE.md
 
@@ -267,8 +308,8 @@ Write a project README covering:
 
 After scaffolding (new repo) or adjusting:
 
-1. Verify every folder has an INDEX.md (skip `autopilot/`, which keeps its own files)
-2. Verify MEMORY.md references are valid
+1. Verify every folder has an INDEX.md (skip an `autopilot/` folder from before autopilot moved into this layout: autopilot moves it)
+2. Verify `charter.md` exists with its goals, and MEMORY.md's references are valid
 3. Verify CLAUDE.md has no remaining `[PROJECT NAME]` placeholders
 4. Run `ls` on each directory to confirm structure matches expectations
 5. Commit only the files this run wrote or changed, by explicit pathspec: `git add -- <paths>`, then `git commit -m "<message>" -- <paths>`, leaving out the gitignored `.claude/settings.local.json`. In new repo mode that is every file scaffolded, as the initial commit `"Initial scaffolding"`; in adjust mode, a message saying what was aligned. Never `git add -A`, `git add .` or a bare `git commit`: in an existing repo they sweep another writer's work into the commit.

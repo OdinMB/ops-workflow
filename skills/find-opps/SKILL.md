@@ -18,21 +18,21 @@ This is the outward-looking complement to `/find-tasks`, which finds work within
 
 ## Context Required
 
-Before running this skill, you need the project overview already loaded (MEMORY.md, state files, backlog, recent plans, references). If you don't have it, gather it now:
+Before running this skill, you need the project overview already loaded (`charter.md`, MEMORY.md, state files, backlog, recent plans, references). If you don't have it, gather it now:
 
-1. `MEMORY.md` — project overview, goals, and knowledge map
+1. `charter.md` — the goals, who the project is for, the audiences its goals target, and its non-goals (a repo set up before it existed keeps its goals in MEMORY.md); and `MEMORY.md` — project overview, constraints, and knowledge map
 2. `state/INDEX.md` → then every file listed in it
 3. `backlog/INDEX.md` → then every file and subfolder listed in it
-4. Active plans — glob `plans/*.md`, skip `INDEX.md`, and read the rest (`plans/INDEX.md` deliberately lists none of them)
+4. Active plans — glob `plans/*.md`, skip `INDEX.md`, and read the rest (`plans/INDEX.md` deliberately lists none of them), except an autopilot cycle record (`*autopilot-cycle*`), which is autopilot's record, not a plan
 5. `plans/completed/INDEX.md` — scan the 5 most recent completed plans
 6. `references/INDEX.md` — scan for existing research to avoid duplicating
-7. If the repo has an `autopilot/` folder (see the `## Autopilot` section of its CLAUDE.md): `autopilot/charter.md` — the product goals, with MEMORY.md's goals covering the rest — and `autopilot/ideas.md` and `autopilot/discards.md`
+7. `references/discards.md`, if it exists — ideas already turned down, each with its reason and what would reopen it
 
 **Isolate the heavy reading when you can.** In an interactive session on a frontier model, push the context-load above and the lens-3/lens-4 web research to a read-only reader subagent that returns a distilled overview + web digest with citations — then do the ideation (lenses, Filter, Constraints) yourself on that brief. Reading state files and full web pages doesn't need frontier judgment; the ideation does. Enumerate what the reader should extract, or it drops the signal. Skip this on a small project where there's nothing to isolate. The `ops:opps-finder` agent cannot spawn subagents; it does the reading itself, already apart from its caller's context.
 
 ## Analysis Lenses
 
-Think laterally, but stay grounded. Every suggestion must be something an autonomous agent can actually start (research, analysis, drafting, knowledge management). The project's goals and constraints in MEMORY.md are your guardrails — stretch beyond current plans, not beyond what's realistic for this project.
+Think laterally, but stay grounded. Every suggestion must be something an autonomous agent can actually start (research, analysis, drafting, knowledge management). The goals and non-goals in `charter.md` and the constraints in MEMORY.md are your guardrails — stretch beyond current plans, not beyond what's realistic for this project.
 
 ### 1. Adjacent Opportunities
 
@@ -42,7 +42,7 @@ Areas the project hasn't explored but plausibly could, given its goals and resou
 
 What would a sharp outside advisor notice is missing? Blind spots in the project's approach, risks that aren't being tracked, assumptions that haven't been validated. The things that are dangerous precisely because nobody's looking at them.
 
-Where the repo has an `autopilot/` folder, measure the product's gaps against the goals in `autopilot/charter.md`, and everything else against MEMORY.md's.
+Measure gaps against every goal and audience in `charter.md`, not only the ones the backlog already serves.
 
 ### 3. Emerging Context
 
@@ -66,7 +66,7 @@ For each lens, search for opportunities. Use the project context you've loaded, 
 
 Remove items that:
 - Are already tracked in the backlog (even if worded differently)
-- Are already in `autopilot/ideas.md` or were turned down in `autopilot/discards.md`, where the repo has an `autopilot/` folder
+- Were turned down in `references/discards.md`, unless what would reopen them has happened
 - Are too vague to act on
 - Exceed the project's realistic scope or resources
 - Are not something an autonomous agent could start working on
@@ -84,7 +84,7 @@ Produce backlog-ready items:
 - **Why**: [how this connects to or expands the project's goals]
 - **Effort**: light / medium / heavy
 - **Lens**: [which category above: adjacent, strategic gap, emerging, preparatory, cross-pollination]
-- **Route**: autopilot/inbox/ [only for a product or code-feature item, where the repo has an `autopilot/` folder]
+- **Route**: backlog/ideas.md [only for a product or code-feature item, where the repo's CLAUDE.md has an `## Autopilot` section]
 
 ### 2. [Title]
 ...
@@ -92,11 +92,11 @@ Produce backlog-ready items:
 
 Return the items genuinely worth pursuing — often 3-5; fewer, or none, is a valid result. There is no required mix of lenses or effort levels.
 
-This block is the record — it goes back to the caller when a subagent runs this skill, and into the backlog when the main agent runs it directly. An item routed to `autopilot/inbox/` becomes a short note there (`YYYY-MM-DD-<slug>.md`, a few lines) instead of a backlog entry. When briefing the user, the same items become short prose instead: each one says what the project would learn or gain and what it would cost, with lens names and deliverable paths left out.
+This block is the record — it goes back to the caller when a subagent runs this skill, and into the backlog when the main agent runs it directly. An item routed to `backlog/ideas.md` goes there rather than into a topic backlog file, for autopilot to route to a repository. When briefing the user, the same items become short prose instead: each one says what the project would learn or gain and what it would cost, with lens names and deliverable paths left out.
 
 ## Constraints
 
 - **Stay practical.** Every item must be something an autonomous agent could start working on — a research task, an analysis, a draft document, a state file update. "Consider pivoting the business model" is not actionable. "Research 3 alternative revenue models used by similar projects and write a comparison to references/revenue-models.md" is.
-- **Respect project scope.** Read MEMORY.md carefully. The project has specific goals, resources, and limitations. Your suggestions should expand the project's horizon, not ignore its reality.
+- **Respect project scope.** Read `charter.md` and MEMORY.md carefully. The project has specific goals, resources, and limitations. Your suggestions should expand the project's horizon, not ignore its reality.
 - **Don't duplicate.** Check the existing backlog before suggesting something. If it's already tracked (even in different words), skip it.
 - **Be concrete.** Each item needs: what to do, what file/artifact to produce, and why it's valuable. Vague strategic musings aren't backlog items.

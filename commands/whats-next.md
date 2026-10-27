@@ -13,12 +13,12 @@ Read only the high-level INDEX files first. Be selective about drilling into det
 
 **Round 1 — INDEX files only** (skip any that don't exist):
 
-1. **`MEMORY.md`** — Project overview and knowledge map.
+1. **`MEMORY.md`** and **`charter.md`** — Project overview and knowledge map, and the goals your ranking serves (a repo set up before `charter.md` existed keeps them in MEMORY.md).
 2. **`state/INDEX.md`** — Area names and status summaries.
 3. **`backlog/INDEX.md`** — Priorities and item titles.
 4. **`plans/completed/INDEX.md`** — Recently finished plans, for momentum.
-5. **Active plans** — Glob `plans/*.md` and skip `INDEX.md`. Every other file directly under `plans/` is an active plan. `plans/INDEX.md` deliberately lists none of them, so it can't tell you what's in flight.
-6. **Autopilot** — if the repo has an `autopilot/` folder (see the `## Autopilot` section of its CLAUDE.md): `autopilot/charter.md`, whose goals are the product goals beside MEMORY.md's; `autopilot/roadmap.md`, whose Now section is product work in flight; and `autopilot/waiting.md`, for Decisions Needed.
+5. **Active plans** — Glob `plans/*.md` and skip `INDEX.md`. Every other file directly under `plans/` is an active plan, except an autopilot cycle record (`*autopilot-cycle*`), which item 6 reads. `plans/INDEX.md` deliberately lists none of them, so it can't tell you what's in flight.
+6. **Autopilot** — if the repo's CLAUDE.md has an `## Autopilot` section: `state/autopilot.md`, for what autopilot waits on the user for, and its latest cycle record, `plans/YYYY-MM-DD_autopilot-cycle*.md` (or in `plans/completed/` once the user has decided what it offered), for what autopilot built, offered and ranked next across both repositories. Code work lives in the code repo's backlog, and the cycle record is where this repo sees it — unless the section tells autopilot to keep code items in this repo's backlog too: then a backlog item marked `(code item)` is autopilot's to build, never ops work, and you recommend it as such. Entries in `backlog/ideas.md` are ideas autopilot has yet to route to a repository: never recommend them as ops work; at most mention how many wait.
 
 **Round 2 — Selective drill-down:**
 
@@ -121,7 +121,7 @@ Grep all files under `state/` and `backlog/` for the marker `WAITING (`. Each ma
 | <what needs deciding> | <A / B / C> | <what can't proceed> | <when> |
 ```
 
-If `autopilot/waiting.md` has entries under its Stack, Variants, Show, Ask first, Read-backs pending or "Approved, awaiting a live landing" sections, this section appears even with no other decision, and ends with what autopilot waits on: one line per section that has entries, with how many. Its other sections are bookkeeping, not decisions: a charter reconfirmation under "For review when convenient" gets one line, marked not counted, and the rest none. Tell the user to say "autopilot" in a session to decide them.
+If `state/autopilot.md` holds anything waiting on the user's decision — work to ship or land, variants to pick, ask-first items, read-backs — or a cycle record still directly under `plans/` offers something, this section appears even with no other decision, and ends with what autopilot waits on: one line per kind, with how many. Bookkeeping is not a decision: a charter reconfirmation coming due gets one line, marked not counted, and branches to clean up or queued edits none. Tell the user to say "autopilot" in a session to decide them.
 
 #### Housekeeping (optional — omit if nothing is stale)
 

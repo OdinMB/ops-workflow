@@ -6,7 +6,7 @@ argument-hint: <path to plan file>
 
 Execute the plan at: $ARGUMENTS
 
-**Scope:** This skill produces research, content, strategy, and specs — not code. If the plan involves code changes, use `/implement` instead. If the repo has an `autopilot/` folder (see the `## Autopilot` section of its CLAUDE.md), code or product work also becomes a short note in `autopilot/inbox/` (`YYYY-MM-DD-<slug>.md`, linking any spec this plan wrote), so autopilot weighs it against the product.
+**Scope:** This skill produces research, content, strategy, and specs — not code. If the plan involves code changes, use `/implement` instead. If the repo's CLAUDE.md has an `## Autopilot` section, code or product work also becomes an entry in `backlog/ideas.md`, linking any spec this plan wrote, so autopilot routes it to a repository and weighs it against the charter.
 
 ## Instructions
 
@@ -47,7 +47,8 @@ Before updating state, review the deliverables. In autonomous execution this is 
 3. **Update `state/` files** — if the task changed anything documented in `state/`, update those files. Create a new state file if a significant new aspect emerged.
 4. **Harvest insights** — review what you learned and persist it:
    - **MEMORY.md Key Learnings** — add or update if you learned something that changes the project's understanding of its landscape, constraints, opportunities, or strategic position. **Never put WAITING markers, task status, or blocked items in MEMORY.md.**
-   - **New backlog items** — add actionable opportunities or follow-up tasks to the appropriate backlog file in priority order. Where the repo has an `autopilot/` folder, a product or feature idea becomes a note in `autopilot/inbox/` instead.
+   - **New backlog items** — add actionable opportunities or follow-up tasks to the appropriate backlog file in priority order. Where the repo's CLAUDE.md has an `## Autopilot` section, a product or feature idea goes into `backlog/ideas.md` instead.
+   - **User feedback** — where the repo's CLAUDE.md has an `## Autopilot` section, anything in a user's own voice the work turned up goes only into `references/users/feedback.md`, newest first, as `- YYYY-MM-DD · <source type> · <persona, if one fits> — <the substance>`, anonymised before it is written: no names, email addresses, handles, phone numbers, street addresses or account IDs, no place finer than a city, never a screenshot of a message.
 5. **Patterns, anti-patterns, and conventions** — if the work revealed patterns worth documenting for future agents (e.g., effective research approaches, naming conventions for artifacts, common pitfalls in a domain), add them to `CLAUDE.md` only if most sessions need them, otherwise to the relevant reference file.
 6. **INDEX.md cascade** — list every file created, moved, renamed, or significantly changed. For each, confirm its folder's `INDEX.md` is up to date. Cascade to parent INDEX.md if needed.
 
