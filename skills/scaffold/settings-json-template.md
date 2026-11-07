@@ -25,13 +25,12 @@ This is the `.claude/settings.json` and `.claude/settings.local.json` template f
   "enabledPlugins": {
     "typescript-lsp@claude-plugins-official": false,
     "pyright-lsp@claude-plugins-official": false,
-    "feature-dev@claude-plugins-official": false,
     "context7@claude-plugins-official": false
   }
 }
 ```
 
-- **Disables coding plugins** — LSP servers, feature-dev, and context7 are irrelevant in a non-code repo. Disabling them here overrides the user-level setting for this project only.
+- **Disables coding plugins** — LSP servers and context7 are irrelevant in a non-code repo. Disabling them here overrides the user-level setting for this project only.
 - This file is gitignored so it doesn't affect teammates who may have different plugin setups.
 
 ## Notes
